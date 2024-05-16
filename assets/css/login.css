@@ -8,8 +8,10 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
   color: #444444;
+  
+  background: url("../img/login-bg.jpg") center center no-repeat;
+  background-size: cover;
 }
 
 a {
@@ -99,7 +101,7 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
+  max-height: 60px;
   margin-right: 6px;
 }
 
