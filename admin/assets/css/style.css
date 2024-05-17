@@ -56,7 +56,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #000;
+  color: #1cbb9d;
 }
 
 /*--------------------------------------------------------------
@@ -251,6 +251,17 @@ h6 {
   font-weight: 500;
   font-family: "Poppins", sans-serif;
   font-size: 20px;
+}
+
+/* Add Button */
+.add-btn {
+  background-color: #1cbb9d;
+  color: #fff;
+}
+.add-btn:hover {
+  color: #1cbb9d;
+  border: 1px solid #1cbb9d;
+  /* outline-color: #1cbb9d; */
 }
 
 /* Close Button */
@@ -810,21 +821,25 @@ h6 {
   flex-grow: 0;
 }
 
-.dashboard .sales-card .card-icon {
+.dashboard .dogs-card .card-icon {
   color: #4154f1;
   background: #f6f6fe;
 }
 
-.dashboard .revenue-card .card-icon {
+.dashboard .cats-card .card-icon {
   color: #2eca6a;
   background: #e0f8e9;
 }
 
-.dashboard .customers-card .card-icon {
+.dashboard .owners-card .card-icon {
   color: #ff771d;
   background: #ffecdf;
 }
 
+.dashboard .vacc-card .card-icon {
+  color: #ffe81d;
+  background: #fffcdf;
+}
 /* Activity */
 .dashboard .activity {
   font-size: 14px;

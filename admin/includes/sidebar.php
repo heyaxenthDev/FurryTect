@@ -9,10 +9,10 @@ $pages = [
     "cats" => "cats",
     "owners" => "owners",
     "vaccination" => "vaccination",
-    "dogtagging" => "dogtagging",
+    "dog tagging" => "dog tagging",
     "registration" => "registration",
-    "vaccination report" => "vaccination%20report",
-    "dogtagging report" => "dogtagging%20report"
+    "vaccination report" => "vaccination report",
+    "dogtagging report" => "dog tagging report"
 ];
 
 // Function to determine if a page is active
@@ -61,9 +61,9 @@ function is_active($page, $current_page)
         </li><!-- End Vaccination Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link <?= is_active('dogtagging', $current_page); ?>" href="dogtagging">
+            <a class="nav-link <?= is_active('dog tagging', $current_page); ?>" href="dog tagging">
                 <i class="bx bxs-purchase-tag"></i>
-                <span>Dogtagging</span>
+                <span>Dog Tagging</span>
             </a>
         </li><!-- End Dogtagging Page Nav -->
 
@@ -84,9 +84,9 @@ function is_active($page, $current_page)
         </li><!-- End Vaccination Report Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link <?= is_active('dogtagging report', $current_page); ?>" href="dogtagging report">
+            <a class="nav-link <?= is_active('dog tagging report', $current_page); ?>" href="dog tagging report">
                 <i class="bx bxs-file"></i>
-                <span>Dogtagging Report</span>
+                <span>Dog Tagging Report</span>
             </a>
         </li><!-- End Dogtagging Report Page Nav -->
     </ul>
