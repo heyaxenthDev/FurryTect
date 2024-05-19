@@ -1,6 +1,10 @@
  <?php
+    include 'authentication.php';
+    include 'includes/conn.php';
     include 'includes/header.php';
     include 'includes/sidebar.php';
+    include 'alert.php';
+
     ?>
 
  <main id="main" class="main">
@@ -34,14 +38,38 @@
                                  </tr>
                              </thead>
                              <tbody>
+                                 <?php
+                                    // Assuming you have already connected to your database
+
+                                    // Fetch data from the dogs table
+                                    $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, o.`sex`,
+                                            COUNT(DISTINCT d.`tag_number`) AS num_dogs,
+                                            COUNT(DISTINCT c.`name`) AS num_cats
+                                        FROM 
+                                            `owners` o
+                                        LEFT JOIN 
+                                            `dogs` d ON o.`owner_code` = d.`owner_code`
+                                        LEFT JOIN 
+                                            `cats` c ON o.`owner_code` = c.`owner_code`
+                                        GROUP BY 
+                                            o.`owner_code`";
+
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        // Output data of each row
+                                        while ($row = $result->fetch_assoc()) {
+                                            $middlenameInitial = substr($row['middle_name'], 0, 1);
+                                            $total_pets = $row['num_dogs'] + $row['num_cats'];
+                                    ?>
                                  <tr>
-                                     <td>9958</td>
-                                     <td>9958</td>
-                                     <td>Unity Pugh</td>
-                                     <td>9958</td>
-                                     <td>Curicó</td>
-                                     <td>2005/02/11</td>
-                                     <td>37%</td>
+                                     <td><?php echo $row["last_name"]; ?></td>
+                                     <td><?php echo $row["first_name"]; ?></td>
+                                     <td><?php echo $row["middle_name"]; ?></td>
+                                     <td><?php echo ($row["sex"] == 1) ? "Male" : "Female"; ?></td>
+                                     <td><?php echo $row["barangay"]; ?></td>
+                                     <td><?php echo $total_pets; ?></td>
+                                     <td><?php echo $row["contact_number"]; ?></td>
                                      <td>
                                          <div class="d-grid gap-2 d-md-block">
                                              <button class="btn btn-primary" type="button"><i
@@ -51,6 +79,13 @@
                                          </div>
                                      </td>
                                  </tr>
+                                 <?php
+                                        }
+                                    } else {
+                                        echo "No Records";
+                                    }
+                                    $conn->close();
+                                    ?>
                              </tbody>
                          </table>
                          <!-- End Table with stripped rows -->

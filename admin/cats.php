@@ -1,4 +1,6 @@
  <?php
+    include 'authentication.php';
+    include 'includes/conn.php';
     include 'includes/header.php';
     include 'includes/sidebar.php';
     ?>
@@ -8,7 +10,7 @@
      <div class="pagetitle d-flex justify-content-between">
          <h1>Cats</h1>
          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-             <button class="btn add-btn"><i class="bi bi-plus-circle"></i> Add Cats</button>
+             <!-- <button class="btn add-btn"><i class="bi bi-plus-circle"></i> Add Cats</button> -->
              <button class="btn add-btn"><i class="bi bi-clipboard-data"></i> Generate List</button>
          </div>
      </div><!-- End Page Title -->
