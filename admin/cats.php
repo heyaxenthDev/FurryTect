@@ -10,7 +10,7 @@
      <div class="pagetitle d-flex justify-content-between">
          <h1>Cats</h1>
          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-             <!-- <button class="btn add-btn"><i class="bi bi-plus-circle"></i> Add Cats</button> -->
+             <button class="btn add-btn"><i class="bi bi-plus-circle"></i> Add Cats</button>
              <button class="btn add-btn"><i class="bi bi-clipboard-data"></i> Generate List</button>
          </div>
      </div><!-- End Page Title -->
@@ -36,21 +36,40 @@
                                  </tr>
                              </thead>
                              <tbody>
-                                 <tr>
-                                     <td>Unity Pugh</td>
-                                     <td>9958</td>
-                                     <td>Curicó</td>
-                                     <td>2005/02/11</td>
-                                     <td>37%</td>
-                                     <td>
-                                         <div class="d-grid gap-2 d-md-block">
-                                             <button class="btn btn-primary" type="button"><i
-                                                     class="bi bi-eye-fill"></i></button>
-                                             <button class="btn btn-primary" type="button"><i
-                                                     class="bi bi-pencil-square"></i></button>
-                                         </div>
-                                     </td>
-                                 </tr>
+                                 <?php
+                                    // Assuming you have already connected to your database
+
+                                    // Fetch data from the dogs table
+                                    $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, 
+                                    c.`species`, c.`name`, c.`sex`, c.`age`, c.`color`, c.`owner_code`, c.`vacc_status`, c.`date_vacc`, c.`picture`
+                                    FROM `cats` c LEFT JOIN `owners` o ON c.`owner_code` = o.`owner_code`";
+
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        // Output data of each row
+                                        while ($row = $result->fetch_assoc()) {
+                                            $middlenameInitial = substr($row['middle_name'], 0, 1);
+                                    ?>
+                                         <tr>
+                                             <td><?php echo $row["name"]; ?></td>
+                                             <td><?php echo ($row["sex"] == 1) ? "Male" : "Female"; ?></td>
+                                             <td><?php echo $row["barangay"]; ?></td>
+                                             <td><?php echo $row['first_name'] . " " . $middlenameInitial . ". " . $row['last_name']; ?>
+                                             </td>
+                                             <td><?php echo $row["contact_number"]; ?></td>
+                                             <td>
+                                                 <div class="d-grid gap-2 d-md-block">
+                                                     <button class="btn btn-primary" type="button"><i class="bi bi-eye-fill"></i></button>
+                                                     <button class="btn btn-primary" type="button"><i class="bi bi-pencil-square"></i></button>
+                                                 </div>
+                                             </td>
+                                         </tr>
+                                 <?php
+                                        }
+                                    }
+                                    $conn->close();
+                                    ?>
                              </tbody>
                          </table>
                          <!-- End Table with stripped rows -->

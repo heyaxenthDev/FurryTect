@@ -27,6 +27,7 @@
                          <table class="table datatable">
                              <thead>
                                  <tr>
+                                     <th>Owner Code</th>
                                      <th>Last Name</th>
                                      <th>First Name</th>
                                      <th>Middle Name</th>
@@ -52,7 +53,9 @@
                                         LEFT JOIN 
                                             `cats` c ON o.`owner_code` = c.`owner_code`
                                         GROUP BY 
-                                            o.`owner_code`";
+                                            o.`owner_code`
+                                        ORDER BY
+                                            o.`id`";
 
                                     $result = $conn->query($sql);
 
@@ -63,6 +66,7 @@
                                             $total_pets = $row['num_dogs'] + $row['num_cats'];
                                     ?>
                                  <tr>
+                                     <td><?php echo $row["owner_code"]; ?></td>
                                      <td><?php echo $row["last_name"]; ?></td>
                                      <td><?php echo $row["first_name"]; ?></td>
                                      <td><?php echo $row["middle_name"]; ?></td>
@@ -81,8 +85,6 @@
                                  </tr>
                                  <?php
                                         }
-                                    } else {
-                                        echo "No Records";
                                     }
                                     $conn->close();
                                     ?>

@@ -22,11 +22,11 @@ document
   });
 
 document
-  .getElementById("ownerImageInput")
+  .getElementById("catOwnerImageInput")
   .addEventListener("change", function () {
     displayImage(
       this,
-      document.getElementById("ownerImage"),
+      document.getElementById("catOwnerImage"),
       "assets/img/user.png"
     );
   });

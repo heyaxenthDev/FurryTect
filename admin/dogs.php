@@ -10,14 +10,12 @@
      <div class="pagetitle d-flex justify-content-between">
          <h1>Dogs</h1>
          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-             <button class="btn add-btn" data-bs-toggle="modal" data-bs-target="#AddDogsModal"><i
-                     class="bi bi-plus-circle"></i> Add Dogs</button>
+             <button class="btn add-btn" data-bs-toggle="modal" data-bs-target="#AddDogsModal"><i class="bi bi-plus-circle"></i> Add Dogs</button>
              <button class="btn add-btn"><i class="bi bi-clipboard-data"></i> Generate List</button>
          </div>
      </div><!-- End Page Title -->
      <!-- Add Dogs Modal -->
-     <div class="modal fade" id="AddDogsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+     <div class="modal fade" id="AddDogsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
          <div class="modal-dialog modal-xl modal-dialog-centered">
              <div class="modal-content">
                  <div class="modal-header">
@@ -30,8 +28,7 @@
                          <h4 class="mb-3">Dog's Information</h4>
                          <div class="row g-3">
                              <div class="col-md-4">
-                                 <img src="assets/img/dog_default_img.jpg" id="dogImage"
-                                     class="img-fluid rounded float-start img-thumbnail mb-3" alt="Dog Image">
+                                 <img src="assets/img/dog_default_img.jpg" id="dogImage" class="img-fluid rounded float-start img-thumbnail mb-3" alt="Dog Image">
                                  <input type="file" class="form-control" id="dogImageInput" accept="image/*">
                              </div>
                              <div class="col-md-8">
@@ -48,35 +45,32 @@
 
                                      <div class="col-md-6" id="tagNumberDiv" style="display: none;">
                                          <div class="form-floating">
-                                             <input type="text" class="form-control" id="floatingTagNumber"
-                                                 placeholder="Tag Number">
+                                             <input type="text" class="form-control" id="floatingTagNumber" placeholder="Tag Number">
                                              <label for="floatingTagNumber">Tag Number</label>
                                          </div>
                                      </div>
                                      <div class="col-md-6" id="dateTaggedDiv" style="display: none;">
                                          <div class="form-floating">
-                                             <input type="date" class="form-control" id="floatingDateTagged"
-                                                 placeholder="DateTagged">
+                                             <input type="date" class="form-control" id="floatingDateTagged" placeholder="DateTagged">
                                              <label for="floatingDateTagged">Date Tagged</label>
                                          </div>
                                      </div>
                                  </div>
 
                                  <script>
-                                 document.getElementById('checkBoxTagged').addEventListener('change', function() {
-                                     var isChecked = this.checked;
-                                     document.getElementById('tagNumberDiv').style.display = isChecked ?
-                                         'block' : 'none';
-                                     document.getElementById('dateTaggedDiv').style.display = isChecked ?
-                                         'block' : 'none';
-                                 });
+                                     document.getElementById('checkBoxTagged').addEventListener('change', function() {
+                                         var isChecked = this.checked;
+                                         document.getElementById('tagNumberDiv').style.display = isChecked ?
+                                             'block' : 'none';
+                                         document.getElementById('dateTaggedDiv').style.display = isChecked ?
+                                             'block' : 'none';
+                                     });
                                  </script>
 
                                  <div class="row mb-3 g-2">
                                      <div class="col-md-12">
                                          <div class="form-floating">
-                                             <input type="text" class="form-control" id="floatingName"
-                                                 placeholder="Name">
+                                             <input type="text" class="form-control" id="floatingName" placeholder="Name">
                                              <label for="floatingName">Name</label>
                                          </div>
                                      </div>
@@ -96,8 +90,7 @@
 
                                      <div class="col-md-6">
                                          <div class="form-floating">
-                                             <input type="number" class="form-control" id="floatingAge"
-                                                 placeholder="Age">
+                                             <input type="number" class="form-control" id="floatingAge" placeholder="Age">
                                              <label for="floatingAge">Age</label>
                                          </div>
                                      </div>
@@ -106,8 +99,7 @@
                                  <div class="row mb-3 g-2">
                                      <div class="col-md-12">
                                          <div class="form-floating">
-                                             <input type="text" class="form-control" id="floatingColor"
-                                                 placeholder="Color">
+                                             <input type="text" class="form-control" id="floatingColor" placeholder="Color">
                                              <label for="floatingColor">Color Description</label>
                                          </div>
                                      </div>
@@ -116,8 +108,7 @@
                                  <div class="row mb-3 g-2">
                                      <div class="col-md-6">
                                          <div class="form-floating">
-                                             <select class="form-control" id="floatingVaccinationStatus"
-                                                 aria-label="Vaccination Status">
+                                             <select class="form-control" id="floatingVaccinationStatus" aria-label="Vaccination Status">
                                                  <option value="">Select Vaccination Status</option>
                                                  <option value="vaccinated" class="text-success">Vaccinated</option>
                                                  <option value="unvaccinated" class="text-danger">Unvaccinated
@@ -128,20 +119,19 @@
                                      </div>
                                      <div class="col-md-6" id="dateVaccDiv" style="display: none;">
                                          <div class="form-floating">
-                                             <input type="date" class="form-control" id="floatingDateVacc"
-                                                 placeholder="Date Vaccinated">
+                                             <input type="date" class="form-control" id="floatingDateVacc" placeholder="Date Vaccinated">
                                              <label for="floatingDateVacc">Date Vaccinated</label>
                                          </div>
                                      </div>
                                  </div>
 
                                  <script>
-                                 document.getElementById('floatingVaccinationStatus').addEventListener('change',
-                                     function() {
-                                         var selectedValue = this.value;
-                                         document.getElementById('dateVaccDiv').style.display =
-                                             selectedValue === 'vaccinated' ? 'block' : 'none';
-                                     });
+                                     document.getElementById('floatingVaccinationStatus').addEventListener('change',
+                                         function() {
+                                             var selectedValue = this.value;
+                                             document.getElementById('dateVaccDiv').style.display =
+                                                 selectedValue === 'vaccinated' ? 'block' : 'none';
+                                         });
                                  </script>
                              </div>
                          </div>
@@ -185,7 +175,7 @@
                                     $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, 
                                     d.`species`, d.`tag_number`, d.`date_tagged`, d.`name`, d.`sex`, d.`age`, d.`color`, d.`owner_code`, d.`vacc_status`, d.`date_vacc`, d.`picture`
                                     FROM `dogs` d LEFT JOIN `owners` o ON d.`owner_code` = o.`owner_code`";
-                                    
+
                                     $result = $conn->query($sql);
 
                                     if ($result->num_rows > 0) {
@@ -193,28 +183,24 @@
                                         while ($row = $result->fetch_assoc()) {
                                             $middlenameInitial = substr($row['middle_name'], 0, 1);
                                     ?>
-                                 <tr>
-                                     <td><?php echo ($row["tag_number"] == null) ? "Not yet Tagged" : $row["tag_number"]; ?>
-                                     </td>
-                                     <td><?php echo $row["name"]; ?></td>
-                                     <td><?php echo ($row["sex"] == 1) ? "Male" : "Female"; ?></td>
-                                     <td><?php echo $row["barangay"]; ?></td>
-                                     <td><?php echo $row['first_name'] . " " . $middlenameInitial . ". " . $row['last_name']; ?>
-                                     </td>
-                                     <td><?php echo $row["contact_number"]; ?></td>
-                                     <td>
-                                         <div class="d-grid gap-2 d-md-block">
-                                             <button class="btn btn-primary" type="button"><i
-                                                     class="bi bi-eye-fill"></i></button>
-                                             <button class="btn btn-primary" type="button"><i
-                                                     class="bi bi-pencil-square"></i></button>
-                                         </div>
-                                     </td>
-                                 </tr>
+                                         <tr>
+                                             <td><?php echo ($row["tag_number"] == null) ? "Not yet Tagged" : $row["tag_number"]; ?>
+                                             </td>
+                                             <td><?php echo $row["name"]; ?></td>
+                                             <td><?php echo ($row["sex"] == 1) ? "Male" : "Female"; ?></td>
+                                             <td><?php echo $row["barangay"]; ?></td>
+                                             <td><?php echo $row['first_name'] . " " . $middlenameInitial . ". " . $row['last_name']; ?>
+                                             </td>
+                                             <td><?php echo $row["contact_number"]; ?></td>
+                                             <td>
+                                                 <div class="d-grid gap-2 d-md-block">
+                                                     <button class="btn btn-primary" type="button"><i class="bi bi-eye-fill"></i></button>
+                                                     <button class="btn btn-primary" type="button"><i class="bi bi-pencil-square"></i></button>
+                                                 </div>
+                                             </td>
+                                         </tr>
                                  <?php
                                         }
-                                    } else {
-                                        echo "No Records";
                                     }
                                     $conn->close();
                                     ?>

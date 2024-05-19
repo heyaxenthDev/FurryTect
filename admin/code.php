@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['CatsReg'])) {
 
     // Handle file uploads
-    $ownerPicture = handleFileUpload($_FILES['ownerImage'], 'uploads/owners/');
+    $ownerPicture = handleFileUpload($_FILES['catOwnerImage'], 'uploads/owners/');
     $catPicture = handleFileUpload($_FILES['catImage'], 'uploads/cats/');
 
     // Owner information

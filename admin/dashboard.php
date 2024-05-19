@@ -1,5 +1,6 @@
 <?php
 include 'authentication.php';
+include 'includes/conn.php';
 include 'includes/header.php';
 include 'includes/sidebar.php';
 include 'alert.php';
@@ -66,7 +67,23 @@ Toast.fire({
                                         <i class="bx bxs-dog"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
+                                        <?php
+                                        // Assuming you have already connected to your database
+
+                                        // Fetch data from the owner table
+                                        $sql = "SELECT *, COUNT(`id`) AS dogs_count FROM `dogs`";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <h6><?php echo $row['dogs_count']; ?></h6>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "0";
+                                        }
+
+                                        ?>
 
                                     </div>
                                 </div>
@@ -88,7 +105,23 @@ Toast.fire({
                                         <i class="bx bxs-cat"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
+                                        <?php
+                                        // Assuming you have already connected to your database
+
+                                        // Fetch data from the owner table
+                                        $sql = "SELECT *, COUNT(`id`) AS cats_count FROM `cats`";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <h6><?php echo $row['cats_count']; ?></h6>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "0";
+                                        }
+
+                                        ?>
 
                                     </div>
                                 </div>
@@ -111,7 +144,23 @@ Toast.fire({
                                         <i class="bx bxs-user"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
+                                        <?php
+                                        // Assuming you have already connected to your database
+
+                                        // Fetch data from the owner table
+                                        $sql = "SELECT *, COUNT(`id`) AS owner_count FROM `owners`";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <h6><?php echo $row['owner_count']; ?></h6>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "0";
+                                        }
+
+                                        ?>
 
                                     </div>
                                 </div>
@@ -135,7 +184,33 @@ Toast.fire({
                                         <i class="bx bxs-injection"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
+                                        <?php
+                                        // Assuming you have already connected to your database
+
+                                        // Fetch data from the owner table
+                                        $sql = "SELECT SUM(vacc_count) AS total_vacc_count FROM (
+                                                SELECT COUNT(d.`id`) AS vacc_count
+                                                FROM `dogs` d
+                                                WHERE d.`vacc_status` = 'vaccinated'
+                                                
+                                                UNION ALL
+                                                
+                                                SELECT COUNT(c.`id`) AS vacc_count
+                                                FROM `cats` c
+                                                WHERE c.`vacc_status` = 'vaccinated'
+                                            ) AS combined_vacc_counts";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <h6><?php echo $row['total_vacc_count']; ?></h6>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "0";
+                                        }
+                                        ?>
+
 
                                     </div>
                                 </div>

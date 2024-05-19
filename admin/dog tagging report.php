@@ -7,7 +7,7 @@
 
      <div class="pagetitle d-flex justify-content-between">
          <h1>Dog Tagging Reports</h1>
-         <button class="btn add-btn"><i class="bi bi-plus-circle-fill"></i> Add Dogs</button>
+         <button class="btn add-btn"><i class="bi bi-printer"></i> Print Report</button>
      </div><!-- End Page Title -->
 
      <section class="section">
