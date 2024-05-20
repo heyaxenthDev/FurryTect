@@ -359,8 +359,8 @@
                                  <div class="col-md-4">
                                      <img src="assets/img/user.png" id="catOwnerImage"
                                          class="img-fluid rounded float-start img-thumbnail mb-3" alt="Owner Image">
-                                     <input type="file" class="form-control" id="catOwnerImage" name="catOwnerImage"
-                                         accept="image/*">
+                                     <input type="file" class="form-control" id="catOwnerImageInput"
+                                         name="catOwnerImage" accept="image/*">
                                  </div>
                                  <div class="col-md-8">
                                      <div class="row mb-3 g-2">
