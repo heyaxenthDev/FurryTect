@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 12:42 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: May 20, 2024 at 10:28 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,15 +33,16 @@ CREATE TABLE `admin` (
   `first_name` varchar(255) NOT NULL,
   `middle_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `password` varchar(255) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `first_name`, `middle_name`, `last_name`, `password`) VALUES
-(1, 'hyacynth', 'Hya Cynth', 'Genodepa', 'Dojillo', '???^b5??}?H?J!d?');
+INSERT INTO `admin` (`id`, `username`, `first_name`, `middle_name`, `last_name`, `password`, `date_created`) VALUES
+(1, 'hyacynth', 'Hya Cynth', 'Genodepa', 'Dojillo', '$2y$10$6h8Z6PwhPkGk.jKGV7OkvebCdOj8mI8xlHIAHvcMsqGBTOYDbNDvS', '2024-05-20 06:28:16');
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,7 @@ CREATE TABLE `cats` (
   `date_vacc` date NOT NULL,
   `picture` varchar(255) NOT NULL,
   `date_created` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cats`
@@ -90,7 +91,7 @@ CREATE TABLE `dogs` (
   `date_vacc` date NOT NULL,
   `picture` varchar(255) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `dogs`
@@ -117,7 +118,7 @@ CREATE TABLE `owners` (
   `barangay` varchar(255) NOT NULL,
   `owner_picture` varchar(255) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `owners`
