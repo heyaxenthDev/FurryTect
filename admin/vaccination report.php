@@ -6,7 +6,9 @@
     include 'alert.php';
 
     ?>
-
+ <script>
+     window.location.replace("pages-error-404.html");
+ </script>
 
  <main id="main" class="main">
 

@@ -5,7 +5,11 @@
     include 'includes/sidebar.php';
     include 'alert.php';
 
+
     ?>
+ <script>
+window.location.replace("pages-error-404.html");
+ </script>
 
  <main id="main" class="main">
 
@@ -745,7 +749,7 @@
          </div>
      </section>
 
- </main><!-- End #main -->
+ </main>End #main
  <?php
     include "includes/footer.php";
     ?>
