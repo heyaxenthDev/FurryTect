@@ -1,7 +1,12 @@
  <?php
+    include 'authentication.php';
+    include 'includes/conn.php';
     include 'includes/header.php';
     include 'includes/sidebar.php';
+    include 'alert.php';
+
     ?>
+
 
  <main id="main" class="main">
 

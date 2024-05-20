@@ -1,8 +1,41 @@
 <?php
-include 'functions.php';
-$page = basename(__FILE__);
+// Get the base name of the current file without extension
+$page = basename(__FILE__, '.php');
+
+// Replace underscores with spaces to match the keys in the titles array
+$page = str_replace('_', ' ', $page);
+
+// Get the page title based on the current page
 $title = getPageTitle($page);
+
+/**
+ * Function to get the page title based on the page name
+ *
+ * @param string $page The name of the page
+ * @return string The corresponding title
+ */
+function getPageTitle($page)
+{
+    // Array mapping page names to titles
+    $titles = [
+        'dashboard' => 'Dashboard - FurryTect',
+        'dogs' => 'Dogs - FurryTect',
+        'cats' => 'Cats - FurryTect',
+        'owners' => 'Owners - FurryTect',
+        'vaccination' => 'Vaccination - FurryTect',
+        'dog tagging' => 'Dog Tagging - FurryTect',
+        'registration' => 'Registration - FurryTect',
+        'vaccination report' => 'Vaccination Report - FurryTect',
+        'dog tagging report' => 'Dog Tagging Report - FurryTect'
+        // Add more pages and titles as needed
+    ];
+
+    // Return the title if the page exists in the array, else return a default title
+    return $titles[$page] ?? 'FurryTect';
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +44,7 @@ $title = getPageTitle($page);
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title></title>
+    <title><?php echo $title; ?></title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
