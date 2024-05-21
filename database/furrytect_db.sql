@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 10:28 AM
+-- Generation Time: May 21, 2024 at 10:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -98,7 +98,8 @@ CREATE TABLE `dogs` (
 --
 
 INSERT INTO `dogs` (`id`, `species`, `tag_number`, `date_tagged`, `name`, `sex`, `age`, `color`, `owner_code`, `vacc_status`, `date_vacc`, `picture`, `date_created`) VALUES
-(1, 'Dog', '', '0000-00-00', 'Choco', 1, 2, 'Black, Brown, and White', '67584-1', 'unvaccinated', '0000-00-00', 'uploads/dogs/bernese-mountain-dog.jpg', '2024-05-19 01:14:17');
+(1, 'Dog', '0001', '2024-05-20', 'Choco', 1, 2, 'Black, Brown, and White', '67584-1', 'unvaccinated', '0000-00-00', 'uploads/dogs/bernese-mountain-dog.jpg', '2024-05-19 01:14:17'),
+(2, 'Dog', '0002', '2024-05-21', 'Julie', 2, 1, 'Black', '43544', 'vaccinated', '2024-05-17', 'uploads/dogs/julie.jpg', '2024-05-21 08:25:09');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,8 @@ CREATE TABLE `owners` (
 
 INSERT INTO `owners` (`id`, `owner_code`, `first_name`, `middle_name`, `last_name`, `contact_number`, `age`, `sex`, `barangay`, `owner_picture`, `date_created`) VALUES
 (1, '67584-1', 'Hya Cynth', 'Genodepa', 'Dojillo', '09651168472', 24, 2, 'Poblacion', 'uploads/owners/248979178_944280426177113_1596410793690653200_n.jpg', '2024-05-19 01:14:17'),
-(2, '24957-2', 'Alex', 'Reyes', 'Dela Cruz', '09123456789', 28, 1, 'Alegre', 'uploads/owners/2 (1).jpg', '2024-05-19 10:40:30');
+(2, '24957-2', 'Alex', 'Reyes', 'Dela Cruz', '09123456789', 28, 1, 'Alegre', 'uploads/owners/2 (1).jpg', '2024-05-19 10:40:30'),
+(3, '43544-3', 'Maria', 'Pedro', 'Dela Cruz', '09456578314', 40, 2, 'La paz', 'uploads/owners/news_preview_mob_image__preview_11368.png', '2024-05-21 08:25:09');
 
 --
 -- Indexes for dumped tables
@@ -176,13 +178,13 @@ ALTER TABLE `cats`
 -- AUTO_INCREMENT for table `dogs`
 --
 ALTER TABLE `dogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `owners`
 --
 ALTER TABLE `owners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
