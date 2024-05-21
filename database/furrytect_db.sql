@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 10:49 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: May 21, 2024 at 05:15 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
   `last_name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -62,14 +62,16 @@ CREATE TABLE `cats` (
   `date_vacc` date NOT NULL,
   `picture` varchar(255) NOT NULL,
   `date_created` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cats`
 --
 
 INSERT INTO `cats` (`id`, `species`, `name`, `sex`, `age`, `color`, `owner_code`, `vacc_status`, `date_vacc`, `picture`, `date_created`) VALUES
-(1, 'Cat', 'Mallow', 2, 1, '0', '24957-2', 'vaccinated', '2024-05-19', 'uploads/cats/kitty-cat-kitten-pet-45201.jpeg', '2024-05-19 10:40:30');
+(1, 'Cat', 'Mallow', 2, 1, '0', '24957-2', 'vaccinated', '2024-05-19', 'uploads/cats/kitty-cat-kitten-pet-45201.jpeg', '2024-05-19 10:40:30'),
+(2, 'Cat', 'Garfield', 1, 5, 'Orange', '52184-4', 'vaccinated', '2023-11-14', 'uploads/cats/FELV-cat.jpg', '2024-05-21 14:44:04'),
+(3, 'Cat', 'Olive', 1, 2, 'Grey and White', '24957-2', 'unvaccinated', '0000-00-00', 'uploads/cats/Asana3808_Dashboard_Standard.jpg', '2024-05-21 14:50:00');
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,7 @@ CREATE TABLE `dogs` (
   `date_vacc` date NOT NULL,
   `picture` varchar(255) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dogs`
@@ -99,7 +101,8 @@ CREATE TABLE `dogs` (
 
 INSERT INTO `dogs` (`id`, `species`, `tag_number`, `date_tagged`, `name`, `sex`, `age`, `color`, `owner_code`, `vacc_status`, `date_vacc`, `picture`, `date_created`) VALUES
 (1, 'Dog', '0001', '2024-05-20', 'Choco', 1, 2, 'Black, Brown, and White', '67584-1', 'unvaccinated', '0000-00-00', 'uploads/dogs/bernese-mountain-dog.jpg', '2024-05-19 01:14:17'),
-(2, 'Dog', '0002', '2024-05-21', 'Julie', 2, 1, 'Black', '43544-3', 'vaccinated', '2024-05-17', 'uploads/dogs/julie.jpg', '2024-05-21 08:25:09');
+(2, 'Dog', '0002', '2024-05-21', 'Julie', 2, 1, 'Black', '43544-3', 'vaccinated', '2024-05-17', 'uploads/dogs/julie.jpg', '2024-05-21 08:25:09'),
+(3, 'Dog', '0003', '2022-04-04', 'Chichay', 2, 4, 'Black, White and Brown', '67584-1', 'vaccinated', '2021-09-14', 'uploads/dogs/Chichay.jpg', '2024-05-21 14:42:23');
 
 -- --------------------------------------------------------
 
@@ -119,7 +122,7 @@ CREATE TABLE `owners` (
   `barangay` varchar(255) NOT NULL,
   `owner_picture` varchar(255) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `owners`
@@ -128,7 +131,8 @@ CREATE TABLE `owners` (
 INSERT INTO `owners` (`id`, `owner_code`, `first_name`, `middle_name`, `last_name`, `contact_number`, `age`, `sex`, `barangay`, `owner_picture`, `date_created`) VALUES
 (1, '67584-1', 'Hya Cynth', 'Genodepa', 'Dojillo', '09651168472', 24, 2, 'Poblacion', 'uploads/owners/248979178_944280426177113_1596410793690653200_n.jpg', '2024-05-19 01:14:17'),
 (2, '24957-2', 'Alex', 'Reyes', 'Dela Cruz', '09123456789', 28, 1, 'Alegre', 'uploads/owners/2 (1).jpg', '2024-05-19 10:40:30'),
-(3, '43544-3', 'Maria', 'Pedro', 'Dela Cruz', '09456578314', 40, 2, 'La paz', 'uploads/owners/news_preview_mob_image__preview_11368.png', '2024-05-21 08:25:09');
+(3, '43544-3', 'Maria', 'Pedro', 'Dela Cruz', '09456578314', 40, 2, 'La paz', 'uploads/owners/news_preview_mob_image__preview_11368.png', '2024-05-21 08:25:09'),
+(4, '52184-4', 'John Austine', 'Roy', 'Distel', '09178976251', 34, 1, 'Martinez', 'uploads/owners/austin-distel-h1RW-NFtUyc-unsplash.jpg', '2024-05-21 14:44:04');
 
 --
 -- Indexes for dumped tables
@@ -172,19 +176,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cats`
 --
 ALTER TABLE `cats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `dogs`
 --
 ALTER TABLE `dogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `owners`
 --
 ALTER TABLE `owners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
