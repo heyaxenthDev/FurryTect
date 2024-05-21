@@ -43,8 +43,8 @@
                                     // Assuming you have already connected to your database
                                     // Fetch data from the cats table
                                     $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, 
-                            c.`name`, c.`sex`, c.`age`, c.`color`, c.`vacc_status`, c.`date_vacc`, c.`picture`
-                            FROM `cats` c LEFT JOIN `owners` o ON c.`owner_code` = o.`owner_code`";
+                                            c.`name`, c.`sex`, c.`age`, c.`color`, c.`vacc_status`, c.`date_vacc`, c.`picture`
+                                            FROM `cats` c LEFT JOIN `owners` o ON c.`owner_code` = o.`owner_code` ORDER BY c.`date_created` ASC";
                                     $result = $conn->query($sql);
 
                                     if ($result->num_rows > 0) {

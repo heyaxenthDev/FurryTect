@@ -99,7 +99,7 @@ CREATE TABLE `dogs` (
 
 INSERT INTO `dogs` (`id`, `species`, `tag_number`, `date_tagged`, `name`, `sex`, `age`, `color`, `owner_code`, `vacc_status`, `date_vacc`, `picture`, `date_created`) VALUES
 (1, 'Dog', '0001', '2024-05-20', 'Choco', 1, 2, 'Black, Brown, and White', '67584-1', 'unvaccinated', '0000-00-00', 'uploads/dogs/bernese-mountain-dog.jpg', '2024-05-19 01:14:17'),
-(2, 'Dog', '0002', '2024-05-21', 'Julie', 2, 1, 'Black', '43544', 'vaccinated', '2024-05-17', 'uploads/dogs/julie.jpg', '2024-05-21 08:25:09');
+(2, 'Dog', '0002', '2024-05-21', 'Julie', 2, 1, 'Black', '43544-3', 'vaccinated', '2024-05-17', 'uploads/dogs/julie.jpg', '2024-05-21 08:25:09');
 
 -- --------------------------------------------------------
 

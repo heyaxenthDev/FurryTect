@@ -50,7 +50,7 @@
                                     // Fetch data from the dogs table
                                     $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, 
                                     d.`species`, d.`tag_number`, d.`date_tagged`, d.`name`, d.`sex`, d.`age`, d.`color`, d.`owner_code`, d.`vacc_status`, d.`date_vacc`, d.`picture`
-                                    FROM `dogs` d LEFT JOIN `owners` o ON d.`owner_code` = o.`owner_code`";
+                                    FROM `dogs` d LEFT JOIN `owners` o ON d.`owner_code` = o.`owner_code` ORDER BY d.`date_created` ASC";
 
                                     $result = $conn->query($sql);
 
@@ -99,7 +99,7 @@
                                      <div class="modal-body">
                                          <form>
                                              <!-- Dog Information start -->
-                                             <h4 class="mb-3">Dog's Information</h4>
+                                             <!-- <h4 class="mb-3">Dog's Information</h4> -->
                                              <div class="row g-3">
                                                  <div class="col-md-4">
                                                      <img src="assets/img/dog_default_img.jpg" id="viewDogImage"
@@ -108,15 +108,6 @@
                                                  </div>
                                                  <div class="col-md-8">
                                                      <div class="row mb-3 g-2">
-                                                         <div class="d-flex align-items-center">
-                                                             <h6 class="me-3">Is Tagged?</h6>
-                                                             <div class="form-check me-3">
-                                                                 <input class="form-check-input" type="checkbox"
-                                                                     id="viewCheckBoxTagged" disabled>
-                                                                 <label class="form-check-label"
-                                                                     for="viewCheckBoxTagged">Yes</label>
-                                                             </div>
-                                                         </div>
 
                                                          <div class="col-md-6" id="viewTagNumberDiv"
                                                              style="display: none;">
@@ -231,7 +222,7 @@
                                      <div class="modal-body">
                                          <form action="code.php" method="POST" enctype="multipart/form-data">
                                              <!-- Dog Information start -->
-                                             <h4 class="mb-3">Dog's Information</h4>
+                                             <!-- <h4 class="mb-3">Dog's Information</h4> -->
                                              <div class="row g-3">
                                                  <div class="col-md-4">
                                                      <img src="assets/img/dog_default_img.jpg" id="editDogImage"
@@ -242,15 +233,6 @@
                                                  </div>
                                                  <div class="col-md-8">
                                                      <div class="row mb-3 g-2">
-                                                         <div class="d-flex align-items-center">
-                                                             <h6 class="me-3">Is Tagged?</h6>
-                                                             <div class="form-check me-3">
-                                                                 <input class="form-check-input" type="checkbox"
-                                                                     id="editCheckBoxTagged">
-                                                                 <label class="form-check-label"
-                                                                     for="editCheckBoxTagged">Yes</label>
-                                                             </div>
-                                                         </div>
 
                                                          <div class="col-md-6" id="editTagNumberDiv"
                                                              style="display: none;">
@@ -383,7 +365,7 @@
                                  Object.keys(data).forEach(key => {
                                      const element = modal.querySelector('#' + modal.id.replace('Modal',
                                          'Floating' + key.charAt(0).toUpperCase() + key.slice(1)
-                                         ));
+                                     ));
                                      if (element) {
                                          element.value = data[key];
                                      }

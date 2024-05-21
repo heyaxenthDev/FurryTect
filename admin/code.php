@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {
 
     // Insert dog information
     $stmt = $conn->prepare("INSERT INTO dogs (tag_number, date_tagged, name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssississs", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
+    $stmt->bind_param("sssiisssss", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -139,7 +139,83 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['CatsReg'])) {
 
     // Insert cat information
     $stmt = $conn->prepare("INSERT INTO cats (name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssiissss", $catName, $catSex, $catAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
+    $stmt->bind_param("ssisssss", $catName, $catSex, $catAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
+
+    if ($stmt->execute()) {
+        $_SESSION['status'] = "Success";
+        $_SESSION['status_text'] = "Cat information added!";
+        $_SESSION['status_code'] = "success";
+        $_SESSION['status_btn'] = "Done";
+    } else {
+        $_SESSION['status'] = "Error";
+        $_SESSION['status_text'] = $stmt->error;
+        $_SESSION['status_code'] = "error";
+        $_SESSION['status_btn'] = "Back";
+    }
+
+    $stmt->close();
+    $conn->close();
+
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AddDogs'])) {
+
+    // Handle file uploads
+    $dogPicture = handleFileUpload($_FILES['dogImage'], 'uploads/dogs/');
+
+    // Dog information
+    $ownerCode = $_POST['ownerCode'] ?? null;
+    $tagNumber = $_POST['tagNumber'] ?? null;
+    $dateTagged = $_POST['dateTagged'] ?? null;
+    $dogName = $_POST['name'];
+    $dogSex = $_POST['sex'];
+    $dogAge = $_POST['age'];
+    $color = $_POST['color'];
+    $vaccinationStatus = $_POST['vaccinationStatus'];
+    $dateVacc = $_POST['dateVacc'] ?? null;
+
+    // Insert dog information
+    $stmt = $conn->prepare("INSERT INTO dogs (tag_number, date_tagged, name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssiisssss", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
+
+    if ($stmt->execute()) {
+        $_SESSION['status'] = "Success";
+        $_SESSION['status_text'] = "Dog information added!";
+        $_SESSION['status_code'] = "success";
+        $_SESSION['status_btn'] = "Done";
+    } else {
+        $_SESSION['status'] = "Error";
+        $_SESSION['status_text'] = $stmt->error;
+        $_SESSION['status_code'] = "error";
+        $_SESSION['status_btn'] = "Back";
+    }
+
+    $stmt->close();
+    $conn->close();
+
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AddCats'])) {
+
+    // Handle file uploads
+    $catPicture = handleFileUpload($_FILES['catImage'], 'uploads/cats/');
+
+    // Cat information
+    $ownerCode = $_POST['ownerCode'] ?? null;
+    $catName = $_POST['name'];
+    $catSex = $_POST['sex'];
+    $catAge = $_POST['age'];
+    $color = $_POST['color'];
+    $vaccinationStatus = $_POST['vaccinationStatus'];
+    $dateVacc = $_POST['dateVacc'] ?? null;
+
+    // Insert cat information
+    $stmt = $conn->prepare("INSERT INTO cats (name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssisssss", $catName, $catSex, $catAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";

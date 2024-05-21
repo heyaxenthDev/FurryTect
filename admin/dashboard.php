@@ -237,10 +237,10 @@ include 'alert.php';
                     </div> -->
                     <?php
                     // Query to get dog tagging data along with the barangay details
-                    $sql = "SELECT o.barangay, COUNT(d.id) as dog_count
-                            FROM dogs d
-                            LEFT JOIN owners o ON d.owner_code = o.owner_code
-                            WHERE d.tag_number IS NOT NULL GROUP BY o.barangay";
+                    $sql = "SELECT o.barangay, COUNT(d.id) AS dog_count
+                            FROM owners o
+                            LEFT JOIN dogs d ON d.owner_code = o.owner_code WHERE d.tag_number IS NOT NULL 
+                            GROUP BY o.barangay";
                     $result = $conn->query($sql);
 
                     $barangayData = [];
@@ -252,9 +252,9 @@ include 'alert.php';
                                 'name' => $row['barangay']
                             ];
                         }
-                       echo json_encode($barangayData);
+                        // echo json_encode($barangayData);
                     } else {
-                    echo "0 results";
+                        echo "0 results";
                     }
                     $conn->close();
                     ?>
