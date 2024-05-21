@@ -1,5 +1,4 @@
-     <div class="modal fade" id="OwnersModalFirst" aria-hidden="true" aria-labelledby="OwnersModalFirstLabel"
-         tabindex="-1">
+     <div class="modal fade" id="OwnersModalFirst" aria-hidden="true" aria-labelledby="OwnersModalFirstLabel" tabindex="-1">
          <div class="modal-dialog modal-dialog-centered">
              <div class="modal-content">
                  <div class="modal-header">
@@ -10,33 +9,32 @@
                  <div class="modal-body">
                      Enter the Owner's Code below to check the existing owner's record before proceeding...
                      <div class="form-floating mt-2">
-                         <input type="text" class="form-control" name="ownersCode" id="ownersCode"
-                             placeholder="Owner's Code">
+                         <input type="text" class="form-control" name="ownersCode" id="ownersCode" placeholder="Owner's Code">
                          <label for="ownersCode">Owner's Code</label>
                      </div>
                      <div id="ownerInfo" class="mt-3"></div>
                  </div>
 
                  <script>
-                 $(document).ready(function() {
-                     $('#ownersCode').on('input', function() {
-                         var ownersCode = $(this).val();
-                         if (ownersCode) {
-                             $.ajax({
-                                 url: 'check_owner.php',
-                                 type: 'POST',
-                                 data: {
-                                     ownersCode: ownersCode
-                                 },
-                                 success: function(response) {
-                                     $('#ownerInfo').html(response);
-                                 }
-                             });
-                         } else {
-                             $('#ownerInfo').html('');
-                         }
+                     $(document).ready(function() {
+                         $('#ownersCode').on('input', function() {
+                             var ownersCode = $(this).val();
+                             if (ownersCode) {
+                                 $.ajax({
+                                     url: 'check_owner.php',
+                                     type: 'POST',
+                                     data: {
+                                         ownersCode: ownersCode
+                                     },
+                                     success: function(response) {
+                                         $('#ownerInfo').html(response);
+                                     }
+                                 });
+                             } else {
+                                 $('#ownerInfo').html('');
+                             }
+                         });
                      });
-                 });
                  </script>
 
 
@@ -48,8 +46,7 @@
          </div>
      </div>
 
-     <div class="modal fade" id="AddNewCatModal" aria-hidden="true" aria-labelledby="AddNewCatModalLabel2"
-         tabindex="-1">
+     <div class="modal fade" id="AddNewCatModal" aria-hidden="true" aria-labelledby="AddNewCatModalLabel2" tabindex="-1">
          <div class="modal-dialog modal-dialog-centered modal-xl">
              <div class="modal-content">
                  <div class="modal-header">
@@ -62,10 +59,8 @@
                          <h4 class="mb-3">Dog's Information</h4>
                          <div class="row g-3">
                              <div class="col-md-4">
-                                 <img src="assets/img/dog_default_img.jpg" id="dogImage"
-                                     class="img-fluid rounded float-start img-thumbnail mb-3" alt="Dog Image">
-                                 <input type="file" class="form-control" id="dogImageInput" name="dogImage"
-                                     accept="image/*">
+                                 <img src="assets/img/dog_default_img.jpg" id="dogImage" class="img-fluid rounded float-start img-thumbnail mb-3" alt="Dog Image">
+                                 <input type="file" class="form-control" id="dogImageInput" name="dogImage" accept="image/*">
                              </div>
                              <div class="col-md-8">
                                  <div class="row mb-3 g-2">
@@ -81,35 +76,32 @@
 
                                      <div class="col-md-6" id="tagNumberDiv" style="display: none;">
                                          <div class="form-floating">
-                                             <input type="text" class="form-control" id="floatingTagNumber"
-                                                 placeholder="Tag Number" name="tagNumber">
+                                             <input type="text" class="form-control" id="floatingTagNumber" placeholder="Tag Number" name="tagNumber">
                                              <label for="floatingTagNumber">Tag Number</label>
                                          </div>
                                      </div>
                                      <div class="col-md-6" id="dateTaggedDiv" style="display: none;">
                                          <div class="form-floating">
-                                             <input type="date" class="form-control" id="floatingDateTagged"
-                                                 placeholder="DateTagged" name="dateTagged">
+                                             <input type="date" class="form-control" id="floatingDateTagged" placeholder="DateTagged" name="dateTagged">
                                              <label for="floatingDateTagged">Date Tagged</label>
                                          </div>
                                      </div>
                                  </div>
 
                                  <script>
-                                 document.getElementById('checkBoxTagged').addEventListener('change', function() {
-                                     var isChecked = this.checked;
-                                     document.getElementById('tagNumberDiv').style.display = isChecked ?
-                                         'block' : 'none';
-                                     document.getElementById('dateTaggedDiv').style.display = isChecked ?
-                                         'block' : 'none';
-                                 });
+                                     document.getElementById('checkBoxTagged').addEventListener('change', function() {
+                                         var isChecked = this.checked;
+                                         document.getElementById('tagNumberDiv').style.display = isChecked ?
+                                             'block' : 'none';
+                                         document.getElementById('dateTaggedDiv').style.display = isChecked ?
+                                             'block' : 'none';
+                                     });
                                  </script>
 
                                  <div class="row mb-3 g-2">
                                      <div class="col-md-12">
                                          <div class="form-floating">
-                                             <input type="text" class="form-control" id="floatingName"
-                                                 placeholder="Name" name="name">
+                                             <input type="text" class="form-control" id="floatingName" placeholder="Name" name="name">
                                              <label for="floatingName">Name</label>
                                          </div>
                                      </div>
@@ -129,8 +121,7 @@
 
                                      <div class="col-md-6">
                                          <div class="form-floating">
-                                             <input type="number" class="form-control" id="floatingAge"
-                                                 placeholder="Age" name="age">
+                                             <input type="number" class="form-control" id="floatingAge" placeholder="Age" name="age">
                                              <label for="floatingAge">Age</label>
                                          </div>
                                      </div>
@@ -139,8 +130,7 @@
                                  <div class="row mb-3 g-2">
                                      <div class="col-md-12">
                                          <div class="form-floating">
-                                             <input type="text" class="form-control" id="floatingColor"
-                                                 placeholder="Color" name="color">
+                                             <input type="text" class="form-control" id="floatingColor" placeholder="Color" name="color">
                                              <label for="floatingColor">Color Description</label>
                                          </div>
                                      </div>
@@ -149,8 +139,7 @@
                                  <div class="row mb-3 g-2">
                                      <div class="col-md-6">
                                          <div class="form-floating">
-                                             <select class="form-control" id="floatingVaccinationStatus"
-                                                 aria-label="Vaccination Status" name="vaccinationStatus">
+                                             <select class="form-control" id="floatingVaccinationStatus" aria-label="Vaccination Status" name="vaccinationStatus">
                                                  <option value="">Select Vaccination Status</option>
                                                  <option value="vaccinated" class="text-success">Vaccinated</option>
                                                  <option value="unvaccinated" class="text-danger">Unvaccinated
@@ -161,20 +150,19 @@
                                      </div>
                                      <div class="col-md-6" id="dateVaccDiv" style="display: none;">
                                          <div class="form-floating">
-                                             <input type="date" class="form-control" id="floatingDateVacc"
-                                                 placeholder="Date Vaccinated" name="dateVacc">
+                                             <input type="date" class="form-control" id="floatingDateVacc" placeholder="Date Vaccinated" name="dateVacc">
                                              <label for="floatingDateVacc">Date Vaccinated</label>
                                          </div>
                                      </div>
                                  </div>
 
                                  <script>
-                                 document.getElementById('floatingVaccinationStatus').addEventListener('change',
-                                     function() {
-                                         var selectedValue = this.value;
-                                         document.getElementById('dateVaccDiv').style.display =
-                                             selectedValue === 'vaccinated' ? 'block' : 'none';
-                                     });
+                                     document.getElementById('floatingVaccinationStatus').addEventListener('change',
+                                         function() {
+                                             var selectedValue = this.value;
+                                             document.getElementById('dateVaccDiv').style.display =
+                                                 selectedValue === 'vaccinated' ? 'block' : 'none';
+                                         });
                                  </script>
                              </div>
                          </div>
