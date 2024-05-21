@@ -235,14 +235,35 @@ include 'alert.php';
                             <li><a class="dropdown-item" href="#">This Year</a></li>
                         </ul>
                     </div> -->
+                    <?php
+                    // Query to get dog tagging data along with the barangay details
+                    $sql = "SELECT o.barangay, COUNT(d.id) as dog_count
+                            FROM dogs d
+                            LEFT JOIN owners o ON d.owner_code = o.owner_code
+                            WHERE d.tag_number IS NOT NULL GROUP BY o.barangay";
+                    $result = $conn->query($sql);
 
+                    $barangayData = [];
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $barangayData[] = [
+                                'value' => (int)$row['dog_count'],
+                                'name' => $row['barangay']
+                            ];
+                        }
+                       echo json_encode($barangayData);
+                    } else {
+                    echo "0 results";
+                    }
+                    $conn->close();
+                    ?>
                     <div class="card-body pb-0">
                         <h5 class="card-title">Dog Tagging Data</h5>
-
                         <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
                         <script>
                         document.addEventListener("DOMContentLoaded", () => {
+                            const barangayData = <?php echo json_encode($barangayData); ?>;
                             echarts.init(document.querySelector("#trafficChart")).setOption({
                                 tooltip: {
                                     trigger: 'item'
@@ -252,7 +273,7 @@ include 'alert.php';
                                     left: 'center'
                                 },
                                 series: [{
-                                    name: 'Access From',
+                                    name: 'Dogs Tagged',
                                     type: 'pie',
                                     radius: ['40%', '70%'],
                                     avoidLabelOverlap: false,
@@ -270,25 +291,11 @@ include 'alert.php';
                                     labelLine: {
                                         show: false
                                     },
-                                    data: [{
-                                            value: 1048,
-                                            name: 'Poblacion'
-                                        },
-                                        {
-                                            value: 735,
-                                            name: 'Malabor'
-                                        },
-                                        {
-                                            value: 580,
-                                            name: 'Martinez'
-                                        },
-
-                                    ]
+                                    data: barangayData
                                 }]
                             });
                         });
                         </script>
-
                     </div>
                 </div><!-- End Dog Tagging Data -->
 
