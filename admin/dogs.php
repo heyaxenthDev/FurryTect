@@ -273,6 +273,7 @@
                                          <form action="code.php" method="POST" enctype="multipart/form-data">
                                              <!-- Dog Information start -->
                                              <!-- <h4 class="mb-3">Dog's Information</h4> -->
+                                             <input type="hidden" class="form-control" id="hiddenID" name="dogId">
                                              <div class="row g-3">
                                                  <div class="col-md-4">
 
@@ -400,6 +401,8 @@
                                      },
                                      success: function(response) {
                                          var dog = JSON.parse(response);
+
+                                         $('#hiddenID').val(dog.id);
 
                                          $('#editFloatingTagNumber').val(dog.tag_number);
                                          $('#editFloatingDateTagged').val(dog.date_tagged);

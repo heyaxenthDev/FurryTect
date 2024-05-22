@@ -257,14 +257,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateDogs'])) {
     $dogId = $_POST['dogId'];
 
     if ($stmt->execute()) {
-        // If the update is successful, redirect to a success page or display a success message
-        header("Location: edit_success.php");
-        exit();
+        $_SESSION['status'] = "Success";
+        $_SESSION['status_text'] = "Dog information updated!";
+        $_SESSION['status_code'] = "success";
+        $_SESSION['status_btn'] = "Done";
     } else {
-        // If there is an error, redirect to an error page or display an error message
-        header("Location: edit_error.php");
-        exit();
+        $_SESSION['status'] = "Error";
+        $_SESSION['status_text'] = $stmt->error;
+        $_SESSION['status_code'] = "error";
+        $_SESSION['status_btn'] = "Back";
     }
+
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit();
 
     // Close the statement and database connection
     $stmt->close();
