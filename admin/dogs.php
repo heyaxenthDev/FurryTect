@@ -19,7 +19,7 @@
      </div><!-- End Page Title -->
 
      <!-- Add Dogs Modal -->
-     <?php include 'modal-dogs.php' ?>
+     <?php include_once 'modal-dogs.php' ?>
      <!-- End Add Dogs Modal -->
 
      <section class="section">
@@ -49,7 +49,7 @@
 
                                     // Fetch data from the dogs table
                                     $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, 
-                                    d.`species`, d.`tag_number`, d.`date_tagged`, d.`name`, d.`sex`, d.`age`, d.`color`, d.`owner_code`, d.`vacc_status`, d.`date_vacc`, d.`picture`
+                                    d.`id`, d.`species`, d.`tag_number`, d.`date_tagged`, d.`name`, d.`sex`, d.`age`, d.`color`, d.`owner_code`, d.`vacc_status`, d.`date_vacc`, d.`picture`
                                     FROM `dogs` d LEFT JOIN `owners` o ON d.`owner_code` = o.`owner_code` ORDER BY d.`date_created` ASC";
 
                                     $result = $conn->query($sql);
@@ -70,9 +70,11 @@
                                      <td><?php echo $row["contact_number"]; ?></td>
                                      <td>
                                          <div class="d-grid gap-2 d-md-block">
-                                             <button class="btn add-btn" type="button"><i
+                                             <button class="btn add-btn viewBtn" type="button"
+                                                 data-id="<?php echo $row["id"]; ?>"><i
                                                      class="bi bi-eye-fill"></i></button>
-                                             <button class="btn btn-outline-secondary" type="button"><i
+                                             <button class="btn btn-outline-secondary editBtn"
+                                                 data-id="<?php echo $row["id"]; ?> type=" button"><i
                                                      class="bi bi-pencil-square"></i></button>
                                          </div>
                                      </td>
@@ -80,7 +82,7 @@
                                  <?php
                                         }
                                     }
-                                    $conn->close();
+                                    // $conn->close();
                                     ?>
                              </tbody>
                          </table>
@@ -102,52 +104,48 @@
                                              <!-- <h4 class="mb-3">Dog's Information</h4> -->
                                              <div class="row g-3">
                                                  <div class="col-md-4">
-                                                     <img src="assets/img/dog_default_img.jpg" id="viewDogImage"
-                                                         class="img-fluid rounded float-start img-thumbnail mb-3"
-                                                         alt="Dog Image">
+                                                     <img id="viewModalFloatingImage" class="img-fluid img-thumbnail"
+                                                         src="" alt="Dog Image" />
                                                  </div>
                                                  <div class="col-md-8">
                                                      <div class="row mb-3 g-2">
 
-                                                         <div class="col-md-6" id="viewTagNumberDiv"
-                                                             style="display: none;">
+                                                         <div class="row mb-3 g-2">
+                                                             <div class="col-md-12">
+                                                                 <div class="form-floating">
+                                                                     <input type="text" class="form-control"
+                                                                         id="viewFloatingName" placeholder="Name"
+                                                                         readonly>
+                                                                     <label for="viewFloatingName">Name</label>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="col-md-6" id="viewTagNumberDiv">
                                                              <div class="form-floating">
                                                                  <input type="text" class="form-control"
                                                                      id="viewFloatingTagNumber" placeholder="Tag Number"
-                                                                     disabled>
+                                                                     readonly>
                                                                  <label for="viewFloatingTagNumber">Tag Number</label>
                                                              </div>
                                                          </div>
-                                                         <div class="col-md-6" id="viewDateTaggedDiv"
-                                                             style="display: none;">
+                                                         <div class="col-md-6" id="viewDateTaggedDiv">
                                                              <div class="form-floating">
                                                                  <input type="date" class="form-control"
                                                                      id="viewFloatingDateTagged"
-                                                                     placeholder="Date Tagged" disabled>
+                                                                     placeholder="Date Tagged" readonly>
                                                                  <label for="viewFloatingDateTagged">Date Tagged</label>
                                                              </div>
                                                          </div>
                                                      </div>
 
-                                                     <div class="row mb-3 g-2">
-                                                         <div class="col-md-12">
-                                                             <div class="form-floating">
-                                                                 <input type="text" class="form-control"
-                                                                     id="viewFloatingName" placeholder="Name" disabled>
-                                                                 <label for="viewFloatingName">Name</label>
-                                                             </div>
-                                                         </div>
-                                                     </div>
+
 
                                                      <div class="row mb-3 g-2">
                                                          <div class="col-md-6">
                                                              <div class="form-floating">
-                                                                 <select class="form-select" id="viewFloatingSex"
-                                                                     aria-label="Sex" disabled>
-                                                                     <option selected disabled>Choose...</option>
-                                                                     <option value="1">Male</option>
-                                                                     <option value="2">Female</option>
-                                                                 </select>
+                                                                 <input type="text" class="form-control"
+                                                                     id="viewFloatingSex" placeholder="Sex" readonly>
                                                                  <label for="viewFloatingSex">Sex</label>
                                                              </div>
                                                          </div>
@@ -155,7 +153,7 @@
                                                          <div class="col-md-6">
                                                              <div class="form-floating">
                                                                  <input type="number" class="form-control"
-                                                                     id="viewFloatingAge" placeholder="Age" disabled>
+                                                                     id="viewFloatingAge" placeholder="Age" readonly>
                                                                  <label for="viewFloatingAge">Age</label>
                                                              </div>
                                                          </div>
@@ -166,7 +164,7 @@
                                                              <div class="form-floating">
                                                                  <input type="text" class="form-control"
                                                                      id="viewFloatingColor" placeholder="Color"
-                                                                     disabled>
+                                                                     readonly>
                                                                  <label for="viewFloatingColor">Color
                                                                      Description</label>
                                                              </div>
@@ -176,25 +174,19 @@
                                                      <div class="row mb-3 g-2">
                                                          <div class="col-md-6">
                                                              <div class="form-floating">
-                                                                 <select class="form-control"
+                                                                 <input type="text" class="form-control"
                                                                      id="viewFloatingVaccinationStatus"
-                                                                     aria-label="Vaccination Status" disabled>
-                                                                     <option value="">Select Vaccination Status</option>
-                                                                     <option value="vaccinated" class="text-success">
-                                                                         Vaccinated</option>
-                                                                     <option value="unvaccinated" class="text-danger">
-                                                                         Unvaccinated</option>
-                                                                 </select>
+                                                                     placeholder="Vaccination Status" readonly>
                                                                  <label for="viewFloatingVaccinationStatus">Vaccination
                                                                      Status</label>
                                                              </div>
                                                          </div>
-                                                         <div class="col-md-6" id="viewDateVaccDiv"
-                                                             style="display: none;">
+
+                                                         <div class="col-md-6" id="viewDateVaccDiv">
                                                              <div class="form-floating">
                                                                  <input type="date" class="form-control"
                                                                      id="viewFloatingDateVacc"
-                                                                     placeholder="Date Vaccinated" disabled>
+                                                                     placeholder="Date Vaccinated" readonly>
                                                                  <label for="viewFloatingDateVacc">Date
                                                                      Vaccinated</label>
                                                              </div>
@@ -208,6 +200,64 @@
                                  </div>
                              </div>
                          </div>
+
+                         <script>
+                         $(document).ready(function() {
+                             $('.viewBtn').on('click', function() {
+                                 var dogId = $(this).data('id');
+
+                                 $.ajax({
+                                     url: 'fetch_dog.php',
+                                     type: 'post',
+                                     data: {
+                                         id: dogId
+                                     },
+                                     success: function(response) {
+                                         var dog = JSON.parse(response);
+
+                                         $('#viewFloatingTagNumber').val(dog.tag_number);
+                                         $('#viewFloatingDateTagged').val(dog.date_tagged);
+                                         $('#viewFloatingName').val(dog.name);
+
+                                         // Format sex value
+                                         var sexText = dog.sex == 1 ? 'Male' : 'Female';
+                                         $('#viewFloatingSex').val(sexText);
+
+                                         $('#viewFloatingAge').val(dog.age);
+                                         $('#viewFloatingColor').val(dog.color);
+                                         $('#viewFloatingVaccinationStatus').val(dog
+                                             .vacc_status);
+                                         $('#viewFloatingDateVacc').val(dog.date_vacc);
+                                         $('#viewModalFloatingImage').attr('src', dog
+                                             .picture);
+
+                                         // Show or hide tag number and date tagged fields based on the data
+                                         if (dog.tag_number) {
+                                             $('#viewTagNumberDiv').show();
+                                         } else {
+                                             $('#viewTagNumberDiv').hide();
+                                         }
+
+                                         if (dog.date_tagged) {
+                                             $('#viewDateTaggedDiv').show();
+                                         } else {
+                                             $('#viewDateTaggedDiv').hide();
+                                         }
+
+                                         if (dog.vacc_status === 'vaccinated') {
+                                             $('#viewDateVaccDiv').show();
+                                         } else {
+                                             $('#viewDateVaccDiv').hide();
+                                         }
+
+                                         // Show the modal
+                                         $('#viewModal').modal('show');
+                                     }
+                                 });
+                             });
+                         });
+                         </script>
+
 
                          <!-- Edit Modal -->
                          <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
@@ -225,17 +275,16 @@
                                              <!-- <h4 class="mb-3">Dog's Information</h4> -->
                                              <div class="row g-3">
                                                  <div class="col-md-4">
-                                                     <img src="assets/img/dog_default_img.jpg" id="editDogImage"
-                                                         class="img-fluid rounded float-start img-thumbnail mb-3"
-                                                         alt="Dog Image">
+
+                                                     <img id="editModalFloatingImage" class="img-fluid img-thumbnail"
+                                                         src="" alt="Dog Image" />
                                                      <input type="file" class="form-control" id="editDogImageInput"
                                                          name="dogImage" accept="image/*">
                                                  </div>
                                                  <div class="col-md-8">
                                                      <div class="row mb-3 g-2">
 
-                                                         <div class="col-md-6" id="editTagNumberDiv"
-                                                             style="display: none;">
+                                                         <div class="col-md-6" id="editTagNumberDiv">
                                                              <div class="form-floating">
                                                                  <input type="text" class="form-control"
                                                                      id="editFloatingTagNumber" placeholder="Tag Number"
@@ -243,8 +292,7 @@
                                                                  <label for="editFloatingTagNumber">Tag Number</label>
                                                              </div>
                                                          </div>
-                                                         <div class="col-md-6" id="editDateTaggedDiv"
-                                                             style="display: none;">
+                                                         <div class="col-md-6" id="editDateTaggedDiv">
                                                              <div class="form-floating">
                                                                  <input type="date" class="form-control"
                                                                      id="editFloatingDateTagged"
@@ -270,7 +318,7 @@
                                                              <div class="form-floating">
                                                                  <select class="form-select" id="editFloatingSex"
                                                                      name="sex" aria-label="Sex">
-                                                                     <option selected disabled>Choose...</option>
+                                                                     <option selected readonly>Choose...</option>
                                                                      <option value="1">Male</option>
                                                                      <option value="2">Female</option>
                                                                  </select>
@@ -316,8 +364,7 @@
                                                                      Status</label>
                                                              </div>
                                                          </div>
-                                                         <div class="col-md-6" id="editDateVaccDiv"
-                                                             style="display: none;">
+                                                         <div class="col-md-6" id="editDateVaccDiv">
                                                              <div class="form-floating">
                                                                  <input type="date" class="form-control"
                                                                      id="editFloatingDateVacc"
@@ -331,7 +378,8 @@
                                              </div>
                                              <!-- Dog Information End -->
                                              <div class="modal-footer">
-                                                 <button type="submit" class="btn btn-primary">Save changes</button>
+                                                 <button type="submit" class="btn btn-primary" name="UpdateDogs">Save
+                                                     changes</button>
                                              </div>
                                          </form>
                                      </div>
@@ -339,95 +387,60 @@
                              </div>
                          </div>
 
-
                          <script>
-                         document.addEventListener("DOMContentLoaded", function() {
-                             const viewModal = document.getElementById('viewModal');
-                             const editModal = document.getElementById('editModal');
+                         $(document).ready(function() {
+                             $('.editBtn').on('click', function() {
+                                 var dogId = $(this).data('id');
 
-                             // Function to show/hide tag number and date tagged fields
-                             function toggleTagFields(modal, isTagged) {
-                                 const tagNumberDiv = modal.querySelector('#' + modal.id.replace('Modal',
-                                     'TagNumberDiv'));
-                                 const dateTaggedDiv = modal.querySelector('#' + modal.id.replace('Modal',
-                                     'DateTaggedDiv'));
-                                 if (isTagged) {
-                                     tagNumberDiv.style.display = 'block';
-                                     dateTaggedDiv.style.display = 'block';
-                                 } else {
-                                     tagNumberDiv.style.display = 'none';
-                                     dateTaggedDiv.style.display = 'none';
-                                 }
-                             }
+                                 $.ajax({
+                                     url: 'fetch_dog.php',
+                                     type: 'post',
+                                     data: {
+                                         id: dogId
+                                     },
+                                     success: function(response) {
+                                         var dog = JSON.parse(response);
 
-                             // Function to populate modal with data
-                             function populateModal(modal, data) {
-                                 Object.keys(data).forEach(key => {
-                                     const element = modal.querySelector('#' + modal.id.replace('Modal',
-                                         'Floating' + key.charAt(0).toUpperCase() + key.slice(1)
-                                     ));
-                                     if (element) {
-                                         element.value = data[key];
+                                         $('#editFloatingTagNumber').val(dog.tag_number);
+                                         $('#editFloatingDateTagged').val(dog.date_tagged);
+                                         $('#editFloatingName').val(dog.name);
+                                         $('#editFloatingSex').val(dog.sex);
+                                         $('#editFloatingAge').val(dog.age);
+                                         $('#editFloatingColor').val(dog.color);
+                                         $('#editFloatingVaccinationStatus').val(dog
+                                             .vacc_status);
+                                         $('#editFloatingDateVacc').val(dog.date_vacc);
+                                         $('#editModalFloatingImage').attr('src', dog
+                                             .picture);
+
+                                         // Show or hide tag number and date tagged fields based on the data
+                                         if (dog.tag_number) {
+                                             $('#editTagNumberDiv').show();
+                                         } else {
+                                             $('#editTagNumberDiv').hide();
+                                         }
+
+                                         if (dog.date_tagged) {
+                                             $('#editDateTaggedDiv').show();
+                                         } else {
+                                             $('#editDateTaggedDiv').hide();
+                                         }
+
+                                         if (dog.vacc_status === 'vaccinated') {
+                                             $('#editDateVaccDiv').show();
+                                         } else {
+                                             $('#editDateVaccDiv').hide();
+                                         }
+
+                                         // Show the modal
+                                         $('#editModal').modal('show');
                                      }
-                                 });
-
-                                 const isTagged = data.tagNumber !== "Not yet Tagged";
-                                 toggleTagFields(modal, isTagged);
-                             }
-
-                             // Event listeners for buttons
-                             document.querySelectorAll('.btn.add-btn').forEach(button => {
-                                 button.addEventListener('click', function() {
-                                     const row = this.closest('tr');
-                                     const data = {
-                                         tagNumber: row.querySelector('td:nth-child(1)')
-                                             .innerText,
-                                         name: row.querySelector('td:nth-child(2)')
-                                             .innerText,
-                                         sex: row.querySelector('td:nth-child(3)')
-                                             .innerText === "Male" ? 1 : 2,
-                                         barangay: row.querySelector('td:nth-child(4)')
-                                             .innerText,
-                                         owner: row.querySelector('td:nth-child(5)')
-                                             .innerText,
-                                         contactNumber: row.querySelector('td:nth-child(6)')
-                                             .innerText
-                                     };
-                                     populateModal(viewModal, data);
-                                     new bootstrap.Modal(viewModal).show();
-                                 });
-                             });
-
-                             document.querySelectorAll('.btn.btn-outline-secondary').forEach(button => {
-                                 button.addEventListener('click', function() {
-                                     const row = this.closest('tr');
-                                     const data = {
-                                         tagNumber: row.querySelector('td:nth-child(1)')
-                                             .innerText,
-                                         name: row.querySelector('td:nth-child(2)')
-                                             .innerText,
-                                         sex: row.querySelector('td:nth-child(3)')
-                                             .innerText === "Male" ? 1 : 2,
-                                         barangay: row.querySelector('td:nth-child(4)')
-                                             .innerText,
-                                         owner: row.querySelector('td:nth-child(5)')
-                                             .innerText,
-                                         contactNumber: row.querySelector('td:nth-child(6)')
-                                             .innerText
-                                     };
-                                     populateModal(editModal, data);
-                                     new bootstrap.Modal(editModal).show();
-                                 });
-                             });
-
-                             // Event listeners for checkboxes
-                             document.querySelectorAll('#editCheckBoxTagged').forEach(checkbox => {
-                                 checkbox.addEventListener('change', function() {
-                                     toggleTagFields(editModal, this.checked);
                                  });
                              });
                          });
                          </script>
+
+
 
                      </div>
                  </div>

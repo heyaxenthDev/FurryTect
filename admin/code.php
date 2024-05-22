@@ -235,3 +235,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AddCats'])) {
     header("Location: {$_SERVER['HTTP_REFERER']}");
     exit();
 }
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateDogs'])) {
+    // Retrieve form data
+    $tagNumber = $_POST['tagNumber'];
+    $dateTagged = $_POST['dateTagged'];
+    $name = $_POST['name'];
+    $sex = $_POST['sex'];
+    $age = $_POST['age'];
+    $color = $_POST['color'];
+    $vaccinationStatus = $_POST['vaccinationStatus'];
+    $dateVacc = $_POST['dateVacc'];
+
+    // Update the dog information in the database
+    $query = "UPDATE dogs SET tag_number=?, date_tagged=?, name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=? WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sssiisssi", $tagNumber, $dateTagged, $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $dogId);
+
+    // Assuming you have a variable $dogId that holds the ID of the dog being edited
+    $dogId = $_POST['dogId'];
+
+    if ($stmt->execute()) {
+        // If the update is successful, redirect to a success page or display a success message
+        header("Location: edit_success.php");
+        exit();
+    } else {
+        // If there is an error, redirect to an error page or display an error message
+        header("Location: edit_error.php");
+        exit();
+    }
+
+    // Close the statement and database connection
+    $stmt->close();
+    $conn->close();
+}
+?>
