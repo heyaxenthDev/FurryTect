@@ -275,4 +275,144 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateDogs'])) {
     $stmt->close();
     $conn->close();
 }
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateCats'])) {
+    // Retrieve form data
+
+    $name = $_POST['name'];
+    $sex = $_POST['sex'];
+    $age = $_POST['age'];
+    $color = $_POST['color'];
+    $vaccinationStatus = $_POST['vaccinationStatus'];
+    $dateVacc = $_POST['dateVacc'];
+
+    // Update the dog information in the database
+    $query = "UPDATE cats SET name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=? WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("siisssi", $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $dogId);
+
+    // Assuming you have a variable $dogId that holds the ID of the dog being edited
+    $dogId = $_POST['catId'];
+
+    if ($stmt->execute()) {
+        $_SESSION['status'] = "Success";
+        $_SESSION['status_text'] = "Cat information updated!";
+        $_SESSION['status_code'] = "success";
+        $_SESSION['status_btn'] = "Done";
+    } else {
+        $_SESSION['status'] = "Error";
+        $_SESSION['status_text'] = $stmt->error;
+        $_SESSION['status_code'] = "error";
+        $_SESSION['status_btn'] = "Back";
+    }
+
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit();
+
+    // Close the statement and database connection
+    $stmt->close();
+    $conn->close();
+}
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
+    // Retrieve form data
+
+    $ownerId = $_POST['ownerId'];
+    $firstName = $_POST['firstName'];
+    $middleName = $_POST['middleName'];
+    $lastName = $_POST['lastName'];
+    $sexOwner = $_POST['sexOwner'];
+    $ageOwner = $_POST['ageOwner'];
+    $contactNumber = $_POST['contactNumber'];
+    $barangay = $_POST['barangay'];
+
+    // Check if a file was uploaded
+    if ($_FILES['ownerImage']['size'] > 0) {
+        // Remove previous image
+        $query = "SELECT owner_picture FROM owners WHERE id=?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $ownerId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($oldImage);
+        $stmt->fetch();
+        $stmt->close();
+
+        if (!empty($oldImage)) {
+            $targetDir = "uploads/";
+            $filePath = $targetDir . $oldImage;
+
+            if (file_exists($filePath)) {
+                unlink($filePath); // Delete the old image file
+            }
+        }
+
+        // Handle the new file upload
+        $targetDir = "uploads/";
+        $fileName = basename($_FILES['ownerImage']['name']);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+        // Allow certain file formats
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        if (in_array($fileType, $allowTypes)) {
+            // Upload file to server
+            if (move_uploaded_file($_FILES['ownerImage']['tmp_name'], $targetFilePath)) {
+                // Update the database with the new file path
+                $query = "UPDATE owners SET first_name=?, middle_name=?, last_name=?, sex=?, age=?, contact_number=?, barangay=?, owner_picture=? WHERE id=?";
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param("ssssissis", $firstName, $middleName, $lastName, $sexOwner, $ageOwner, $contactNumber, $barangay, $fileName, $ownerId);
+
+                if ($stmt->execute()) {
+                    $_SESSION['status'] = "Success";
+                    $_SESSION['status_text'] = "Owner information updated!";
+                    $_SESSION['status_code'] = "success";
+                    $_SESSION['status_btn'] = "Done";
+                } else {
+                    $_SESSION['status'] = "Error";
+                    $_SESSION['status_text'] = $stmt->error;
+                    $_SESSION['status_code'] = "error";
+                    $_SESSION['status_btn'] = "Back";
+                }
+
+                $stmt->close();
+            } else {
+                $_SESSION['status'] = "Error";
+                $_SESSION['status_text'] = "Sorry, there was an error uploading your file.";
+                $_SESSION['status_code'] = "error";
+                $_SESSION['status_btn'] = "Back";
+            }
+        } else {
+            $_SESSION['status'] = "Error";
+            $_SESSION['status_text'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $_SESSION['status_code'] = "error";
+            $_SESSION['status_btn'] = "Back";
+        }
+    } else {
+        // No file uploaded, update database without the image
+        $query = "UPDATE owners SET first_name=?, middle_name=?, last_name=?, sex=?, age=?, contact_number=?, barangay=? WHERE id=?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ssssissi", $firstName, $middleName, $lastName, $sexOwner, $ageOwner, $contactNumber, $barangay, $ownerId);
+
+        if ($stmt->execute()) {
+            $_SESSION['status'] = "Success";
+            $_SESSION['status_text'] = "Owner information updated!";
+            $_SESSION['status_code'] = "success";
+            $_SESSION['status_btn'] = "Done";
+        } else {
+            $_SESSION['status'] = "Error";
+            $_SESSION['status_text'] = $stmt->error;
+            $_SESSION['status_code'] = "error";
+            $_SESSION['status_btn'] = "Back";
+        }
+
+        $stmt->close();
+    }
+
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit();
+
+}
 ?>

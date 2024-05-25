@@ -1,6 +1,6 @@
      <div class="modal fade" id="OwnersModalFirst" aria-hidden="true" aria-labelledby="OwnersModalFirstLabel"
          tabindex="-1">
-         <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
              <div class="modal-content">
                  <div class="modal-header">
                      <h1 class="modal-title fs-5" id="OwnersModalFirstLabel">Find and Select Existing Owner</h1>
@@ -65,7 +65,7 @@
                  <div class="modal-body">
                      <form action="code.php" method="POST" enctype="multipart/form-data">
                          <!-- Cat Information start -->
-                         <input type="text" id="ownerCodeInput" name="ownerCode">
+                         <input type="hidden" id="ownerCodeInput" name="ownerCode">
 
                          <div class="row g-3">
                              <div class="col-md-4">
@@ -75,7 +75,30 @@
                                      accept="image/*">
                              </div>
 
-                             <script src="assets/js/cats-image-display.js"></script>
+                             <script>
+                             // Function to display the selected image or the default image
+                             function displayImage(input, imgElement, defaultSrc) {
+                                 if (input.files && input.files[0]) {
+                                     var reader = new FileReader();
+                                     reader.onload = function(e) {
+                                         imgElement.src = e.target.result;
+                                     };
+                                     reader.readAsDataURL(input.files[0]);
+                                 } else {
+                                     imgElement.src = defaultSrc;
+                                 }
+                             }
+
+                             document
+                                 .getElementById("catImageInput")
+                                 .addEventListener("change", function() {
+                                     displayImage(
+                                         this,
+                                         document.getElementById("catImage"),
+                                         "assets/img/cat_default_img.jpg"
+                                     );
+                                 });
+                             </script>
 
                              <div class="col-md-8">
                                  <div class="row mb-3 g-2">

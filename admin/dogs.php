@@ -74,7 +74,7 @@
                                                  data-id="<?php echo $row["id"]; ?>"><i
                                                      class="bi bi-eye-fill"></i></button>
                                              <button class="btn btn-outline-secondary editBtn"
-                                                 data-id="<?php echo $row["id"]; ?> type=" button"><i
+                                                 data-id="<?php echo $row["id"]; ?>" type="button"><i
                                                      class="bi bi-pencil-square"></i></button>
                                          </div>
                                      </td>

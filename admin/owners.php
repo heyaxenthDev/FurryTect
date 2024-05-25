@@ -43,7 +43,7 @@
                                     // Assuming you have already connected to your database
 
                                     // Fetch data from the dogs table
-                                    $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, o.`sex`,
+                                    $sql = "SELECT o.`id`, o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, o.`sex`,
                                             COUNT(DISTINCT d.`tag_number`) AS num_dogs,
                                             COUNT(DISTINCT c.`name`) AS num_cats
                                         FROM 
@@ -76,9 +76,11 @@
                                      <td><?php echo $row["contact_number"]; ?></td>
                                      <td>
                                          <div class="d-grid gap-2 d-md-block">
-                                             <button class="btn add-btn view-btn" type="button"><i
+                                             <button class="btn add-btn viewBtn" type="button"
+                                                 data-id="<?php echo $row["id"]; ?>"><i
                                                      class="bi bi-eye-fill"></i></button>
-                                             <button class="btn btn-outline-secondary edit-btn" type="button"><i
+                                             <button class="btn btn-outline-secondary editBtn"
+                                                 data-id="<?php echo $row["id"]; ?>" type="button"><i
                                                      class="bi bi-pencil-square"></i></button>
                                          </div>
                                      </td>
@@ -86,113 +88,146 @@
                                  <?php
                                         }
                                     }
-                                    $conn->close();
+                                    // $conn->close();
                                     ?>
                              </tbody>
                          </table>
                          <!-- End Table with stripped rows -->
 
                          <!-- View Modal -->
+                         <!-- View Modal -->
                          <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel"
                              aria-hidden="true">
                              <div class="modal-dialog modal-lg">
                                  <div class="modal-content">
                                      <div class="modal-header">
-                                         <h5 class="modal-title" id="viewModalLabel">View Cat Information</h5>
+                                         <h5 class="modal-title" id="viewModalLabel">View Owner Information</h5>
                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
                                              aria-label="Close"></button>
                                      </div>
                                      <div class="modal-body">
-                                         <!-- Cat Information start -->
-                                         <div class="row g-3">
-                                             <div class="col-md-4">
-                                                 <img src="assets/img/cat_default_img.jpg" id="viewCatImage"
-                                                     class="img-fluid rounded float-start img-thumbnail mb-3"
-                                                     alt="Cat Image">
+                                         <form>
+                                             <!-- Owner Information Start -->
+                                             <div class="row g-3">
+                                                 <div class="col-md-4">
+                                                     <img id="viewModalFloatingImage" class="img-fluid img-thumbnail"
+                                                         src="" alt="Owner Image" />
+                                                 </div>
+                                                 <div class="col-md-8">
+                                                     <div class="row mb-3 g-2">
+                                                         <div class="col-md-12">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="viewFloatingFirstName" placeholder="First Name"
+                                                                     name="firstName" readonly>
+                                                                 <label for="viewFloatingFirstName">First Name</label>
+                                                             </div>
+                                                         </div>
+                                                         <div class="col-md-12">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="viewFloatingMiddleName"
+                                                                     placeholder="Middle Name" name="middleName"
+                                                                     readonly>
+                                                                 <label for="viewFloatingMiddleName">Middle Name</label>
+                                                             </div>
+                                                         </div>
+                                                         <div class="col-md-12">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="viewFloatingLastName" placeholder="Last Name"
+                                                                     name="lastName" readonly>
+                                                                 <label for="viewFloatingLastName">Last Name</label>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+
+                                                     <div class="row mb-3 g-2">
+                                                         <div class="col-md-6">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="viewFloatingOwnerSex" placeholder="Sex"
+                                                                     name="sexOwner" readonly>
+                                                                 <label for="viewFloatingOwnerSex">Sex</label>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="col-md-6">
+                                                             <div class="form-floating">
+                                                                 <input type="number" class="form-control"
+                                                                     id="viewFloatingOwnerAge" placeholder="Age"
+                                                                     name="ageOwner" readonly>
+                                                                 <label for="viewFloatingOwnerAge">Age</label>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+
+                                                     <div class="row mb-3 g-2">
+                                                         <div class="col-md-6">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="viewFloatingContactNumber"
+                                                                     placeholder="Contact Number" name="contactNumber"
+                                                                     readonly>
+                                                                 <label for="viewFloatingContactNumber">Contact
+                                                                     Number</label>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="col-md-6">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="viewFloatingBarangay" placeholder="Barangay"
+                                                                     name="barangay" readonly>
+                                                                 <label for="viewFloatingBarangay">Barangay</label>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
                                              </div>
-                                             <div class="col-md-8">
-                                                 <div class="row mb-3 g-2">
-                                                     <div class="col-md-12">
-                                                         <div class="form-floating">
-                                                             <input type="text" class="form-control"
-                                                                 id="viewFloatingCatName" placeholder="Name" name="name"
-                                                                 disabled>
-                                                             <label for="viewFloatingCatName">Name</label>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <div class="row mb-3 g-2">
-                                                     <div class="col-md-6">
-                                                         <div class="form-floating">
-                                                             <select class="form-select" id="viewFloatingCatSex"
-                                                                 aria-label="Sex" name="sex" disabled>
-                                                                 <option selected disabled>Choose...</option>
-                                                                 <option value="1">Male</option>
-                                                                 <option value="2">Female</option>
-                                                             </select>
-                                                             <label for="viewFloatingCatSex">Sex</label>
-                                                         </div>
-                                                     </div>
-                                                     <div class="col-md-6">
-                                                         <div class="form-floating">
-                                                             <input type="number" class="form-control"
-                                                                 id="viewFloatingCatAge" placeholder="Age" name="age"
-                                                                 disabled>
-                                                             <label for="viewFloatingCatAge">Age</label>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <div class="row mb-3 g-2">
-                                                     <div class="col-md-12">
-                                                         <div class="form-floating">
-                                                             <input type="text" class="form-control"
-                                                                 id="viewFloatingCatColor" placeholder="Color"
-                                                                 name="color" disabled>
-                                                             <label for="viewFloatingCatColor">Color Description</label>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <div class="row mb-3 g-2">
-                                                     <div class="col-md-6">
-                                                         <div class="form-floating">
-                                                             <select class="form-control"
-                                                                 id="viewFloatingCatVaccinationStatus"
-                                                                 aria-label="Vaccination Status"
-                                                                 name="vaccinationStatus" disabled>
-                                                                 <option value="">Select Vaccination Status</option>
-                                                                 <option value="vaccinated" class="text-success">
-                                                                     Vaccinated
-                                                                 </option>
-                                                                 <option value="unvaccinated" class="text-danger">
-                                                                     Unvaccinated
-                                                                 </option>
-                                                             </select>
-                                                             <label for="viewFloatingCatVaccinationStatus">Vaccination
-                                                                 Status</label>
-                                                         </div>
-                                                     </div>
-                                                     <div class="col-md-6" id="viewDateVaccDivCat"
-                                                         style="display: none;">
-                                                         <div class="form-floating">
-                                                             <input type="date" class="form-control"
-                                                                 id="viewFloatingCatDateVacc"
-                                                                 placeholder="Date Vaccinated" name="dateVacc" disabled>
-                                                             <label for="viewFloatingCatDateVacc">Date
-                                                                 Vaccinated</label>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <!-- Cat Information End -->
-                                     </div>
-                                     <div class="modal-footer">
-                                         <button type="button" class="btn btn-secondary"
-                                             data-bs-dismiss="modal">Close</button>
+                                             <!-- Owner Information End -->
+                                         </form>
                                      </div>
                                  </div>
                              </div>
                          </div>
+
+
+                         <script>
+                         $(document).ready(function() {
+                             $('.viewBtn').on('click', function() {
+                                 var ownerId = $(this).data('id');
+
+                                 $.ajax({
+                                     url: 'fetch_owner.php',
+                                     type: 'post',
+                                     data: {
+                                         id: ownerId
+                                     },
+                                     success: function(response) {
+                                         var owner = JSON.parse(response);
+
+                                         $('#viewFloatingFirstName').val(owner.first_name);
+                                         $('#viewFloatingMiddleName').val(owner
+                                             .middle_name);
+                                         $('#viewFloatingLastName').val(owner.last_name);
+
+                                         var sexText = owner.sex == 1 ? 'Male' : 'Female';
+                                         $('#viewFloatingOwnerSex').val(sexText);
+
+                                         $('#viewFloatingOwnerAge').val(owner.age);
+                                         $('#viewFloatingContactNumber').val(owner
+                                             .contact_number);
+                                         $('#viewFloatingBarangay').val(owner.barangay);
+                                         $('#viewModalFloatingImage').attr('src', owner
+                                             .owner_picture);
+
+                                         $('#viewModal').modal('show');
+                                     }
+                                 });
+                             });
+                         });
+                         </script>
 
                          <!-- Edit Modal -->
                          <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
@@ -200,101 +235,95 @@
                              <div class="modal-dialog modal-lg">
                                  <div class="modal-content">
                                      <div class="modal-header">
-                                         <h5 class="modal-title" id="editModalLabel">Edit Cat Information</h5>
+                                         <h5 class="modal-title" id="editModalLabel">Edit Owner Information</h5>
                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
                                              aria-label="Close"></button>
                                      </div>
                                      <div class="modal-body">
-                                         <form id="editCatForm" method="post" enctype="multipart/form-data">
-                                             <!-- Cat Information start -->
+                                         <form action="code.php" method="POST" enctype="multipart/form-data">
+                                             <!-- Owner Information Start -->
+                                             <input type="hidden" class="form-control" id="hiddenID" name="ownerId">
                                              <div class="row g-3">
                                                  <div class="col-md-4">
-                                                     <img src="assets/img/cat_default_img.jpg" id="editCatImage"
-                                                         class="img-fluid rounded float-start img-thumbnail mb-3"
-                                                         alt="Cat Image">
-                                                     <input type="file" class="form-control" id="editCatImageInput"
-                                                         name="catImage" accept="image/*">
+                                                     <img id="editModalFloatingImage" class="img-fluid img-thumbnail"
+                                                         src="" alt="Owner Image" />
+                                                     <input type="file" class="form-control" id="editModalFloatingImage"
+                                                         name="ownerImage" accept="image/*">
                                                  </div>
                                                  <div class="col-md-8">
                                                      <div class="row mb-3 g-2">
                                                          <div class="col-md-12">
                                                              <div class="form-floating">
                                                                  <input type="text" class="form-control"
-                                                                     id="editFloatingCatName" placeholder="Name"
-                                                                     name="name">
-                                                                 <label for="editFloatingCatName">Name</label>
+                                                                     id="editfloatingFirstName" placeholder="First Name"
+                                                                     name="firstName">
+                                                                 <label for="floatingFirstName">First Name</label>
                                                              </div>
                                                          </div>
-                                                     </div>
-                                                     <div class="row mb-3 g-2">
-                                                         <div class="col-md-6">
-                                                             <div class="form-floating">
-                                                                 <select class="form-select" id="editFloatingCatSex"
-                                                                     aria-label="Sex" name="sex">
-                                                                     <option selected disabled>Choose...</option>
-                                                                     <option value="1">Male</option>
-                                                                     <option value="2">Female</option>
-                                                                 </select>
-                                                                 <label for="editFloatingCatSex">Sex</label>
-                                                             </div>
-                                                         </div>
-                                                         <div class="col-md-6">
-                                                             <div class="form-floating">
-                                                                 <input type="number" class="form-control"
-                                                                     id="editFloatingCatAge" placeholder="Age"
-                                                                     name="age">
-                                                                 <label for="editFloatingCatAge">Age</label>
-                                                             </div>
-                                                         </div>
-                                                     </div>
-                                                     <div class="row mb-3 g-2">
                                                          <div class="col-md-12">
                                                              <div class="form-floating">
                                                                  <input type="text" class="form-control"
-                                                                     id="editFloatingCatColor" placeholder="Color"
-                                                                     name="color">
-                                                                 <label for="editFloatingCatColor">Color
-                                                                     Description</label>
+                                                                     id="editfloatingMiddleName"
+                                                                     placeholder="Middle Name" name="middleName">
+                                                                 <label for="floatingMiddleName">Middle Name</label>
+                                                             </div>
+                                                         </div>
+                                                         <div class="col-md-12">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="editfloatingLastName" placeholder="Last Name"
+                                                                     name="lastName">
+                                                                 <label for="floatingLastName">Last Name</label>
                                                              </div>
                                                          </div>
                                                      </div>
+
                                                      <div class="row mb-3 g-2">
                                                          <div class="col-md-6">
                                                              <div class="form-floating">
-                                                                 <select class="form-control"
-                                                                     id="editFloatingCatVaccinationStatus"
-                                                                     aria-label="Vaccination Status"
-                                                                     name="vaccinationStatus">
-                                                                     <option value="">Select Vaccination Status</option>
-                                                                     <option value="vaccinated" class="text-success">
-                                                                         Vaccinated
-                                                                     </option>
-                                                                     <option value="unvaccinated" class="text-danger">
-                                                                         Unvaccinated</option>
-                                                                 </select>
-                                                                 <label
-                                                                     for="editFloatingCatVaccinationStatus">Vaccination
-                                                                     Status</label>
+                                                                 <input type="text" class="form-control"
+                                                                     id="editfloatingOwnerSex" placeholder="Sex"
+                                                                     name="sexOwner">
+                                                                 <label for="floatingOwnerSex">Sex</label>
                                                              </div>
                                                          </div>
-                                                         <div class="col-md-6" id="editDateVaccDivCat"
-                                                             style="display: none;">
+
+                                                         <div class="col-md-6">
                                                              <div class="form-floating">
-                                                                 <input type="date" class="form-control"
-                                                                     id="editFloatingCatDateVacc"
-                                                                     placeholder="Date Vaccinated" name="dateVacc">
-                                                                 <label for="editFloatingCatDateVacc">Date
-                                                                     Vaccinated</label>
+                                                                 <input type="number" class="form-control"
+                                                                     id="editfloatingOwnerAge" placeholder="Age"
+                                                                     name="ageOwner">
+                                                                 <label for="floatingOwnerAge">Age</label>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+
+                                                     <div class="row mb-3 g-2">
+                                                         <div class="col-md-6">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="editfloatingContactNumber"
+                                                                     placeholder="Contact Number" name="contactNumber">
+                                                                 <label for="floatingContactNumber">Contact
+                                                                     Number</label>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="col-md-6">
+                                                             <div class="form-floating">
+                                                                 <input type="text" class="form-control"
+                                                                     id="editfloatingBarangay" placeholder="Barangay"
+                                                                     name="barangay">
+                                                                 <label for="floatingBarangay">Barangay</label>
                                                              </div>
                                                          </div>
                                                      </div>
                                                  </div>
                                              </div>
-                                             <!-- Cat Information End -->
+                                             <!-- Owner Information End -->
                                              <div class="modal-footer">
-                                                 <button type="button" class="btn btn-secondary"
-                                                     data-bs-dismiss="modal">Close</button>
-                                                 <button type="submit" class="btn btn-primary">Save changes</button>
+                                                 <button type="submit" class="btn btn-primary" name="UpdateOwners">Save
+                                                     changes</button>
                                              </div>
                                          </form>
                                      </div>
@@ -303,96 +332,38 @@
                          </div>
 
                          <script>
-                         document.addEventListener('DOMContentLoaded', function() {
-                             // View button click event
-                             document.querySelectorAll('.view-btn').forEach(function(button) {
-                                 button.addEventListener('click', function() {
-                                     // Assuming you have the data available in the row
-                                     const row = this.closest('tr');
-                                     const catName = row.children[0].textContent;
-                                     const catSex = row.children[1].textContent === 'Male' ? 1 :
-                                         2;
-                                     const catAge = row.children[2].textContent;
-                                     const catColor = row.children[3].textContent;
-                                     const vaccStatus = row.children[4].textContent;
-                                     const dateVacc = row.children[5].textContent;
+                         $(document).ready(function() {
+                             $('.editBtn').on('click', function() {
+                                 var ownerId = $(this).data('id');
 
-                                     // Populate the view modal with data
-                                     document.getElementById('viewFloatingCatName').value =
-                                         catName;
-                                     document.getElementById('viewFloatingCatSex').value =
-                                         catSex;
-                                     document.getElementById('viewFloatingCatAge').value =
-                                         catAge;
-                                     document.getElementById('viewFloatingCatColor').value =
-                                         catColor;
-                                     document.getElementById('viewFloatingCatVaccinationStatus')
-                                         .value = vaccStatus;
-                                     document.getElementById('viewFloatingCatDateVacc').value =
-                                         dateVacc;
+                                 $.ajax({
+                                     url: 'fetch_owner.php',
+                                     type: 'post',
+                                     data: {
+                                         id: ownerId
+                                     },
+                                     success: function(response) {
+                                         var owner = JSON.parse(response);
 
-                                     // Show the view modal
-                                     new bootstrap.Modal(document.getElementById('viewModal'))
-                                         .show();
-                                 });
-                             });
+                                         $('#hiddenID').val(owner.id);
+                                         $('#editModalFloatingImage').attr('src', owner
+                                             .owner_picture);
+                                         $('#editfloatingFirstName').val(owner.first_name);
+                                         $('#editfloatingMiddleName').val(owner
+                                             .middle_name);
+                                         $('#editfloatingLastName').val(owner.last_name);
 
-                             // Edit button click event
-                             document.querySelectorAll('.edit-btn').forEach(function(button) {
-                                 button.addEventListener('click', function() {
-                                     // Assuming you have the data available in the row
-                                     const row = this.closest('tr');
-                                     const catName = row.children[0].textContent;
-                                     const catSex = row.children[1].textContent === 'Male' ? 1 :
-                                         2;
-                                     const catAge = row.children[2].textContent;
-                                     const catColor = row.children[3].textContent;
-                                     const vaccStatus = row.children[4].textContent;
-                                     const dateVacc = row.children[5].textContent;
+                                         var sexText = owner.sex == 1 ? 'Male' : 'Female';
+                                         $('#editfloatingOwnerSex').val(sexText);
+                                         $('#editfloatingOwnerAge').val(owner.age);
+                                         $('#editfloatingContactNumber').val(owner
+                                             .contact_number);
+                                         $('#editfloatingBarangay').val(owner.barangay);
 
-                                     // Populate the edit modal with data
-                                     document.getElementById('editFloatingCatName').value =
-                                         catName;
-                                     document.getElementById('editFloatingCatSex').value =
-                                         catSex;
-                                     document.getElementById('editFloatingCatAge').value =
-                                         catAge;
-                                     document.getElementById('editFloatingCatColor').value =
-                                         catColor;
-                                     document.getElementById('editFloatingCatVaccinationStatus')
-                                         .value = vaccStatus;
-                                     document.getElementById('editFloatingCatDateVacc').value =
-                                         dateVacc;
-
-                                     // Show the edit modal
-                                     new bootstrap.Modal(document.getElementById('editModal'))
-                                         .show();
-                                 });
-                             });
-
-                             // Handle vaccination status change in edit modal
-                             document.getElementById('editFloatingCatVaccinationStatus').addEventListener(
-                                 'change',
-                                 function() {
-                                     const dateVaccDiv = document.getElementById('editDateVaccDivCat');
-                                     if (this.value === 'vaccinated') {
-                                         dateVaccDiv.style.display = 'block';
-                                     } else {
-                                         dateVaccDiv.style.display = 'none';
+                                         $('#editModal').modal('show');
                                      }
                                  });
-
-                             // Handle vaccination status change in view modal
-                             document.getElementById('viewFloatingCatVaccinationStatus').addEventListener(
-                                 'change',
-                                 function() {
-                                     const dateVaccDiv = document.getElementById('viewDateVaccDivCat');
-                                     if (this.value === 'vaccinated') {
-                                         dateVaccDiv.style.display = 'block';
-                                     } else {
-                                         dateVaccDiv.style.display = 'none';
-                                     }
-                                 });
+                             });
                          });
                          </script>
 
