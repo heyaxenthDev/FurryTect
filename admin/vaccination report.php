@@ -6,21 +6,15 @@
     include 'alert.php';
 
     ?>
- <script>
+ <!-- <script>
      window.location.replace("pages-error-404.html");
- </script>
+ </script> -->
 
  <main id="main" class="main">
 
-     <div class="pagetitle">
-         <h1>Data Tables</h1>
-         <nav>
-             <ol class="breadcrumb">
-                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                 <li class="breadcrumb-item">Tables</li>
-                 <li class="breadcrumb-item active">Data</li>
-             </ol>
-         </nav>
+     <div class="pagetitle d-flex justify-content-between">
+         <h1>Vaccination Reports</h1>
+         <button class="btn add-btn"><i class="bi bi-printer-fill"></i> Print Report</button>
      </div><!-- End Page Title -->
 
      <section class="section">
@@ -28,15 +22,13 @@
              <div class="col-lg-12">
 
                  <div class="card">
-                     <div class="card-body">
+                     <div class="card-body m-3">
+                         <span>FORM:V2017</span>
+                         <img src="assets/img/DOA-logo.jpg" class="img-fluid" alt="">
                          <h5 class="card-title">Datatables</h5>
-                         <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
-                                 DataTables</a> library. Just add <code>.datatable</code> class name to any table you
-                             wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more
-                                 examples</a>.</p>
 
                          <!-- Table with stripped rows -->
-                         <table class="table datatable">
+                         <table class="table">
                              <thead>
                                  <tr>
                                      <th>
