@@ -54,7 +54,9 @@ function getPageTitle($page)
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -84,6 +86,12 @@ if ($result && mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $user = substr($row['first_name'], 0, 1) . ". " . $row['last_name'];
         $fullname = $row['first_name'] . " " . substr($row['middle_name'], 0, 1) . ". " . $row['last_name'];
+        $firstname = $row['first_name'];
+        $middlename = $row['middle_name'];
+        $lastname = $row['last_name'];
+        $username = $row['username'];
+        $dc = date("M d, Y", strtotime($row['date_created']));
+
     }
 }
 ?>
@@ -116,6 +124,25 @@ if ($result && mysqli_num_rows($result) > 0) {
                         <li class="dropdown-header">
                             <h6><?= $fullname ?></h6>
                             <span>Administrative</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="user-profile.php">
+                                <i class="bi bi-person"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="user-profile.php">
+                                <i class="bi bi-gear"></i>
+                                <span>Account Settings</span>
+                            </a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">

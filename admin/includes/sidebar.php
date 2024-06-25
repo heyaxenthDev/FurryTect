@@ -5,14 +5,15 @@ $current_page = basename($_SERVER['PHP_SELF'], ".php");
 // Mapping page names to their URLs
 $pages = [
     "dashboard" => "dashboard",
+    "registration" => "registration",
     "dogs" => "dogs",
     "cats" => "cats",
     "owners" => "owners",
     "vaccination" => "vaccination",
     "dog tagging" => "dog tagging",
-    "registration" => "registration",
     "vaccination report" => "vaccination report",
-    "dogtagging report" => "dog tagging report"
+    "dogtagging report" => "dog tagging report",
+    "user-profile" => "user-profile"
 ];
 
 // Function to determine if a page is active
@@ -31,6 +32,13 @@ function is_active($page, $current_page)
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link <?= is_active('registration', $current_page); ?>" href="registration">
+                <i class="bx bxs-cabinet"></i>
+                <span>Registration</span>
+            </a>
+        </li><!-- End Registration Page Nav -->
 
         <li class="nav-item">
             <a class="nav-link <?= is_active('dogs', $current_page); ?>" href="dogs">
@@ -67,13 +75,6 @@ function is_active($page, $current_page)
             </a>
         </li><!-- End Dogtagging Page Nav -->
 
-        <li class="nav-item">
-            <a class="nav-link <?= is_active('registration', $current_page); ?>" href="registration">
-                <i class="bx bxs-cabinet"></i>
-                <span>Registration</span>
-            </a>
-        </li><!-- End Registration Page Nav -->
-
         <li class="nav-heading">Reports</li>
 
         <li class="nav-item">
@@ -89,6 +90,16 @@ function is_active($page, $current_page)
                 <span>Dog Tagging Report</span>
             </a>
         </li><!-- End Dogtagging Report Page Nav -->
+
+        <li class="nav-heading">User</li>
+
+        <li class="nav-item">
+            <a class="nav-link <?= is_active('user-profile', $current_page); ?>" href="user-profile">
+                <i class="bx bxs-user"></i>
+                <span>Profile</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
     </ul>
 
 </aside><!-- End Sidebar-->
