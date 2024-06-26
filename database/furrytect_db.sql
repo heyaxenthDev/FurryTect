@@ -101,6 +101,22 @@ CREATE TABLE `owners` (
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule_list`
+--
+
+CREATE TABLE `schedule_list` (
+  `id` int(30) NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL,
+  `start_datetime` datetime NOT NULL,
+  `end_datetime` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 --
 -- Indexes for dumped tables
 --
@@ -130,6 +146,12 @@ ALTER TABLE `owners`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `schedule_list`
+--
+ALTER TABLE `schedule_list`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -156,6 +178,13 @@ ALTER TABLE `dogs`
 --
 ALTER TABLE `owners`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `schedule_list`
+--
+ALTER TABLE `schedule_list`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
