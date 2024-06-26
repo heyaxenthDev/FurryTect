@@ -196,32 +196,38 @@
             </div>
 
             <!-- Left side columns -->
-            <div class="col-lg-7">
+            <div class="col-lg-8">
                 <div class="row">
                     <!-- [Project Calendar] start -->
                     <script src='assets/vendor/fullcalendar/index.global.min.js'></script>
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var calendarEl = document.getElementById('calendar');
-                        var calendar = new FullCalendar.Calendar(calendarEl, {
-                            initialView: 'dayGridMonth'
-                        });
-                        calendar.render();
-                    });
-                    </script>
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Calendar</h5>
-                            <div id='calendar'></div>
+                            <div id="calendar"></div>
                         </div>
                     </div>
+                    <script src="assets/js/calendar.js"></script>
                     <!-- [Project Calendar] end -->
+
+                    <?php 
+                    $schedules = $conn->query("SELECT * FROM `schedule_list`");
+                    $sched_res = [];
+                    foreach($schedules->fetch_all(MYSQLI_ASSOC) as $row){
+                        $row['sdate'] = date("F d, Y h:i A",strtotime($row['start_datetime']));
+                        $row['edate'] = date("F d, Y h:i A",strtotime($row['end_datetime']));
+                        $sched_res[$row['id']] = $row;
+                    }
+                    ?>
+
+                    <script>
+                    var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
+                    </script>
 
                 </div>
             </div><!-- End Left side columns -->
 
             <!-- Right side columns -->
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <!-- Schedule -->
                 <div class="card">
                     <div class="filter">
@@ -240,61 +246,77 @@
                     <div class="card-body">
                         <h5 class="card-title">Schedule</h5>
 
-                        <div class="activity">
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">32 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                <div class="activity-content">
-                                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
+                        <div class="container-fluid">
+                            <form action="save_schedule.php" method="post" id="schedule-form">
+                                <input type="hidden" name="id" value="">
+                                <div class="form-group mb-2">
+                                    <label for="title" class="control-label">Title</label>
+                                    <input type="text" class="form-control form-control-sm rounded-0" name="title"
+                                        id="title" required>
                                 </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">56 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptatem blanditiis blanditiis eveniet
+                                <div class="form-group mb-2">
+                                    <label for="description" class="control-label">Description</label>
+                                    <textarea rows="3" class="form-control form-control-sm rounded-0" name="description"
+                                        id="description" required></textarea>
                                 </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 hrs</div>
-                                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptates corrupti molestias voluptatem
+                                <div class="form-group mb-2">
+                                    <label for="start_datetime" class="control-label">Start</label>
+                                    <input type="datetime-local" class="form-control form-control-sm rounded-0"
+                                        name="start_datetime" id="start_datetime" required>
                                 </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">1 day</div>
-                                <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                                <div class="activity-content">
-                                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a>
-                                    tempore
+                                <div class="form-group mb-2">
+                                    <label for="end_datetime" class="control-label">End</label>
+                                    <input type="datetime-local" class="form-control form-control-sm rounded-0"
+                                        name="end_datetime" id="end_datetime" required>
                                 </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 days</div>
-                                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                                <div class="activity-content">
-                                    Est sit eum reiciendis exercitationem
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">4 weeks</div>
-                                <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                                <div class="activity-content">
-                                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                                </div>
-                            </div><!-- End activity item-->
-
+                            </form>
                         </div>
-
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-sm w-75" type="submit" form="schedule-form"><i
+                                    class="ri ri-calendar-check-line"></i> Save</button>
+                            <button class="btn btn-default border btn-sm" type="reset" form="schedule-form">
+                                Cancel</button>
+                        </div>
                     </div>
                 </div><!-- End Schedule -->
+
+                <!-- Event Details Modal -->
+                <div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="event-details-modal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Schedule Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <dl>
+                                        <dt class="text-muted">Title</dt>
+                                        <dd id="title" class="fw-bold fs-4"></dd>
+                                        <dt class="text-muted">Description</dt>
+                                        <dd id="description" class=""></dd>
+                                        <dt class="text-muted">Start</dt>
+                                        <dd id="start" class=""></dd>
+                                        <dt class="text-muted">End</dt>
+                                        <dd id="end" class=""></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-primary btn-sm" id="edit"
+                                        data-id="">Edit</button>
+                                    <button type="button" class="btn btn-danger btn-sm" id="delete"
+                                        data-id="">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event Details Modal -->
 
                 <!-- Dog Tagging Data -->
                 <div class="card">
