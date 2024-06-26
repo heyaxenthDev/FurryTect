@@ -1,11 +1,13 @@
 <?php
-include 'authentication.php';
-include 'includes/conn.php';
-include 'includes/header.php';
-include 'includes/sidebar.php';
-include 'includes/login-session.php';
-include 'alert.php';
-?>
+    include 'authentication.php';
+    checkLogin(); // Call the function to check if the user is logged in
+    
+    include 'includes/conn.php';
+    include 'includes/header.php';
+    include 'includes/sidebar.php';
+    include 'alert.php';
+
+    ?>
 <main id="main" class="main">
 
     <div class="pagetitle">
