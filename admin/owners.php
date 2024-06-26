@@ -143,7 +143,7 @@
                                                      </div>
 
                                                      <div class="row mb-3 g-2">
-                                                         <div class="col-md-6">
+                                                         <div class="col-md-5">
                                                              <div class="form-floating">
                                                                  <input type="text" class="form-control"
                                                                      id="viewFloatingOwnerSex" placeholder="Sex"
@@ -152,7 +152,18 @@
                                                              </div>
                                                          </div>
 
-                                                         <div class="col-md-6">
+                                                         <div class="col-md-5">
+                                                             <div class="form-floating">
+                                                                 <input type="date" class="form-control"
+                                                                     id="viewfloatingDateofBirth"
+                                                                     placeholder="Date of Birth" name="DateofBirth"
+                                                                     readonly>
+                                                                 <label for="viewfloatingDateofBirth">Date of
+                                                                     Birth</label>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="col-md-2">
                                                              <div class="form-floating">
                                                                  <input type="number" class="form-control"
                                                                      id="viewFloatingOwnerAge" placeholder="Age"
@@ -216,6 +227,8 @@
                                          $('#viewFloatingOwnerSex').val(sexText);
 
                                          $('#viewFloatingOwnerAge').val(owner.age);
+                                         $('#viewfloatingDateofBirth').val(owner
+                                             .date_of_birth)
                                          $('#viewFloatingContactNumber').val(owner
                                              .contact_number);
                                          $('#viewFloatingBarangay').val(owner.barangay);
@@ -279,7 +292,7 @@
                                                      </div>
 
                                                      <div class="row mb-3 g-2">
-                                                         <div class="col-md-6">
+                                                         <div class="col-md-5">
                                                              <div class="form-floating">
                                                                  <input type="text" class="form-control"
                                                                      id="editfloatingOwnerSex" placeholder="Sex"
@@ -288,7 +301,17 @@
                                                              </div>
                                                          </div>
 
-                                                         <div class="col-md-6">
+                                                         <div class="col-md-5">
+                                                             <div class="form-floating">
+                                                                 <input type="date" class="form-control"
+                                                                     id="editfloatingDateofBirth"
+                                                                     placeholder="Date of Birth" name="DateofBirth">
+                                                                 <label for="editfloatingDateofBirth">Date of
+                                                                     Birth</label>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="col-md-2">
                                                              <div class="form-floating">
                                                                  <input type="number" class="form-control"
                                                                      id="editfloatingOwnerAge" placeholder="Age"
@@ -355,6 +378,8 @@
 
                                          var sexText = owner.sex == 1 ? 'Male' : 'Female';
                                          $('#editfloatingOwnerSex').val(sexText);
+                                         $('#editfloatingDateofBirth').val(owner
+                                             .date_of_birth);
                                          $('#editfloatingOwnerAge').val(owner.age);
                                          $('#editfloatingContactNumber').val(owner
                                              .contact_number);

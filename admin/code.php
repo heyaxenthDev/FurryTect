@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {
     $middleName = $_POST['middleName'];
     $lastName = $_POST['lastName'];
     $contactNumber = $_POST['contactNumber'];
+    $dob = $_POST['DateofBirth'];
     $ageOwner = $_POST['ageOwner'];
     $sexOwner = $_POST['sexOwner'];
     $barangay = $_POST['barangay'];
@@ -41,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {
     $ownerCode = generateOwnerCode($conn);
 
     // Insert owner information
-    $stmt = $conn->prepare("INSERT INTO owners (owner_code, first_name, middle_name, last_name, contact_number, age, sex, barangay, owner_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssiiss", $ownerCode, $firstName, $middleName, $lastName, $contactNumber, $ageOwner, $sexOwner, $barangay, $ownerPicture);
+    $stmt = $conn->prepare("INSERT INTO owners (owner_code, first_name, middle_name, last_name, date_of_birth, contact_number, age, sex, barangay, owner_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssiiss", $ownerCode, $firstName, $middleName, $lastName, $dob, $contactNumber, $ageOwner, $sexOwner, $barangay, $ownerPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -103,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['CatsReg'])) {
     $lastName = $_POST['lastName'];
     $contactNumber = $_POST['contactNumber'];
     $ageOwner = $_POST['ageOwner'];
+    $dob = $_POST['DateofBirth'];
     $sexOwner = $_POST['sexOwner'];
     $barangay = $_POST['barangay'];
 
@@ -110,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['CatsReg'])) {
     $ownerCode = generateOwnerCode($conn);
 
     // Insert owner information
-    $stmt = $conn->prepare("INSERT INTO owners (owner_code, first_name, middle_name, last_name, contact_number, age, sex, barangay, owner_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssiiss", $ownerCode, $firstName, $middleName, $lastName, $contactNumber, $ageOwner, $sexOwner, $barangay, $ownerPicture);
+    $stmt = $conn->prepare("INSERT INTO owners (owner_code, first_name, middle_name, last_name, date_of_birth, contact_number, age, sex, barangay, owner_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssiiss", $ownerCode, $firstName, $middleName, $lastName, $dob ,$contactNumber, $ageOwner, $sexOwner, $barangay, $ownerPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -318,12 +320,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateCats'])) {
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
     // Retrieve form data
-
     $ownerId = $_POST['ownerId'];
     $firstName = $_POST['firstName'];
     $middleName = $_POST['middleName'];
     $lastName = $_POST['lastName'];
     $sexOwner = $_POST['sexOwner'];
+    $dobOwner = $_POST['DateofBirth'];
     $ageOwner = $_POST['ageOwner'];
     $contactNumber = $_POST['contactNumber'];
     $barangay = $_POST['barangay'];
@@ -343,7 +345,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
         if (!empty($oldImage)) {
             $targetDir = "uploads/";
             $filePath = $targetDir . $oldImage;
-
             if (file_exists($filePath)) {
                 unlink($filePath); // Delete the old image file
             }
@@ -361,9 +362,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
             // Upload file to server
             if (move_uploaded_file($_FILES['ownerImage']['tmp_name'], $targetFilePath)) {
                 // Update the database with the new file path
-                $query = "UPDATE owners SET first_name=?, middle_name=?, last_name=?, sex=?, age=?, contact_number=?, barangay=?, owner_picture=? WHERE id=?";
+                $query = "UPDATE owners SET first_name=?, middle_name=?, last_name=?, date_of_birth=?, sex=?, age=?, contact_number=?, barangay=?, owner_picture=? WHERE id=?";
                 $stmt = $conn->prepare($query);
-                $stmt->bind_param("ssssissis", $firstName, $middleName, $lastName, $sexOwner, $ageOwner, $contactNumber, $barangay, $fileName, $ownerId);
+                $stmt->bind_param("sssssissis", $firstName, $middleName, $lastName, $dobOwner, $sexOwner, $ageOwner, $contactNumber, $barangay, $fileName, $ownerId);
 
                 if ($stmt->execute()) {
                     $_SESSION['status'] = "Success";
@@ -392,9 +393,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
         }
     } else {
         // No file uploaded, update database without the image
-        $query = "UPDATE owners SET first_name=?, middle_name=?, last_name=?, sex=?, age=?, contact_number=?, barangay=? WHERE id=?";
+        $query = "UPDATE owners SET first_name=?, middle_name=?, last_name=?, date_of_birth=?, sex=?, age=?, contact_number=?, barangay=? WHERE id=?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssssissi", $firstName, $middleName, $lastName, $sexOwner, $ageOwner, $contactNumber, $barangay, $ownerId);
+        $stmt->bind_param("sssssissi", $firstName, $middleName, $lastName, $dobOwner, $sexOwner, $ageOwner, $contactNumber, $barangay, $ownerId);
 
         if ($stmt->execute()) {
             $_SESSION['status'] = "Success";
@@ -413,6 +414,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
 
     header("Location: {$_SERVER['HTTP_REFERER']}");
     exit();
-
 }
+
 ?>
