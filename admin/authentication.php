@@ -5,13 +5,11 @@ session_start();
 function checkLogin(){
     if (!isset($_SESSION['admin_auth']) || $_SESSION['admin_auth'] !== true) {
         // Set session variables for status message
-        $_SESSION['status'] = "Denied Access!";
         $_SESSION['status_text'] = "Please Login to Access the Page";
         $_SESSION['status_code'] = "warning";
-        $_SESSION['status_btn'] = "Back";
         
         // Redirect to login page
-        header("Location: /BILLFrozen/index.php");
+        header("Location: /FurryTect/index.php");
         exit; // Exit script to prevent further execution
     }
 }
