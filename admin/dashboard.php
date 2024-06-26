@@ -194,7 +194,7 @@ include 'alert.php';
             </div>
 
             <!-- Left side columns -->
-            <div class="col-lg-8">
+            <div class="col-lg-7">
                 <div class="row">
                     <!-- [Project Calendar] start -->
                     <script src='assets/vendor/fullcalendar/index.global.min.js'></script>
@@ -219,8 +219,8 @@ include 'alert.php';
             </div><!-- End Left side columns -->
 
             <!-- Right side columns -->
-            <div class="col-lg-4">
-                <!-- Recent Activity -->
+            <div class="col-lg-5">
+                <!-- Schedule -->
                 <div class="card">
                     <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -236,7 +236,7 @@ include 'alert.php';
                     </div>
 
                     <div class="card-body">
-                        <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+                        <h5 class="card-title">Schedule</h5>
 
                         <div class="activity">
 
@@ -292,7 +292,7 @@ include 'alert.php';
                         </div>
 
                     </div>
-                </div><!-- End Recent Activity -->
+                </div><!-- End Schedule -->
 
                 <!-- Dog Tagging Data -->
                 <div class="card">
