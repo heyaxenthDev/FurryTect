@@ -75,6 +75,15 @@ function is_active($page, $current_page)
             </a>
         </li><!-- End Dogtagging Page Nav -->
 
+        <li class="nav-heading">Account Requests</li>
+
+        <li class="nav-item">
+            <a class="nav-link <?= is_active('user account request', $current_page); ?>" href="user account request">
+                <i class="bx bxs-user-check"></i>
+                <span>Users</span>
+            </a>
+        </li><!-- End Dogtagging Report Page Nav -->
+
         <li class="nav-heading">Reports</li>
 
         <li class="nav-item">

@@ -102,7 +102,9 @@ if ($result && mysqli_num_rows($result) > 0) {
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="dashboard" class="logo d-flex align-items-center">
+                <!-- Full window logo -->
                 <img class="d-md-block d-none" src="assets/img/furrytect-logo-full-horizontal-smIcon.png" alt="">
+                <!-- Mobile logo -->
                 <img class="d-md-none d-block" src="assets/img/furrytect-logo-full-appleSize.png" alt="">
                 <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
             </a>

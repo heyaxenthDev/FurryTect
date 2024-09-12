@@ -30,7 +30,7 @@ session_start();
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/index.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
 
 </head>
 
@@ -63,17 +63,64 @@ session_start();
     unset($_SESSION['status_text']);
   }
   ?>
-    <!-- ======= Hero Section ======= -->
-    <section id="hero">
-        <div class="hero-container">
-            <a href="index.html" class="hero-logo" data-aos="zoom-in"><img src="assets/img/apple-touch-icon.png"
-                    alt></a>
-            <h1 data-aos="zoom-in"><span style="color: aqua;">FURRY</span>TECT</h1>
-            <h2 data-aos="fade-up">Animal Vaccination and Dogtagging</h2>
-            <a data-aos="fade-up" data-aos-delay="200" href="login-admin" class="btn-get-started scrollto">Get
-                Started</a>
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+            <a href="index" class="logo d-flex align-items-center me-auto me-xl-0">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <!-- <img src="assets/img/logo.png" alt=""> -->
+                <h1 class="sitename"><span style="color: aqua;">FURRY</span>TECT</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="user-login#login">Login</a></li>
+                    <li><a href="user-login#register">Register</a></li>
+                    <!-- <li><a href="#mypets">My Pets</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#resources">Resources</a></li> -->
+                    <!-- <li class="dropdown"><a href="#"><span>Account</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Register</a></li>
+                        </ul>
+                    </li> -->
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <div class="header-social-links">
+                <a href="login-admin" class="twitter"><i class="bi bi-person"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-info"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-twitter-x"></i></a>
+            </div>
+
         </div>
-    </section><!-- End Hero -->
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="hero" class="hero section dark-background">
+
+            <div class="container text-center">
+                <div class="row justify-content-center" data-aos="zoom-out">
+                    <div class="col-lg-8">
+                        <a href="index" class="hero-logo" data-aos="zoom-in"><img src="assets/img/apple-touch-icon.png"
+                                alt></a>
+                        <h2><span style="color: aqua;">FURRY</span>TECT</h2>
+                        <p>Animal Vaccination and Dogtagging</p>
+                        <a href="user-login" class="btn-get-started">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /Hero Section -->
+    </main>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/aos/aos.js"></script>
