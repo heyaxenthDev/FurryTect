@@ -123,17 +123,22 @@ if (isset($_POST['signIn'])) {
 
             if (password_verify($password, $hashed_password)) {
                 // Password is correct, set session variables
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_email'] = $user['email'];
-                $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user'] = [
+                    
+                'id' => $user['id'],
+                'user_email'=> $user['email'],
+                'user_name'=> $user['first_name'],
+
+                ];
 
                 // Successful login
                 $_SESSION['logged'] = "Login Successful!";
                 $_SESSION['logged_icon'] = "success";
-                header("Location: dashboard.php"); // Redirect to dashboard or user page
+                header("Location: user/homepage"); // Redirect to dashboard or user page
                 exit();
             } else {
                 // Invalid password
+                $_SESSION['entered_email'] = $email;
                 $_SESSION['status'] = "Invalid Password!";
                 $_SESSION['status_text'] = "Incorrect password. Please try again.";
                 $_SESSION['status_code'] = "error";
@@ -193,19 +198,23 @@ if (isset($_POST['signUp'])) {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert user data into database
-    $stmt = $conn->prepare("INSERT INTO owners (firstname, email, password) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO owners (`first_name`, `email`, `password`) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $firstname, $email, $hashedPassword);
 
     if ($stmt->execute()) {
         // Successful registration
-        $_SESSION['status'] = "Registration Successful! Please wait for admin confirmation.";
+        $_SESSION['status'] = "Registration Successful!";
+        $_SESSION['status_text'] = "Please wait for admin confirmation.";
         $_SESSION['status_code'] = "success";
-        header("Location: login.php"); // Redirect to login page
+        $_SESSION['status_btn'] = "Ok";
+        header("Location: {$_SERVER['HTTP_REFERER']}");
     } else {
         // Registration failed
-        $_SESSION['status'] = "Registration failed! Please try again.";
+        $_SESSION['status'] = "Registration failed!";
+        $_SESSION['status_text'] = "Please try again.";
         $_SESSION['status_code'] = "error";
-        header("Location: signup.php");
+        $_SESSION['status_btn'] = "Back";
+        header("Location: {$_SERVER['HTTP_REFERER']}");
     }
 
     // Close connections

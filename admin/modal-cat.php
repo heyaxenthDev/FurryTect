@@ -69,7 +69,7 @@
 
                          <div class="row g-3">
                              <div class="col-md-4">
-                                 <img src="assets/img/cat_default_img.jpg" id="catImage"
+                                 <img src="assets/img/undraw_cat_epte.svg" id="catImage"
                                      class="img-fluid rounded float-start img-thumbnail mb-3" alt="Cat Image">
                                  <input type="file" class="form-control" id="catImageInput" name="catImage"
                                      accept="image/*">
@@ -95,7 +95,7 @@
                                      displayImage(
                                          this,
                                          document.getElementById("catImage"),
-                                         "assets/img/cat_default_img.jpg"
+                                         "assets/img/undraw_cat_epte.svg"
                                      );
                                  });
                              </script>

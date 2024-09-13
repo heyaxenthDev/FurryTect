@@ -616,6 +616,23 @@ h6 {
   background-color: #1cbb9d;
 }
 
+.sidebar-nav .nav-link .with-badge {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #f6f9ff;
+  transition: 0.3;
+  background: #1cbb9d;
+  padding: 10px 15px;
+  border-radius: 4px;
+  justify-content: space-between; /* Added to align items with space between */
+}
+
+.badge-right {
+  margin-left: auto;
+}
+
 @media (max-width: 1199px) {
   .sidebar {
     left: -300px;

@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +21,10 @@
 </head>
 
 <body>
+
+    <?php 
+include "includes/alert.php";
+?>
     <main>
         <div class="box">
             <div class="inner-box">
@@ -37,7 +44,10 @@
                         <div class="actual-form">
                             <div class="input-wrap">
                                 <input type="email" minlength="4" class="input-field" autocomplete="off" name="email"
-                                    required />
+                                    value="<?php if (isset($_SESSION['entered_email'])) {
+                                    echo $_SESSION['entered_email'];
+                                   }
+                                   unset($_SESSION['entered_email']);?>" required />
                                 <label>Email</label>
                             </div>
 

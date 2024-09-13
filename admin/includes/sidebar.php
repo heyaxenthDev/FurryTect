@@ -21,6 +21,16 @@ function is_active($page, $current_page)
 {
     return $page === $current_page ? '' : 'collapsed';
 }
+
+include 'includes/conn.php'; // Include your database connection
+
+// Query to count the number of owners with admin_confirm = 0
+$query = "SELECT COUNT(*) as requestCount FROM owners WHERE admin_confirm = 0";
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+
+// Get the count
+$requestCount = $row['requestCount'];
 ?>
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
@@ -81,6 +91,9 @@ function is_active($page, $current_page)
             <a class="nav-link <?= is_active('user account request', $current_page); ?>" href="user account request">
                 <i class="bx bxs-user-check"></i>
                 <span>Users</span>
+                <?php if ($requestCount > 0): ?>
+                <span class="badge bg-warning badge-right"><?php echo $requestCount; ?></span>
+                <?php endif; ?>
             </a>
         </li><!-- End Dogtagging Report Page Nav -->
 

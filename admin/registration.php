@@ -39,7 +39,7 @@
                             <h4 class="mb-3">Dog's Information</h4>
                             <div class="row g-3">
                                 <div class="col-md-4">
-                                    <img src="assets/img/dog_default_img.jpg" id="dogImage"
+                                    <img src="assets/img/undraw_dog_c7i6.svg" id="dogImage"
                                         class="img-fluid rounded float-start img-thumbnail mb-3" alt="Dog Image">
                                     <input type="file" class="form-control" id="dogImageInput" name="dogImage"
                                         accept="image/*">
@@ -163,7 +163,7 @@
                             <h4 class="mb-3">Owner's Information</h4>
                             <div class="row g-3">
                                 <div class="col-md-4">
-                                    <img src="assets/img/user.png" id="ownerImage"
+                                    <img src="assets/img/undraw_male_avatar_g98d.svg" id="ownerImage"
                                         class="img-fluid rounded float-start img-thumbnail mb-3" alt="Owner Image">
                                     <input type="file" class="form-control" id="ownerImageInput" name="ownerImage"
                                         accept="image/*">
@@ -281,7 +281,7 @@
                             <h4 class="mb-3">Cat's Information</h4>
                             <div class="row g-3">
                                 <div class="col-md-4">
-                                    <img src="assets/img/cat_default_img.jpg" id="catImage"
+                                    <img src="assets/img/undraw_cat_epte.svg" id="catImage"
                                         class="img-fluid rounded float-start img-thumbnail mb-3" alt="Cat Image">
                                     <input type="file" class="form-control" id="catImageInput" name="catImage"
                                         accept="image/*">
@@ -368,7 +368,7 @@
                             <h4 class="mb-3">Owner's Information</h4>
                             <div class="row g-3">
                                 <div class="col-md-4">
-                                    <img src="assets/img/user.png" id="ownerImage"
+                                    <img src="assets/img/undraw_male_avatar_g98d.svg" id="ownerImage"
                                         class="img-fluid rounded float-start img-thumbnail mb-3" alt="Owner Image">
                                     <input type="file" class="form-control" id="ownerImageInput" name="ownerImage"
                                         accept="image/*">

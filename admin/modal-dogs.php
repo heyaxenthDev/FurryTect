@@ -70,7 +70,7 @@
                          <!-- <h4 class="mb-3">Dog's Information</h4> -->
                          <div class="row g-3">
                              <div class="col-md-4">
-                                 <img src="assets/img/dog_default_img.jpg" id="dogImage"
+                                 <img src="assets/img/undraw_dog_c7i6.svg" id="dogImage"
                                      class="img-fluid rounded float-start img-thumbnail mb-3" alt="Dog Image">
                                  <input type="file" class="form-control" id="dogImageInput" name="dogImage"
                                      accept="image/*">
@@ -95,7 +95,7 @@
                                      displayImage(
                                          this,
                                          document.getElementById("dogImage"),
-                                         "assets/img/dog_default_img.jpg"
+                                         "assets/img/undraw_dog_c7i6.svg"
                                      );
                                  });
                              </script>
