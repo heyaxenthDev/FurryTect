@@ -1,6 +1,8 @@
 <?php 
-session_start();
-include "includes/conn.php";
+    include 'authentication.php';
+    checkLogin(); // Call the function to check if the user is logged in
+
+    include "includes/conn.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,13 +74,13 @@ include "includes/conn.php";
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
                         <h6><?= $_SESSION['user']['user_name'] ?></h6>
-                        <span>Administrative</span>
+                        <span><?= $_SESSION['user']['user_email']?></span>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="user-profile.php">
+                        <a class="dropdown-item d-flex align-items-center" href="#">
                             <i class="bi bi-person"></i>
                             <span>My Profile</span>
                         </a>
@@ -87,7 +89,7 @@ include "includes/conn.php";
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="user-profile.php">
+                        <a class="dropdown-item d-flex align-items-center" href="#">
                             <i class="bi bi-gear"></i>
                             <span>Account Settings</span>
                         </a>
@@ -96,7 +98,7 @@ include "includes/conn.php";
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="\FurryTect/admin-logout.php">
+                        <a class="dropdown-item d-flex align-items-center" href="\FurryTect/user-logout.php">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Sign Out</span>
                         </a>

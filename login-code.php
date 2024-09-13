@@ -123,8 +123,8 @@ if (isset($_POST['signIn'])) {
 
             if (password_verify($password, $hashed_password)) {
                 // Password is correct, set session variables
+                $_SESSION['user_auth'] = true;
                 $_SESSION['user'] = [
-                    
                 'id' => $user['id'],
                 'user_email'=> $user['email'],
                 'user_name'=> $user['first_name'],
