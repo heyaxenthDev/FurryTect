@@ -37,13 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {
     $ageOwner = $_POST['ageOwner'];
     $sexOwner = $_POST['sexOwner'];
     $barangay = $_POST['barangay'];
+    $admin_confirm = 1;
 
     // Generate owner code
     $ownerCode = generateOwnerCode($conn);
 
     // Insert owner information
-    $stmt = $conn->prepare("INSERT INTO owners (owner_code, first_name, middle_name, last_name, date_of_birth, contact_number, age, sex, barangay, owner_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssiiss", $ownerCode, $firstName, $middleName, $lastName, $dob, $contactNumber, $ageOwner, $sexOwner, $barangay, $ownerPicture);
+    $stmt = $conn->prepare("INSERT INTO owners (owner_code, first_name, middle_name, last_name, date_of_birth, contact_number, age, sex, barangay, owner_picture, admin_confirm) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssiissi", $ownerCode, $firstName, $middleName, $lastName, $dob, $contactNumber, $ageOwner, $sexOwner, $barangay, $ownerPicture, $admin_confirm);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -107,13 +108,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['CatsReg'])) {
     $dob = $_POST['DateofBirth'];
     $sexOwner = $_POST['sexOwner'];
     $barangay = $_POST['barangay'];
+    $admin_confirm = 1;
 
     // Generate owner code
     $ownerCode = generateOwnerCode($conn);
 
     // Insert owner information
-    $stmt = $conn->prepare("INSERT INTO owners (owner_code, first_name, middle_name, last_name, date_of_birth, contact_number, age, sex, barangay, owner_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssiiss", $ownerCode, $firstName, $middleName, $lastName, $dob ,$contactNumber, $ageOwner, $sexOwner, $barangay, $ownerPicture);
+    $stmt = $conn->prepare("INSERT INTO owners (owner_code, first_name, middle_name, last_name, date_of_birth, contact_number, age, sex, barangay, owner_picture, admin_confirm) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssiissi", $ownerCode, $firstName, $middleName, $lastName, $dob, $contactNumber, $ageOwner, $sexOwner, $barangay, $ownerPicture, $admin_confirm);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";

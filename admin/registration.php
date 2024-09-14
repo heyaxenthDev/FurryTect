@@ -32,6 +32,7 @@
                             type="button" role="tab" aria-controls="cat" aria-selected="false">Cat</button>
                     </li>
                 </ul>
+                <hr>
                 <div class="tab-content pt-2" id="myTabjustifiedContent">
                     <div class="tab-pane fade show active" id="dog-justified" role="tabpanel" aria-labelledby="dog-tab">
                         <form action="code.php" method="POST" enctype="multipart/form-data">
