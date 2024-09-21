@@ -87,7 +87,7 @@
                                         <div class="col-md-12">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingName"
-                                                    placeholder="Name" name="name">
+                                                    placeholder="Name" name="name" required>
                                                 <label for="floatingName">Name</label>
                                             </div>
                                         </div>
@@ -96,8 +96,8 @@
                                     <div class="row mb-3 g-2">
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <select class="form-select" id="floatingSex" name="sex"
-                                                    aria-label="Sex">
+                                                <select class="form-select" id="floatingSex" name="sex" aria-label="Sex"
+                                                    required>
                                                     <option selected disabled>Choose...</option>
                                                     <option value="1">Male</option>
                                                     <option value="2">Female</option>
@@ -109,7 +109,7 @@
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="number" class="form-control" id="floatingAge"
-                                                    placeholder="Age" name="age">
+                                                    placeholder="Age" name="age" required>
                                                 <label for="floatingAge">Age</label>
                                             </div>
                                         </div>
@@ -119,7 +119,7 @@
                                         <div class="col-md-12">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingColor"
-                                                    placeholder="Color" name="color">
+                                                    placeholder="Color" name="color" required>
                                                 <label for="floatingColor">Color Description</label>
                                             </div>
                                         </div>
@@ -129,7 +129,7 @@
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <select class="form-control" id="floatingVaccinationStatus"
-                                                    aria-label="Vaccination Status" name="vaccinationStatus">
+                                                    aria-label="Vaccination Status" name="vaccinationStatus" required>
                                                     <option value="">Select Vaccination Status</option>
                                                     <option value="vaccinated" class="text-success">Vaccinated</option>
                                                     <option value="unvaccinated" class="text-danger">Unvaccinated
@@ -174,21 +174,21 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingFirstName"
-                                                    placeholder="First Name" name="firstName">
+                                                    placeholder="First Name" name="firstName" required>
                                                 <label for="floatingFirstName">First Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingMiddleName"
-                                                    placeholder="Middle Name" name="middleName">
+                                                    placeholder="Middle Name" name="middleName" required>
                                                 <label for="floatingMiddleName">Middle Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingLastName"
-                                                    placeholder="Last Name" name="lastName">
+                                                    placeholder="Last Name" name="lastName" required>
                                                 <label for="floatingLastName">Last Name</label>
                                             </div>
                                         </div>
@@ -198,7 +198,7 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <select class="form-select" id="floatingOwnerSex" name="sexOwner"
-                                                    aria-label="Sex">
+                                                    aria-label="Sex" required>
                                                     <option selected disabled>Choose...</option>
                                                     <option value="1">Male</option>
                                                     <option value="2">Female</option>
@@ -210,7 +210,7 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="date" class="form-control" id="floatingDateofBirth"
-                                                    placeholder="Date of Birth" name="DateofBirth">
+                                                    placeholder="Date of Birth" name="DateofBirth" required>
                                                 <label for="floatingDateofBirth">Date of Birth</label>
                                             </div>
                                         </div>
@@ -218,7 +218,7 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="number" class="form-control" id="floatingOwnerAge"
-                                                    placeholder="Age" name="ageOwner">
+                                                    placeholder="Age" name="ageOwner" required>
                                                 <label for="floatingOwnerAge">Age</label>
                                             </div>
                                         </div>
@@ -228,14 +228,15 @@
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingContactNumber"
-                                                    placeholder="Contact Number" name="contactNumber">
+                                                    placeholder="Contact Number" name="contactNumber" required>
                                                 <label for="floatingContactNumber">Contact Number</label>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <select class="form-control" id="floatingBarangay" name="barangay">
+                                                <select class="form-control" id="floatingBarangay" name="barangay"
+                                                    required>
                                                     <option value="">Select Barangay</option>
                                                     <option value="Alegre">Alegre</option>
                                                     <option value="Amar">Amar</option>
@@ -292,7 +293,7 @@
                                         <div class="col-md-12">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingCatName"
-                                                    placeholder="Name" name="name">
+                                                    placeholder="Name" name="name" required>
                                                 <label for="floatingCatName">Name</label>
                                             </div>
                                         </div>
@@ -302,7 +303,7 @@
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <select class="form-select" id="floatingCatSex" aria-label="Sex"
-                                                    name="sex">
+                                                    name="sex" required>
                                                     <option selected disabled>Choose...</option>
                                                     <option value="1">Male</option>
                                                     <option value="2">Female</option>
@@ -314,7 +315,7 @@
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="number" class="form-control" id="floatingCatAge"
-                                                    placeholder="Age" name="age">
+                                                    placeholder="Age" name="age" required>
                                                 <label for="floatingCatAge">Age</label>
                                             </div>
                                         </div>
@@ -324,7 +325,7 @@
                                         <div class="col-md-12">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingCatColor"
-                                                    placeholder="Color" name="color">
+                                                    placeholder="Color" name="color" required>
                                                 <label for="floatingCatColor">Color Description</label>
                                             </div>
                                         </div>
@@ -334,7 +335,7 @@
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <select class="form-control" id="floatingCatVaccinationStatus"
-                                                    aria-label="Vaccination Status" name="vaccinationStatus">
+                                                    aria-label="Vaccination Status" name="vaccinationStatus" required>
                                                     <option value="">Select Vaccination Status</option>
                                                     <option value="vaccinated" class="text-success">Vaccinated</option>
                                                     <option value="unvaccinated" class="text-danger">Unvaccinated
@@ -379,21 +380,21 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingFirstName"
-                                                    placeholder="First Name" name="firstName">
+                                                    placeholder="First Name" name="firstName" required>
                                                 <label for="floatingFirstName">First Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingMiddleName"
-                                                    placeholder="Middle Name" name="middleName">
+                                                    placeholder="Middle Name" name="middleName" required>
                                                 <label for="floatingMiddleName">Middle Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingLastName"
-                                                    placeholder="Last Name" name="lastName">
+                                                    placeholder="Last Name" name="lastName" required>
                                                 <label for="floatingLastName">Last Name</label>
                                             </div>
                                         </div>
@@ -403,7 +404,7 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <select class="form-select" id="floatingOwnerSex" name="sexOwner"
-                                                    aria-label="Sex">
+                                                    aria-label="Sex" required>
                                                     <option selected disabled>Choose...</option>
                                                     <option value="1">Male</option>
                                                     <option value="2">Female</option>
@@ -415,7 +416,7 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="date" class="form-control" id="floatingDateofBirth"
-                                                    placeholder="Date of Birth" name="DateofBirth">
+                                                    placeholder="Date of Birth" name="DateofBirth" required>
                                                 <label for="floatingDateofBirth">Date of Birth</label>
                                             </div>
                                         </div>
@@ -423,7 +424,7 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input type="number" class="form-control" id="floatingOwnerAge"
-                                                    placeholder="Age" name="ageOwner">
+                                                    placeholder="Age" name="ageOwner" required>
                                                 <label for="floatingOwnerAge">Age</label>
                                             </div>
                                         </div>
@@ -433,14 +434,15 @@
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="floatingContactNumber"
-                                                    placeholder="Contact Number" name="contactNumber">
+                                                    placeholder="Contact Number" name="contactNumber" required>
                                                 <label for="floatingContactNumber">Contact Number</label>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <select class="form-control" id="floatingBarangay" name="barangay">
+                                                <select class="form-control" id="floatingBarangay" name="barangay"
+                                                    required>
                                                     <option value="">Select Barangay</option>
                                                     <option value="Alegre">Alegre</option>
                                                     <option value="Amar">Amar</option>

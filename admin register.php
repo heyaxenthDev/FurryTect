@@ -84,7 +84,7 @@ session_start();
                                         <div class="col-12">
                                             <label for="yourMiddleName" class="form-label">Middle Name</label>
                                             <input type="text" name="middle_name" class="form-control"
-                                                id="yourMiddleName">
+                                                id="yourMiddleName" required>
                                             <div class="invalid-feedback">Please, enter your middle name!</div>
                                         </div>
 
