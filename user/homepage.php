@@ -31,6 +31,7 @@
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
@@ -122,7 +123,7 @@
                     <div class="col-lg-8">
                         <a href="index" class="hero-logo" data-aos="zoom-in"><img src="assets/img/apple-touch-icon.png"
                                 alt></a>
-                        <h2>Welcome!</h2>
+                        <h2>Welcome to FURRY<span style="color: aqua;">TECT</span>!</h2>
                         <p>It's nice to see you back,<span style="color: aqua;">
                                 <?= $_SESSION['user']['user_name']?></span>.</p>
                         <!-- <a href="#about" class="btn-get-started">Get Started</a> -->
@@ -136,10 +137,11 @@
         <section id="about" class="about section">
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>About</h2>
+                <h2>About FURRYTECT</h2>
                 <p>
-                    Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-                    consectetur velit
+                    Welcome to FURRYTECT! We are dedicated to creating a safer and more connected community for pet
+                    owners and their furry friends. Established in 2025, our mission is to streamline the registration
+                    and care of pets while fostering responsible pet ownership.
                 </p>
             </div>
             <!-- End Section Title -->
@@ -147,38 +149,62 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4">
                     <div class="col-lg-6">
-                        <img src="assets/img/about.jpg" class="img-fluid" alt="" />
+                        <img src="assets/img/about.jpg" class="img-fluid" alt="FURRYTECT" />
                     </div>
                     <div class="col-lg-6 content">
-                        <h3>Voluptatem dignissimos provident</h3>
-                        <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        <h3>Our Commitment to Pet Safety</h3>
+                        <p class="fst-italic small">
+                            At FURRYTECT, we understand the importance of keeping pets safe and healthy. Our
+                            user-friendly platform allows pet owners to register their animals easily, manage
+                            vaccination records, and report concerns regarding animal welfare. We believe that by
+                            working together, we can enhance the well-being of pets and strengthen our community bonds.
                         </p>
+                        <h4>DOG TAGGING</h4>
                         <ul>
                             <li>
                                 <i class="bi bi-check2-all"></i>
-                                <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat.</span>
+                                <span>✓ Legal Ownership: A dog tag serves as proof that the dog belongs to a specific
+                                    person, useful in ownership disputes.</span>
                             </li>
                             <li>
                                 <i class="bi bi-check2-all"></i>
-                                <span>Duis aute irure dolor in reprehenderit in voluptate
-                                    velit.</span>
+                                <span>✓ Licensing: In the Municipality of Tibiao, dogs are required to be licensed. The
+                                    tag shows that the dog is registered.</span>
                             </li>
                             <li>
                                 <i class="bi bi-check2-all"></i>
-                                <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate trideta
-                                    storacalaperda mastiro dolore eu fugiat nulla
-                                    pariatur.</span>
+                                <span>✓ Emergency Situations: A dog tag ensures that anyone assisting the animal can
+                                    easily contact the owner.</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-check2-all"></i>
+                                <span>✓ Return of Strays: Tag information helps shelters contact owners, prioritizing
+                                    tagged dogs for rehoming.</span>
                             </li>
                         </ul>
+
+                        <h4>VACCINATION</h4>
+                        <ul>
+                            <li>
+                                <i class="bi bi-check2-all"></i>
+                                <span>✓ Prevention of Disease: Vaccinations protect pets from serious and fatal diseases
+                                    like rabies and distemper.</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-check2-all"></i>
+                                <span>✓ Public Health: Vaccinations protect both pets and humans from zoonotic diseases
+                                    like rabies.</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-check2-all"></i>
+                                <span>✓ Community Safety: Vaccinating pets helps prevent the spread of diseases in the
+                                    community.</span>
+                            </li>
+                        </ul>
+
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                            aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident
+                            Both dog tagging and vaccinations are crucial for responsible pet ownership. Together, they
+                            ensure the safety and well-being of our beloved pets while strengthening our community ties.
                         </p>
                     </div>
                 </div>
@@ -192,10 +218,10 @@
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Our Services</h2>
-                <p>
+                <!-- <p>
                     Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
                     consectetur velit
-                </p>
+                </p> -->
             </div>
             <!-- End Section Title -->
 
@@ -206,12 +232,13 @@
                             <img src="assets/img/cards-1.jpg" alt="" class="img-fluid" />
                             <div class="card-body">
                                 <h3>
-                                    <a href="#" class="stretched-link">Report Pet-related Incidents</a>
+                                    <a href="#" class="stretched-link">Complaints and Concerns Reporting</a>
                                 </h3>
                                 <div class="card-content">
                                     <p>
-                                        Quickly and easily report lost, found, or injured pets to help keep our furry
-                                        friends safe in the community. </p>
+                                        Our platform enables users to report animal-related issues, such as stray
+                                        animals or neglect, Dog bites, and accidents. Your reports help us address
+                                        concerns promptly and improve community safety.</p>
                                 </div>
                             </div>
                         </div>
@@ -227,8 +254,9 @@
                                 </h3>
                                 <div class="card-content">
                                     <p>
-                                        Register your pets online to ensure they are up-to-date on vaccinations and
-                                        securely tagged, keeping them protected at all times.
+                                        Easily register your pets with our simple online form. Keep all important
+                                        information in one place, ensuring quick access to your pet’s details whenever
+                                        needed.
                                     </p>
                                 </div>
                             </div>
@@ -241,12 +269,13 @@
                             <img src="assets/img/cards-3.jpg" alt="" class="img-fluid" />
                             <div class="card-body">
                                 <h3>
-                                    <a href="#" class="stretched-link">Pet Awareness</a>
+                                    <a href="#" class="stretched-link">Vaccination Tracking</a>
                                 </h3>
                                 <div class="card-content">
                                     <p>
-                                        Stay informed with our pet awareness resources, offering tips on pet care, local
-                                        events, and important health updates to ensure your pets live their best lives.
+                                        Keep track of your pet’s vaccination history with our easy-to-use system.
+                                        Receive reminders for upcoming vaccinations to ensure your pet stays healthy and
+                                        up-to-date.
                                     </p>
                                 </div>
                             </div>
@@ -263,16 +292,14 @@
             <div class="container">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
                     <div class="col-xl-9 text-center text-xl-start">
-                        <h3>Call To Action</h3>
-                        <p>
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.
-                        </p>
+                        <h3>Join FURRYTECT</h3>
+                        <!-- <p>
+                            today and help us create a safer and more compassionate environment for pets and their
+                            owners!
+                        </p> -->
                     </div>
                     <div class="col-xl-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="#">Call To Action</a>
+                        <a class="cta-btn align-middle" href="#">Click Here</a>
                     </div>
                 </div>
             </div>
@@ -296,15 +323,16 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-item d-flex">
                             <div class="icon flex-shrink-0">
-                                <i class="bi bi-briefcase"></i>
+                                <i class="bx bxl-baidu"></i> <!-- Use an appropriate icon -->
                             </div>
                             <div>
                                 <h4 class="title">
-                                    <a href="service-details.html" class="stretched-link">Lorem Ipsum</a>
+                                    <a href="service-details.html" class="stretched-link">Pet Registration</a>
                                 </h4>
                                 <p class="description">
-                                    Voluptatum deleniti atque corrupti quos dolores et quas
-                                    molestias excepturi sint occaecati cupiditate non provident
+                                    Easily register your pets with our simple online form. Keep all important
+                                    information in one place, ensuring quick access to your pet’s details whenever
+                                    needed.
                                 </p>
                             </div>
                         </div>
@@ -314,15 +342,16 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-item d-flex">
                             <div class="icon flex-shrink-0">
-                                <i class="bi bi-card-checklist"></i>
+                                <i class="bi bi-person-check"></i> <!-- Use an appropriate icon -->
                             </div>
                             <div>
                                 <h4 class="title">
-                                    <a href="service-details.html" class="stretched-link">Dolor Sitema</a>
+                                    <a href="service-details.html" class="stretched-link">Owner Information
+                                        Management</a>
                                 </h4>
                                 <p class="description">
-                                    Minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                    ut aliquip ex ea commodo consequat tarad limino ata
+                                    Update and manage your contact information and your pet’s records effortlessly. Stay
+                                    connected and informed about your pet’s needs.
                                 </p>
                             </div>
                         </div>
@@ -332,15 +361,17 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="service-item d-flex">
                             <div class="icon flex-shrink-0">
-                                <i class="bi bi-bar-chart"></i>
+                                <i class="bi bi-bell-fill"></i> <!-- Use an appropriate icon -->
                             </div>
                             <div>
                                 <h4 class="title">
-                                    <a href="service-details.html" class="stretched-link">Sed ut perspiciatis</a>
+                                    <a href="service-details.html" class="stretched-link">Complaints and Concerns
+                                        Reporting</a>
                                 </h4>
                                 <p class="description">
-                                    Duis aute irure dolor in reprehenderit in voluptate velit
-                                    esse cillum dolore eu fugiat nulla pariatur
+                                    Our platform enables users to report animal-related issues, such as stray animals or
+                                    neglect, dog bites, and accidents. Your reports help us address concerns promptly
+                                    and improve community safety.
                                 </p>
                             </div>
                         </div>
@@ -350,15 +381,15 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="service-item d-flex">
                             <div class="icon flex-shrink-0">
-                                <i class="bi bi-binoculars"></i>
+                                <i class="bi bi-tag"></i> <!-- Use an appropriate icon -->
                             </div>
                             <div>
                                 <h4 class="title">
-                                    <a href="service-details.html" class="stretched-link">Magni Dolores</a>
+                                    <a href="service-details.html" class="stretched-link">Dog Tagging Services</a>
                                 </h4>
                                 <p class="description">
-                                    Excepteur sint occaecat cupidatat non proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum
+                                    Receive personalized dog tags with your pet’s registration information. This ensures
+                                    your pet can be identified quickly if they go missing.
                                 </p>
                             </div>
                         </div>
@@ -368,170 +399,25 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
                         <div class="service-item d-flex">
                             <div class="icon flex-shrink-0">
-                                <i class="bi bi-brightness-high"></i>
+                                <i class="bi bi-shield-check"></i> <!-- Use an appropriate icon -->
                             </div>
                             <div>
                                 <h4 class="title">
-                                    <a href="service-details.html" class="stretched-link">Nemo Enim</a>
+                                    <a href="service-details.html" class="stretched-link">Vaccination Tracking</a>
                                 </h4>
                                 <p class="description">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                                    qui blanditiis praesentium voluptatum deleniti atque
+                                    Keep track of your pet’s vaccination history with our easy-to-use system. Receive
+                                    reminders for upcoming vaccinations to ensure your pet stays healthy and up-to-date.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <!-- End Service Item -->
 
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="service-item d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-calendar4-week"></i>
-                            </div>
-                            <div>
-                                <h4 class="title">
-                                    <a href="service-details.html" class="stretched-link">Eiusmod Tempor</a>
-                                </h4>
-                                <p class="description">
-                                    Et harum quidem rerum facilis est et expedita distinctio.
-                                    Nam libero tempore, cum soluta nobis est eligendi
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Service Item -->
                 </div>
             </div>
         </section>
         <!-- /Services Section -->
-
-        <!-- Faq Section -->
-        <section id="faq" class="faq section">
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Frequently Asked Questions</h2>
-                <p>
-                    Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-                    consectetur velit
-                </p>
-            </div>
-            <!-- End Section Title -->
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="faq-container">
-                            <div class="faq-item faq-active">
-                                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
-                                <div class="faq-content">
-                                    <p>
-                                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna
-                                        id volutpat lacus laoreet non curabitur gravida. Venenatis
-                                        lectus magna fringilla urna porttitor rhoncus dolor purus
-                                        non.
-                                    </p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <!-- End Faq item-->
-
-                            <div class="faq-item">
-                                <h3>
-                                    Feugiat scelerisque varius morbi enim nunc faucibus a
-                                    pellentesque?
-                                </h3>
-                                <div class="faq-content">
-                                    <p>
-                                        Dolor sit amet consectetur adipiscing elit pellentesque
-                                        habitant morbi. Id interdum velit laoreet id donec
-                                        ultrices. Fringilla phasellus faucibus scelerisque
-                                        eleifend donec pretium. Est pellentesque elit ullamcorper
-                                        dignissim. Mauris ultrices eros in cursus turpis massa
-                                        tincidunt dui.
-                                    </p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <!-- End Faq item-->
-
-                            <div class="faq-item">
-                                <h3>
-                                    Dolor sit amet consectetur adipiscing elit pellentesque?
-                                </h3>
-                                <div class="faq-content">
-                                    <p>
-                                        Eleifend mi in nulla posuere sollicitudin aliquam ultrices
-                                        sagittis orci. Faucibus pulvinar elementum integer enim.
-                                        Sem nulla pharetra diam sit amet nisl suscipit. Rutrum
-                                        tellus pellentesque eu tincidunt. Lectus urna duis
-                                        convallis convallis tellus. Urna molestie at elementum eu
-                                        facilisis sed odio morbi quis
-                                    </p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <!-- End Faq item-->
-                        </div>
-                    </div>
-                    <!-- End Faq Column-->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="faq-container">
-                            <div class="faq-item">
-                                <h3>
-                                    Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
-                                </h3>
-                                <div class="faq-content">
-                                    <p>
-                                        Dolor sit amet consectetur adipiscing elit pellentesque
-                                        habitant morbi. Id interdum velit laoreet id donec
-                                        ultrices. Fringilla phasellus faucibus scelerisque
-                                        eleifend donec pretium. Est pellentesque elit ullamcorper
-                                        dignissim. Mauris ultrices eros in cursus turpis massa
-                                        tincidunt dui.
-                                    </p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <!-- End Faq item-->
-
-                            <div class="faq-item">
-                                <h3>
-                                    Tempus quam pellentesque nec nam aliquam sem et tortor
-                                    consequat?
-                                </h3>
-                                <div class="faq-content">
-                                    <p>
-                                        Molestie a iaculis at erat pellentesque adipiscing
-                                        commodo. Dignissim suspendisse in est ante in. Nunc vel
-                                        risus commodo viverra maecenas accumsan. Sit amet nisl
-                                        suscipit adipiscing bibendum est. Purus gravida quis
-                                        blandit turpis cursus in
-                                    </p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <!-- End Faq item-->
-
-                            <div class="faq-item">
-                                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
-                                <div class="faq-content">
-                                    <p>
-                                        Enim ea facilis quaerat voluptas quidem et dolorem. Quis
-                                        et consequatur non sed in suscipit sequi. Distinctio ipsam
-                                        dolore et.
-                                    </p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <!-- End Faq item-->
-                        </div>
-                    </div>
-                    <!-- End Faq Column-->
-                </div>
-            </div>
-        </section>
-        <!-- /Faq Section -->
 
         <!-- Team Section -->
         <section id="team" class="team section">
@@ -589,84 +475,82 @@
                             <div class="swiper-slide">
                                 <div class="team">
                                     <div class="pic">
-                                        <img src="assets/img/team/team-1.jpg" alt="Image" class="img-fluid" />
+                                        <img src="assets/img/FurryTeam/team-1.jpg" alt="Image" class="img-fluid" />
                                     </div>
                                     <h3 clas="">
-                                        <a href="#"><span class="">Jeremy</span> Walker</a>
+                                        <a href="#"><span class="">Haydee</span> S. Dalumpines</a>
                                     </h3>
-                                    <span class="d-block position">CEO, Founder, Atty.</span>
-                                    <p>
-                                        Separated they live in. Separated they live in
-                                        Bookmarksgrove right at the coast of the Semantics, a
-                                        large language ocean.
-                                    </p>
-                                    <p class="mb-0">
-                                        <a href="#" class="more dark">Learn More <span
-                                                class="bi bi-arrow-right-short"></span></a>
-                                    </p>
+                                    <span class="d-block position">Municipal Agriculturist</span>
+
+
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="team">
                                     <div class="pic">
-                                        <img src="assets/img/team/team-2.jpg" alt="Image" class="img-fluid" />
+                                        <img src="assets/img/FurryTeam/team-2.jpg" alt="Image" class="img-fluid" />
                                     </div>
                                     <h3 clas="">
-                                        <a href="#"><span class="">Lawson</span> Arnold</a>
+                                        <a href="#"><span class="">Serrayah</span> F. Santillan</a>
                                     </h3>
-                                    <span class="d-block position">CEO, Founder, Atty.</span>
-                                    <p>
-                                        Separated they live in. Separated they live in
-                                        Bookmarksgrove right at the coast of the Semantics, a
-                                        large language ocean.
-                                    </p>
-                                    <p class="mb-0">
-                                        <a href="#" class="more dark">Learn More <span
-                                                class="bi bi-arrow-right-short"></span></a>
-                                    </p>
+                                    <span class="d-block position">HVCDP Coordinator</span>
+
+
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="team">
                                     <div class="pic">
-                                        <img src="assets/img/team/team-3.jpg" alt="Image" class="img-fluid" />
+                                        <img src="assets/img/FurryTeam/team-3.jpg" alt="Image" class="img-fluid" />
                                     </div>
                                     <h3 clas="">
-                                        <a href="#"><span class="">Patrik</span> White</a>
+                                        <a href="#"><span class="">Candido</span> L. Belarmino</a>
                                     </h3>
-                                    <span class="d-block position">CEO, Founder, Atty.</span>
-                                    <p>
-                                        Separated they live in. Separated they live in
-                                        Bookmarksgrove right at the coast of the Semantics, a
-                                        large language ocean.
-                                    </p>
-                                    <p class="mb-0">
-                                        <a href="#" class="more dark">Learn More <span
-                                                class="bi bi-arrow-right-short"></span></a>
-                                    </p>
+                                    <span class="d-block position">Livestock Coordinator</span>
+
+
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="team">
                                     <div class="pic">
-                                        <img src="assets/img/team/team-4.jpg" alt="Image" class="img-fluid" />
+                                        <img src="assets/img/FurryTeam/team-4.jpg" alt="Image" class="img-fluid" />
                                     </div>
                                     <h3 clas="">
-                                        <a href="#"><span class="">Kathryn</span> Ryan</a>
+                                        <a href="#"><span class="">Jessie</span> G. Benito</a>
                                     </h3>
-                                    <span class="d-block position">CEO, Founder, Atty.</span>
-                                    <p>
-                                        Separated they live in. Separated they live in
-                                        Bookmarksgrove right at the coast of the Semantics, a
-                                        large language ocean.
-                                    </p>
-                                    <p class="mb-0">
-                                        <a href="#" class="more dark">Learn More <span
-                                                class="bi bi-arrow-right-short"></span></a>
-                                    </p>
+                                    <span class="d-block position">Rice/RCM Coordinator</span>
+
+
                                 </div>
                             </div>
-                            <!-- <div class="swiper-slide"></div> -->
+                            <div class="swiper-slide">
+                                <div class="team">
+                                    <div class="pic">
+                                        <img src="assets/img/FurryTeam/team-5.jpg" alt="Image" class="img-fluid" />
+                                    </div>
+                                    <h3 clas="">
+                                        <a href="#"><span class="">Helen Grace</span> L. Punsalan</a>
+                                    </h3>
+                                    <span class="d-block position">Corn/Casava/RBO Coordinator</span>
+
+
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="team">
+                                    <div class="pic">
+                                        <img src="assets/img/FurryTeam/team-6.jpg" alt="Image" class="img-fluid" />
+                                    </div>
+                                    <h3 clas="">
+                                        <a href="#"><span class="">Myra</span> M. Delos Reyes</a>
+                                    </h3>
+                                    <span class="d-block position">Fisheries</span>
+
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -690,9 +574,10 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
                     <iframe style="border: 0; width: 100%; height: 270px"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d122.0721107!3d10.6768504!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bfb92ef3d1194d%3A0xd30e35d5a73d47f1!2sPoblacion%2C%20Tibiao%2C%20Antique%2C%20Philippines!5e0!3m2!1sen!2sus!4v1694973215673!5m2!1sen!2sus"
                         frameborder="0" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                 </div>
                 <!-- End Google Maps -->
 
@@ -702,7 +587,7 @@
                             <i class="bi bi-geo-alt flex-shrink-0"></i>
                             <div>
                                 <h3>Address</h3>
-                                <p>A108 Adam Street, New York, NY 535022</p>
+                                <p>Poblacion, Tibiao, Antique</p>
                             </div>
                         </div>
                         <!-- End Info Item -->
@@ -711,7 +596,7 @@
                             <i class="bi bi-telephone flex-shrink-0"></i>
                             <div>
                                 <h3>Call Us</h3>
-                                <p>+1 5589 55488 55</p>
+                                <p>+63 9267 128 814</p>
                             </div>
                         </div>
                         <!-- End Info Item -->
@@ -720,7 +605,7 @@
                             <i class="bi bi-envelope flex-shrink-0"></i>
                             <div>
                                 <h3>Email Us</h3>
-                                <p>info@example.com</p>
+                                <p>FurryTectTibiao@gmail.com</p>
                             </div>
                         </div>
                         <!-- End Info Item -->
@@ -870,11 +755,7 @@
                 <span>All Rights Reserved</span>
             </p>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Designed by <a href="#">BootstrapMade</a>
             </div>
         </div>
     </footer>
@@ -888,6 +769,7 @@
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/boxicons/js/boxicons.bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
