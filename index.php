@@ -77,7 +77,7 @@ session_start();
                     <li><a href="#hero" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="report-incident">Report Incident</a></li>
-                    <li><a href="#mypets">My Pets</a></li>
+                    <li><a href="my-pets">My Pets</a></li>
                     <li><a href="#awareness">Awareness</a></li>
                     <li><a href="#resources">Resources</a></li>
                     <!-- <li><a href="user-login#login">Login</a></li>
@@ -118,7 +118,7 @@ session_start();
                                 alt></a>
                         <h2><span style="color: aqua;">FURRY</span>TECT</h2>
                         <p>Animal Vaccination and Dogtagging</p>
-                        <a href="#" class="btn-get-started">Get Started</a>
+                        <a href="#featured-services" class="btn-get-started">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -224,7 +224,8 @@ session_start();
                             <img src="assets/img/cards-1.jpg" alt="" class="img-fluid" />
                             <div class="card-body">
                                 <h3>
-                                    <a href="#" class="stretched-link">Complaints and Concerns Reporting</a>
+                                    <a href="report-incident" class="stretched-link">Complaints and Concerns
+                                        Reporting</a>
                                 </h3>
                                 <div class="card-content">
                                     <p>
@@ -242,7 +243,7 @@ session_start();
                             <img src="assets/img/cards-2.jpg" alt="" class="img-fluid" />
                             <div class="card-body">
                                 <h3>
-                                    <a href="#" class="stretched-link">Registration of Pets</a>
+                                    <a href="registration" class="stretched-link">Registration of Pets</a>
                                 </h3>
                                 <div class="card-content">
                                     <p>
@@ -261,7 +262,7 @@ session_start();
                             <img src="assets/img/cards-3.jpg" alt="" class="img-fluid" />
                             <div class="card-body">
                                 <h3>
-                                    <a href="#" class="stretched-link">Vaccination Tracking</a>
+                                    <a href="my-pets" class="stretched-link">Vaccination Tracking</a>
                                 </h3>
                                 <div class="card-content">
                                     <p>
