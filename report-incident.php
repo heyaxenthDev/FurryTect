@@ -134,7 +134,7 @@ session_start();
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select id="incidentType" class="form-select" required>
+                                        <select id="incidentType" name="incidentType" class="form-select" required>
                                             <option value="" disabled selected>Select type of report</option>
                                             <option value="animalVehicle">Animal-Vehicle Accident</option>
                                             <option value="dogBites">Dog Bites and Attacks</option>
@@ -145,30 +145,31 @@ session_start();
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="datetime-local" id="dateTime" class="form-control" required>
+                                        <input type="datetime-local" id="dateTime" name="dateTime" class="form-control"
+                                            required>
                                         <label for="dateTime">Date and Time</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" id="location" class="form-control" placeholder="Enter location"
-                                    required>
+                                <input type="text" id="location" name="location" class="form-control"
+                                    placeholder="Enter location" required>
                                 <label for="location">Location</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea id="description" class="form-control" style="height: 100px"
+                                <textarea id="description" name="description" class="form-control" style="height: 100px"
                                     placeholder="Be specific as possible, including relevant details such as the pet’s behavior, people involved, etc."
                                     required></textarea>
                                 <label for="description">Description</label>
                             </div>
                             <div class="mb-3">
                                 <label for="uploadEvidence" class="form-label">Upload softcopy evidence</label>
-                                <input type="file" id="uploadEvidence" class="form-control" multiple
-                                    accept=".jpg,.png,.mp4">
+                                <input type="file" id="uploadEvidence" name="uploadEvidences[]" class="form-control"
+                                    multiple accept=".jpg,.png,.mp4">
                                 <small class="text-muted">Photo, Video, .jpg / .png / .mp4 Max of 5 files</small>
                             </div>
                             <div class="form-check mb-3">
-                                <input type="checkbox" id="agree" class="form-check-input" required>
+                                <input type="checkbox" id="agree" name="agree" class="form-check-input" required>
                                 <label for="agree" class="form-check-label">
                                     By selecting this checkbox, I agree and accept the <a href="#"
                                         class="text-primary">FurryTect Terms of

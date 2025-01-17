@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'includes/conn.php'; // Include database connection
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['insertIncidentReport'])) {
@@ -31,9 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['insertIncidentReport']
     $stmt->bind_param("sssssi", $incidentType, $dateTime, $location, $description, $evidenceFilesJson, $agreeTerms);
 
     if ($stmt->execute()) {
-        echo "Incident report submitted successfully!";
+        // echo "Incident report submitted successfully!";
+        $_SESSION['status'] = "Success";
+        $_SESSION['status_text'] = "Incident report submitted successfully!";
+        $_SESSION['status_code'] = "success";
+        $_SESSION['status_btn'] = "Done";
+        header("Location: {$_SERVER['HTTP_REFERER']}");
     } else {
-        echo "Error: " . $stmt->error;
+        $_SESSION['status'] = "Error";
+        $_SESSION['status_text'] = "Error: " . $stmt->error;
+        $_SESSION['status_code'] = "error";
+        $_SESSION['status_btn'] = "Back";
+        header("Location: {$_SERVER['HTTP_REFERER']}");
     }
 
     $stmt->close();
