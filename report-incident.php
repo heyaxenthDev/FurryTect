@@ -72,30 +72,9 @@ session_start();
                 <h1 class="sitename"><span style="color: aqua;">FURRY</span>TECT</h1>
             </a>
 
-            <nav id="navmenu" class="navmenu">
-                <ul>
-                    <li><a href="index" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="report-incident">Report Incident</a></li>
-                    <li><a href="my-pets">My Pets</a></li>
-                    <li><a href="#awareness">Awareness</a></li>
-                    <li><a href="#resources">Resources</a></li>
-                    <!-- <li><a href="user-login#login">Login</a></li>
-                    <li><a href="user-login#register">Register</a></li> -->
-                    <!-- <li><a href="#mypets">My Pets</a></li>
-                    <li><a href="#community">Community</a></li>
-                    <li><a href="#resources">Resources</a></li> -->
-                    <!-- <li class="dropdown"><a href="#"><span>Account</span> <i
-                                class="bi bi-chevron-down toggle-dropdown"></i></a>
-                        <ul>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
-                        </ul>
-                    </li> -->
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav>
+            <?php 
+            include 'includes/index-nav.php';
+            ?>
 
             <div class="header-social-links">
                 <a href="login-admin" class="twitter"><i class="bi bi-person"></i></a>

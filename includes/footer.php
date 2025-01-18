@@ -30,12 +30,12 @@
                     <span class="sitename">Knight</span>
                 </a>
                 <div class="footer-contact pt-3">
-                    <p>A108 Adam Street</p>
-                    <p>New York, NY 535022</p>
+                    <p>Poblacion, </p>
+                    <p>Tibiao, Antique</p>
                     <p class="mt-3">
-                        <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+                        <strong>Phone:</strong> <span>+63 9267 128 814</span>
                     </p>
-                    <p><strong>Email:</strong> <span>info@example.com</span></p>
+                    <p><strong>Email:</strong> <span>FurryTectTibiao@gmail.com</span></p>
                 </div>
             </div>
 
@@ -91,7 +91,7 @@
     <div class="container copyright text-center mt-4">
         <p>
             © <span>Copyright</span>
-            <strong class="px-1 sitename">Knight</strong>
+            <strong class="px-1 sitename">FurryTect</strong>
             <span>All Rights Reserved</span>
         </p>
         <div class="credits">

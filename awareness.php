@@ -91,11 +91,11 @@ session_start();
         <!-- Page Title -->
         <div class="page-title custom-image-background">
             <div class="container">
-                <h1>My Pets</h1>
+                <h1>Awareness</h1>
                 <nav class="breadcrumbs">
                     <ol>
                         <li><a href="index">Home</a></li>
-                        <li class="current">My Pets</li>
+                        <li class="current">Awareness</li>
                     </ol>
                 </nav>
             </div>
@@ -121,5 +121,5 @@ session_start();
     </main>
 
     <?php 
-    include 'includes/footer.php';
-   ?>
+include 'includes/footer.php';
+?>
