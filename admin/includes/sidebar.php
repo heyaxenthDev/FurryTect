@@ -85,6 +85,29 @@ $requestCount = $row['requestCount'];
                 <span>Dog Tagging</span>
             </a>
         </li><!-- End Dogtagging Page Nav -->
+        <?php
+
+// Query to count active queries (unread or unaddressed)
+$result = $conn->query("SELECT COUNT(*) AS active_count FROM contact_messages WHERE status = '1'");
+$row = $result->fetch_assoc();
+
+?>
+        <li class="nav-item">
+            <a class="nav-link <?= is_active('contact us', $current_page); ?>" href="contact us">
+                <i class="bx bxs-envelope"></i>
+                <span>Email Queries</span>
+                <?php 
+                if ($row['active_count'] > 0) :
+                ?>
+                <span class="badge bg-warning badge-right"><?= $row['active_count'];?>
+                </span>
+                <?php
+                endif;
+                ?>
+
+            </a>
+        </li><!-- End Contact Us Page Nav -->
+
 
         <li class="nav-heading">Account Requests</li>
 
@@ -128,7 +151,7 @@ $requestCount = $row['requestCount'];
                 <i class="bi bi-clock-history"></i>
                 <span>Log History</span>
             </a>
-        </li>
+        </li><!-- End Log History Page Nav -->
 
     </ul>
 
