@@ -78,7 +78,7 @@ session_start();
                     <li><a href="#about">About</a></li>
                     <li><a href="report-incident">Report Incident</a></li>
                     <li><a href="my-pets">My Pets</a></li>
-                    <li><a href="awareness">Awareness</a></li>
+                    <!-- <li><a href="awareness">Awareness</a></li> -->
                     <li><a href="resources">Resources</a></li>
                     <!-- <li><a href="user-login#login">Login</a></li>
                     <li><a href="user-login#register">Register</a></li> -->

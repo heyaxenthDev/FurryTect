@@ -41,6 +41,11 @@ if (isset($_GET['id']) && !isset($_GET['confirmation'])) {
             $_SESSION['status_text'] = "Account Confirmed!";
             $_SESSION['status_code'] = "success";
             $_SESSION['status_btn'] = "Ok";
+
+            $username = $_SESSION["username"];
+
+            logActivity($conn, $username, "Confirmed Owner Account");
+
             header("Location: {$_SERVER['HTTP_REFERER']}");
             exit();
         } else {
@@ -56,6 +61,15 @@ if (isset($_GET['id']) && !isset($_GET['confirmation'])) {
         $updateStmt->close();
     }
     $stmt->close();
+}
+
+function logActivity($conn, $username, $desc){
+    $sql = "INSERT INTO log_history (username, description) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $desc);
+    $stmt->execute();
+    $stmt->close();
+
 }
 
 if (isset($_GET['id']) && isset($_GET['confirmation'])) {

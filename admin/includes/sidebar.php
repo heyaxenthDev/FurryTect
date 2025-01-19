@@ -13,7 +13,8 @@ $pages = [
     "dog tagging" => "dog tagging",
     "vaccination report" => "vaccination report",
     "dogtagging report" => "dog tagging report",
-    "user-profile" => "user-profile"
+    "user-profile" => "user-profile",
+    "log-history" => "log-history"
 ];
 
 // Function to determine if a page is active
@@ -121,6 +122,13 @@ $requestCount = $row['requestCount'];
                 <span>Profile</span>
             </a>
         </li><!-- End Profile Page Nav -->
+
+        <li class="na-item">
+            <a class="nav-link <?= is_active('log-history', $current_page); ?>" href="log-history">
+                <i class="bi bi-clock-history"></i>
+                <span>Log History</span>
+            </a>
+        </li>
 
     </ul>
 

@@ -4,7 +4,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
 $pages = [
     'report-incident' => 'report-incident',
     'my-pets' => 'my-pets',
-    'awareness' => 'awareness',
+    // 'awareness' => 'awareness',
     'resources' => 'resources',
 ];
 

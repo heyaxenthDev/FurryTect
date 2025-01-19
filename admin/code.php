@@ -79,6 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {
         $_SESSION['status_text'] = "Dog information added!";
         $_SESSION['status_code'] = "success";
         $_SESSION['status_btn'] = "Done";
+
+        logActivity($conn, $_SESSION['username'], 'Registered a Dog and Owner record, reference owner code: ' . $ownerCode);
     } else {
         $_SESSION['status'] = "Error";
         $_SESSION['status_text'] = $stmt->error;
@@ -150,6 +152,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['CatsReg'])) {
         $_SESSION['status_text'] = "Cat information added!";
         $_SESSION['status_code'] = "success";
         $_SESSION['status_btn'] = "Done";
+
+        logActivity($conn, $_SESSION['username'], 'Registered a Cat and Owner record, reference owner code: ' . $ownerCode);
     } else {
         $_SESSION['status'] = "Error";
         $_SESSION['status_text'] = $stmt->error;
@@ -189,6 +193,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AddDogs'])) {
         $_SESSION['status_text'] = "Dog information added!";
         $_SESSION['status_code'] = "success";
         $_SESSION['status_btn'] = "Done";
+
+        logActivity($conn, $_SESSION['username'], 'Added a Dog with the existing Owner record, reference owner code: ' . $ownerCode);
+        
     } else {
         $_SESSION['status'] = "Error";
         $_SESSION['status_text'] = $stmt->error;
@@ -226,6 +233,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AddCats'])) {
         $_SESSION['status_text'] = "Cat information added!";
         $_SESSION['status_code'] = "success";
         $_SESSION['status_btn'] = "Done";
+
+        logActivity($conn, $_SESSION['username'], 'Added a Cat with the existing Owner record, reference owner code: ' . $ownerCode);
     } else {
         $_SESSION['status'] = "Error";
         $_SESSION['status_text'] = $stmt->error;
@@ -265,6 +274,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateDogs'])) {
         $_SESSION['status_text'] = "Dog information updated!";
         $_SESSION['status_code'] = "success";
         $_SESSION['status_btn'] = "Done";
+
+        logActivity($conn, $_SESSION['username'], 'Updated dog record, reference dog code: ' . $dogId);
     } else {
         $_SESSION['status'] = "Error";
         $_SESSION['status_text'] = $stmt->error;
@@ -294,16 +305,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateCats'])) {
     // Update the dog information in the database
     $query = "UPDATE cats SET name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=? WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("siisssi", $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $dogId);
+    $stmt->bind_param("siisssi", $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $catId);
 
-    // Assuming you have a variable $dogId that holds the ID of the dog being edited
-    $dogId = $_POST['catId'];
+    // Assuming you have a variable $catId that holds the ID of the dog being edited
+    $catId = $_POST['catId'];
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
         $_SESSION['status_text'] = "Cat information updated!";
         $_SESSION['status_code'] = "success";
         $_SESSION['status_btn'] = "Done";
+
+        logActivity($conn, $_SESSION['username'], 'Updated cat record, reference cat code: ' . $catId);
+
     } else {
         $_SESSION['status'] = "Error";
         $_SESSION['status_text'] = $stmt->error;
@@ -373,6 +387,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
                     $_SESSION['status_text'] = "Owner information updated!";
                     $_SESSION['status_code'] = "success";
                     $_SESSION['status_btn'] = "Done";
+
+                    logActivity($conn, $_SESSION['username'], 'Updated Owner record, reference owner code: ' . $ownerId);
+
                 } else {
                     $_SESSION['status'] = "Error";
                     $_SESSION['status_text'] = $stmt->error;
@@ -404,6 +421,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
             $_SESSION['status_text'] = "Owner information updated!";
             $_SESSION['status_code'] = "success";
             $_SESSION['status_btn'] = "Done";
+
+            logActivity($conn, $_SESSION['username'], 'Updated owner record, reference owner code: ' . $ownerId);
         } else {
             $_SESSION['status'] = "Error";
             $_SESSION['status_text'] = $stmt->error;
@@ -416,6 +435,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
 
     header("Location: {$_SERVER['HTTP_REFERER']}");
     exit();
+}
+
+function logActivity($conn, $username, $desc){
+    $sql = "INSERT INTO log_history (username, description) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $desc);
+    $stmt->execute();
+    $stmt->close();
+
 }
 
 ?>

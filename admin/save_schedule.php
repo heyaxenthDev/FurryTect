@@ -28,11 +28,22 @@ if ($save) {
     $_SESSION['status_text'] = "Schedule successfully saved.";
     $_SESSION['status_code'] = "success";
     $_SESSION['status_btn'] = "Done";
+
+    logActivity($conn, $_SESSION['username'], 'Saved a schedule');
 } else {
     $_SESSION['status'] = "Error";
     $_SESSION['status_text'] = "An error occurred: " . $conn->error;
     $_SESSION['status_code'] = "error";
     $_SESSION['status_btn'] = "Back";
+}
+
+function logActivity($conn, $username, $desc){
+    $sql = "INSERT INTO log_history (username, description) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $desc);
+    $stmt->execute();
+    $stmt->close();
+
 }
 
 $conn->close();

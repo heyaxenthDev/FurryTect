@@ -25,6 +25,12 @@ if (isset($_POST['AdminLogin'])) {
             $_SESSION['admin_auth'] = true;
             $_SESSION['logged'] = "Logged in successfully";
             $_SESSION['logged_icon'] = "success";
+
+            $username = $row['username'];
+            $desc = "Logged in successfully";
+
+            user_logged($conn, $username, $desc);
+
             header("Location: admin/dashboard.php");
             exit();
         } else {
@@ -47,6 +53,15 @@ if (isset($_POST['AdminLogin'])) {
 
     $stmt->close();
     // $conn->close();
+}
+
+function user_logged($conn, $username, $desc){
+    $sql = "INSERT INTO log_history (username, description) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $desc);
+    $stmt->execute();
+    $stmt->close();
+
 }
 
 if (isset($_POST['AdminReg'])) {
