@@ -112,7 +112,7 @@ session_start();
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-item d-flex">
                             <div class="icon flex-shrink-0">
-                                <i class="bx bx-bulb"></i>
+                                <i class="bi bi-lightbulb"></i>
                             </div>
                             <div>
                                 <h4 class="title">
@@ -245,7 +245,7 @@ session_start();
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-item d-flex">
                             <div class="icon flex-shrink-0">
-                                <i class="bx bxs-injection"></i> <!-- Use an appropriate icon -->
+                                <i class="bi bi-exclamation-triangle"></i> <!-- Use an appropriate icon -->
                             </div>
                             <div>
                                 <h4 class="title">
