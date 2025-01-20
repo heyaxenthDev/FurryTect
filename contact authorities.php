@@ -91,98 +91,77 @@ session_start();
         <!-- Page Title -->
         <div class="page-title custom-image-background">
             <div class="container">
-                <h1>Resources</h1>
+                <h1>Contact Authorities</h1>
                 <nav class="breadcrumbs">
                     <ol>
                         <li><a href="index">Home</a></li>
-                        <li class="current">Resources</li>
+                        <li><a href="resources">Resources</a></li>
+                        <li class="current">Contact Authorities</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <!-- End Page Title -->
 
-        <!-- Blog Posts Section -->
-        <section id="blog-posts" class="blog-posts section">
-
-            <div class="container">
-                <div class="row gy-4">
-
-                    <div class="col-lg-3">
-                        <article>
-
-                            <div class="post-img">
-                                <img src="assets/img/AdobeStock_83233470-2048x1255.jpeg" alt="" class="img-fluid">
-                            </div>
-
-                            <h2 class="title">
-                                <a href="legal-information">Legal Information</a>
-                            </h2>
-                            <p>
-                                Understand the laws and procedures for responsible
-                                pet ownership.</p>
-
-                        </article>
-                    </div><!-- End post list item -->
-
-                    <div class="col-lg-3">
-                        <article>
-
-                            <div class="post-img">
-                                <img src="assets/img/erda-estremera-sxNt9g77PE0-unsplash.jpg" alt="" class="img-fluid">
-                            </div>
-
-                            <h2 class="title">
-                                <a href="safety-tips">Safety Tips</a>
-                            </h2>
-                            <p>
-                                Keep your furry friend safe: Discover responsible
-                                pet ownership tips.</p>
-
-                        </article>
-                    </div><!-- End post list item -->
-
-                    <div class="col-lg-3">
-                        <article>
-
-                            <div class="post-img">
-                                <img src="assets/img/humberto-arellano-N_G2Sqdy9QY-unsplash.jpg" alt=""
-                                    class="img-fluid">
-                            </div>
-
-                            <h2 class="title">
-                                <a href="vet-clinic and shelters.php">Veterinary Clinics and Shelters</a>
-                            </h2>
-                            <p>
-                                Get support for your pet's well-being and safety.
+        <section id="starter-section" class="starter-section section">
+            <!-- Section Container -->
+            <div class="container section-title text-start" data-aos="fade-up">
+                <!-- Card Container -->
+                <div class="card shadow">
+                    <div class="card-body m-4">
+                        <!-- Logo and Title Section -->
+                        <div class="text-center">
+                            <img src="assets/img/472833236_3744733079124093_4118503252606135086_n.jpg"
+                                alt="Municipal Seal" style="width: 100px; height: auto; margin-bottom: 1rem;">
+                            <h5 class="fw-bold text-center">Republic of the Philippines</h5>
+                            <p class="text-center mb-0">
+                                Province of Antique<br>
+                                Municipality of Tibiao<br>
+                                Office of the Municipal Agriculturist
                             </p>
-                        </article>
-                    </div><!-- End post list item -->
+                        </div>
 
-                    <div class="col-lg-3">
-                        <article>
-
-                            <div class="post-img">
-                                <img src="assets/img/360_F_726094808_lUARvgjkxjhQCEiWgnnRg0IMjLqAeLcP.jpg" alt=""
-                                    class="img-fluid">
+                        <!-- Contact Cards Section -->
+                        <div class="row mt-4">
+                            <div class="col-md-3 col-6">
+                                <div class="card border">
+                                    <div class="card-body text-center">
+                                        <p class="fw-bold mb-1">Haydee S. Dalumpines</p>
+                                        <p class="mb-1">Municipal Agriculturist</p>
+                                        <p class="text-muted">09123456789</p>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="col-md-3 col-6">
+                                <div class="card border">
+                                    <div class="card-body text-center">
+                                        <!-- Add more contact details or leave blank -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="card border">
+                                    <div class="card-body text-center">
+                                        <!-- Add more contact details or leave blank -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="card border">
+                                    <div class="card-body text-center">
+                                        <!-- Add more contact details or leave blank -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End of Row -->
+                    </div>
+                </div><!-- End of Card -->
+            </div><!-- End of Container -->
+        </section>
 
-                            <h2 class="title">
-                                <a href="contact authorities">Contact Authorities</a>
-                            </h2>
-                            <p>
-                                Contact local authorities for pet-related assistance</p>
-
-                        </article>
-                    </div><!-- End post list item -->
-
-                </div>
-            </div>
-
-        </section><!-- /Blog Posts Section -->
 
     </main>
 
     <?php 
-include 'includes/footer.php';
-?>
+    include 'includes/footer.php';
+   ?>

@@ -62,10 +62,10 @@
                         <i class="bi bi-chevron-right"></i>
                         <a href="#">My Pets</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <i class="bi bi-chevron-right"></i>
                         <a href="#">Awareness</a>
-                    </li>
+                    </li> -->
                     <li>
                         <i class="bi bi-chevron-right"></i> <a href="#">Resources</a>
                     </li>
