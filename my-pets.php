@@ -107,13 +107,8 @@ session_start();
 
             <!-- Section Title -->
             <div class="container section-title text-start" data-aos="fade-up">
-                <div class="card shadow">
-                    <div class="card-body m-4">
-
-
-
-                    </div>
-                </div>
+                <h2>My Pets</h2>
+                <p>Here are the list of your pets</p>
             </div><!-- End Section Title -->
 
         </section><!-- /Starter Section Section -->

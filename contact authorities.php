@@ -126,30 +126,41 @@ session_start();
                             <div class="col-md-3 col-6">
                                 <div class="card border">
                                     <div class="card-body text-center">
-                                        <p class="fw-bold mb-1">Haydee S. Dalumpines</p>
-                                        <p class="mb-1">Municipal Agriculturist</p>
-                                        <p class="text-muted">09123456789</p>
+                                        <img class="img-fluid" src="assets/img/dar.jpg" alt="">
+                                        <p class="fw-bold mb-1 mt-2">Department of Agriculture</p>
+                                        <p class="mb-1">Tibiao, Antique</p>
+                                        <p class="text-muted">09267128814</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 col-6">
                                 <div class="card border">
                                     <div class="card-body text-center">
-                                        <!-- Add more contact details or leave blank -->
+                                        <img class="img-fluid" src="assets/img/doh.png" alt="">
+                                        <p class="fw-bold mb-1 mt-2">Rural Health Unit</p>
+                                        <p class="mb-1">Tibiao, Antique</p>
+                                        <p class="text-muted">09679050624</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 col-6">
                                 <div class="card border">
                                     <div class="card-body text-center">
-                                        <!-- Add more contact details or leave blank -->
+                                        <img class="img-fluid" src="assets/img/pnp.png" alt="">
+                                        <p class="fw-bold mb-1 mt-2">Philippine National Police</p>
+                                        <p class="mb-1 mt-2">Tibiao, Antique</p>
+                                        <p class="text-muted">09997345152</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 col-6">
                                 <div class="card border">
                                     <div class="card-body text-center">
-                                        <!-- Add more contact details or leave blank -->
+                                        <img class="img-fluid" src="assets/img/drrmo.jpg" alt="">
+                                        <p class="fw-bold mb-1 mt-2">Municipal DRRMO
+                                        </p>
+                                        <p class="mb-1">Tibiao, Antique</p>
+                                        <p class="text-muted">09778035582</p>
                                     </div>
                                 </div>
                             </div>

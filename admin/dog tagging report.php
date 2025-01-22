@@ -21,18 +21,20 @@ include 'alert.php';
                 <div class="card">
                     <div class="card-body mt-3">
                         <!-- Report Header -->
-                        <div class="text-center mb-4">
-                            <h5>Department of Agriculture</h5>
-                            <h6>Bureau of Animal Industry</h6>
-                            <p>Visayas Ave. Diliman, Quezon City</p>
-                            <h4 class="mt-3"><strong>Dog Tagging Report</strong></h4>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/DAO.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-md-9 text-center align-content-center">
+                                <h4 class="mt-3"><strong>Dog Tagging Report</strong></h4>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <p><strong>Province:</strong> Antique</p>
                                 <p><strong>Date Reported: </strong> <?php echo date("M d, Y"); ?></p>
                             </div>
-                            <div>
+                            <div class="col-md-6">
                                 <p><strong>Municipality:</strong> TIBIAO</p>
                                 <p><strong>Livestock Technician:</strong> CANDIDO L. BELARMINO</p>
                             </div>
@@ -40,10 +42,15 @@ include 'alert.php';
 
                         <!-- Table -->
                         <table class="table table-bordered">
-                            <thead>
+                            <thead class="text-center">
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Barangay</th>
+                                    <th rowspan="2">DATE</th>
+                                    <th rowspan="2">BARANGAY</th>
+                                    <th colspan="3">Owner Information</th>
+                                    <th colspan="5">Animal Information</th>
+                                    <th>Dog Tagging Information</th>
+                                </tr>
+                                <tr class="fw-narrow">
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Gender</th>
@@ -55,44 +62,36 @@ include 'alert.php';
                                     <th>Tag Number</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                                 <?php
                                 // Join query to fetch data from 'dogs' and 'owners'
                                 $sql = "SELECT 
-                                            dogs.date_tagged AS dog_date_tagged,
-                                            owners.barangay AS owner_barangay,
-                                            owners.first_name AS owner_first_name,
-                                            owners.last_name AS owner_last_name,
-                                            dogs.name AS dog_name,
-                                            dogs.color AS dog_color,
-                                            dogs.sex AS dog_sex,
-                                            dogs.age AS dog_age,
-                                            dogs.vacc_status AS dog_vacc_status,
-                                            dogs.tag_number AS dog_tag_number
-                                        FROM 
-                                            dogs
-                                        JOIN 
-                                            owners 
-                                        ON 
-                                            dogs.owner_code = owners.owner_code
-                                        ORDER BY 
-                                            dogs.date_tagged ASC";
+                                        d.*,
+                                        o.*
+                                    FROM 
+                                        dogs d
+                                    INNER JOIN 
+                                        owners o 
+                                    ON 
+                                        d.owner_code = o.owner_code
+                                    WHERE 
+                                        d.date_tagged IS NOT NULL AND d.date_tagged != ''";
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>
-                                            <td>{$row['dog_date_tagged']}</td>
-                                            <td>{$row['owner_barangay']}</td>
-                                            <td>{$row['owner_first_name']}</td>
-                                            <td>{$row['owner_last_name']}</td>
-                                            <td>" . ucfirst($row['dog_sex']) . "</td>
-                                            <td>{$row['dog_name']}</td>
-                                            <td>{$row['dog_color']}</td>
-                                            <td>" . ucfirst($row['dog_sex']) . "</td>
-                                            <td>{$row['dog_age']}</td>
-                                            <td>" . ($row['dog_vacc_status'] == 1 ? 'Yes' : 'No') . "</td>
-                                            <td>{$row['dog_tag_number']}</td>
+                                            <td>{$row['date_tagged']}</td>
+                                            <td>{$row['barangay']}</td>
+                                            <td>{$row['first_name']}</td>
+                                            <td>{$row['last_name']}</td>
+                                            <td>" . ($row['sex'] == 0 ? "Female" : "Male"). "</td>
+                                            <td>{$row['name']}</td>
+                                            <td>{$row['color']}</td>
+                                            <td>" . ($row['sex'] == 0 ? "Female" : "Male") . "</td>
+                                            <td>{$row['age']}</td>
+                                            <td>" . ($row['date_tagged'] != null ? 'Yes' : 'No') . "</td>
+                                            <td>{$row['tag_number']}</td>
                                         </tr>";
                                     }
                                 } else {
@@ -104,16 +103,15 @@ include 'alert.php';
                         </table>
 
                         <!-- Report Footer -->
-                        <div class="d-flex justify-content-between mt-4">
-                            <div>
-                                <p><strong>Submitted by:</strong></p>
-                                <p>CANDIDO L. BELARMINO</p>
-                                <p>A.T - Livestock</p>
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <img src="assets/img/sub-by.png" class="img-fluid" alt="">
                             </div>
-                            <div class="text-end">
-                                <p><strong>Noted by:</strong></p>
-                                <p>HAYDEE S. DALUMPINES</p>
-                                <p>Municipal Agriculturist</p>
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-4">
+                                <img src="assets/img/noted-by.png" class="img-fluid" alt="">
                             </div>
                         </div>
 
