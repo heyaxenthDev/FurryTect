@@ -12,29 +12,30 @@ include 'alert.php';
 
     <div class="pagetitle d-flex justify-content-between">
         <h1>Dog Tagging Reports</h1>
-        <button class="btn add-btn" onclick="window.print()"><i class="bi bi-printer"></i> Print Report</button>
+        <button class="btn add-btn" onclick="printCard()"><i class="bi bi-printer"></i> Print Report</button>
     </div><!-- End Page Title -->
 
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
+                <div class="card" id="cardToPrint">
                     <div class="card-body mt-3">
                         <!-- Report Header -->
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="assets/img/DAO.png" class="img-fluid" alt="">
+                        <div class="row header-container">
+                            <div class="col-3">
+                                <img src="assets/img/DAO.png" class="img-fluid pix" alt="">
                             </div>
-                            <div class="col-md-9 text-center align-content-center">
+                            <div class="col-9 text-center align-content-center text-title">
                                 <h4 class="mt-3"><strong>Dog Tagging Report</strong></h4>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
+
+                        <div class="row names">
+                            <div class="col-md-6 one-start">
                                 <p><strong>Province:</strong> Antique</p>
                                 <p><strong>Date Reported: </strong> <?php echo date("M d, Y"); ?></p>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 one-end">
                                 <p><strong>Municipality:</strong> TIBIAO</p>
                                 <p><strong>Livestock Technician:</strong> CANDIDO L. BELARMINO</p>
                             </div>
@@ -80,10 +81,11 @@ include 'alert.php';
 
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
+                                        $newDateFormat = date('F j, Y', strtotime($row['date_tagged']));
                                         echo "<tr>
-                                            <td>{$row['date_tagged']}</td>
+                                            <td>{$newDateFormat}</td>
                                             <td>{$row['barangay']}</td>
-                                            <td>{$row['first_name']}</td>
+                                            <td>{$row['first_name']}</td> 
                                             <td>{$row['last_name']}</td>
                                             <td>" . ($row['sex'] == 0 ? "Female" : "Male"). "</td>
                                             <td>{$row['name']}</td>
@@ -104,13 +106,13 @@ include 'alert.php';
 
                         <!-- Report Footer -->
                         <div class="row mt-4">
-                            <div class="col-md-4">
+                            <div class="col about-4">
                                 <img src="assets/img/sub-by.png" class="img-fluid" alt="">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-4">
 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-4">
                                 <img src="assets/img/noted-by.png" class="img-fluid" alt="">
                             </div>
                         </div>
@@ -120,6 +122,15 @@ include 'alert.php';
             </div>
         </div>
     </section>
+
+    <script>
+    function printCard() {
+        // Add a class to the body to indicate we're in the print mode
+        document.body.classList.add('print-mode');
+        window.print();
+        document.body.classList.remove('print-mode');
+    }
+    </script>
 
 </main><!-- End #main -->
 <?php

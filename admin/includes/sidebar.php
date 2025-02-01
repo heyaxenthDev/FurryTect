@@ -135,7 +135,14 @@ $row = $result->fetch_assoc();
                 <i class="bx bxs-file"></i>
                 <span>Dog Tagging Report</span>
             </a>
-        </li><!-- End Dogtagging Report Page Nav -->
+        </li><!-- End Dog tagging Report Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link <?= is_active('incident report', $current_page); ?>" href="incident report">
+                <i class="bi bi-info-square-fill"></i>
+                <span>Incident Report</span>
+            </a>
+        </li><!-- End Incident Report Page Nav -->
 
         <li class="nav-heading">User</li>
 

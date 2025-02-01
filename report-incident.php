@@ -91,11 +91,11 @@ session_start();
         <!-- Page Title -->
         <div class="page-title custom-image-background">
             <div class="container">
-                <h1>Incident Report</h1>
+                <h1>Report Incident</h1>
                 <nav class="breadcrumbs">
                     <ol>
                         <li><a href="index">Home</a></li>
-                        <li class="current">Incident Report</li>
+                        <li class="current">Report Incident</li>
                     </ol>
                 </nav>
             </div>
@@ -113,15 +113,17 @@ session_start();
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select id="incidentType" name="incidentType" class="form-select" required>
+                                        <select id="incidentType" name="incidentType" class="form-select" required
+                                            onchange="toggleOtherInput()">
                                             <option value="" disabled selected>Select type of report</option>
-                                            <option value="animalVehicle">Animal-Vehicle Accident</option>
-                                            <option value="dogBites">Dog Bites and Attacks</option>
-                                            <option value="others">Others</option>
+                                            <option value="Animal-Vehicle Accident">Animal-Vehicle Accident</option>
+                                            <option value="Dog Bites and Attacks">Dog Bites and Attacks</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                         <label for="incidentType">Incident Type</label>
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="datetime-local" id="dateTime" name="dateTime" class="form-control"
@@ -130,6 +132,31 @@ session_start();
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Hidden Input Field for "Others" -->
+                            <div class="row mb-3" id="otherIncidentDiv" style="display: none;">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" id="otherIncidentType" name="otherIncidentType"
+                                            class="form-control" placeholder="Specify other incident">
+                                        <label for="otherIncidentType">Specify Other Incident</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                            function toggleOtherInput() {
+                                var incidentType = document.getElementById("incidentType").value;
+                                var otherIncidentDiv = document.getElementById("otherIncidentDiv");
+
+                                if (incidentType === "Others") {
+                                    otherIncidentDiv.style.display = "block"; // Show input field
+                                } else {
+                                    otherIncidentDiv.style.display = "none"; // Hide input field
+                                }
+                            }
+                            </script>
+
                             <div class="form-floating mb-3">
                                 <input type="text" id="location" name="location" class="form-control"
                                     placeholder="Enter location" required>
