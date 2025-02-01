@@ -13,7 +13,7 @@
 
     <div class="pagetitle d-flex justify-content-between">
         <h1>Vaccination Reports</h1>
-        <button class="btn print-btn" onclick="printCard()"><i class="bi bi-printer"></i> Print Report</button>
+        <button class="btn print-btn add-btn" onclick="printCard()"><i class="bi bi-printer"></i> Print Report</button>
     </div><!-- End Page Title -->
 
     <section class="section">

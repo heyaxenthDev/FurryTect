@@ -204,6 +204,75 @@ session_start();
         </section>
         <!-- /About Section -->
 
+        <!-- ANIMAL BITE CASES Section -->
+        <section id="pricing" class="pricing section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>ANIMAL BITE CASES</h2>
+                <!-- <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> -->
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-body">
+                            <h5 class="card-title">Statistics Overview</h5>
+
+                            <!-- Bar Chart -->
+                            <canvas id="barChart" style="max-height: 400px;"></canvas>
+                            <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                new Chart(document.querySelector('#barChart'), {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ['2020', '2021', '2022', '2023', '2024'],
+                                        datasets: [{
+                                                label: 'Animal Bite Cases - Barbaza RHU',
+                                                data: [33, 40, 59, 44, 35],
+                                                backgroundColor: 'rgba(0, 255, 255, 0.2)',
+                                                borderColor: 'rgb(77, 125, 125)',
+                                                borderWidth: 1
+                                            },
+                                            {
+                                                label: 'Animal Bite Cases - Culasi DH',
+                                                data: [55, 51, 103, 228, 239],
+                                                backgroundColor: 'rgba(7, 74, 116, 0.2)',
+                                                borderColor: 'rgb(54, 162, 235)',
+                                                borderWidth: 1
+                                            },
+                                            {
+                                                label: 'Road Accidents - Tibiao MPS',
+                                                data: [0, 0, 0, 56, 20],
+                                                backgroundColor: 'rgba(28, 187, 157, 0.2)',
+                                                borderColor: 'rgb(23, 84, 72)',
+                                                borderWidth: 1
+                                            }
+                                        ]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                            });
+                            </script>
+                            <!-- End Bar Chart -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section><!-- /Pricing Section -->
+
 
         <!-- Featured Services Section -->
         <section id="featured-services" class="featured-services section">
