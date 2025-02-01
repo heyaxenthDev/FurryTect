@@ -85,6 +85,35 @@ include 'alert.php';
                                     <div class="modal-body">
                                         <!-- Start of form -->
                                         <form action="code.php" method="POST" enctype="multipart/form-data">
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="viewName" name="yourName"
+                                                            class="form-control" placeholder="Your Name" required>
+                                                        <label for="viewName">Your Name</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input type="email" id="viewEmail" name="yourEmail"
+                                                            class="form-control" placeholder="Your Email" required>
+                                                        <label for="viewEmail">Your Email</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="viewMobile" name="yourMobile"
+                                                            class="form-control" placeholder="Your Contact Number"
+                                                            required>
+                                                        <label for="viewMobile">Your Contact Numer</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
@@ -178,6 +207,12 @@ include 'alert.php';
                                         .then(response => response.json())
                                         .then(data => {
                                             // Patient Information
+                                            document.getElementById('viewName')
+                                                .value = data.name || '';
+                                            document.getElementById('viewEmail')
+                                                .value = data.email || '';
+                                            document.getElementById('viewMobile')
+                                                .value = data.contact_number || '';
                                             document.getElementById('viewIncidentType')
                                                 .value = data.incident_type || '';
                                             const rawDate = data.created_at;

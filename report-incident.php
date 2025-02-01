@@ -110,6 +110,34 @@ session_start();
                 <div class="card shadow">
                     <div class="card-body m-4">
                         <form action="code.php" method="POST" enctype="multipart/form-data">
+
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="text" id="yourName" name="yourName" class="form-control"
+                                            placeholder="Your Name" required>
+                                        <label for="yourName">Your Name</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" id="yourEmail" name="yourEmail" class="form-control"
+                                            placeholder="Your Email" required>
+                                        <label for="yourEmail">Your Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" id="yourMobile" name="yourMobile" class="form-control"
+                                            placeholder="Your Contact Number" required>
+                                        <label for="yourMobile">Your Contact Numer</label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
