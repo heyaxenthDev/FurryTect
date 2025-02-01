@@ -286,13 +286,13 @@ session_start();
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
                     <div class="col-xl-9 text-center text-xl-start">
                         <h3>Join FURRYTECT</h3>
-                        <!-- <p>
+                        <p>
                             today and help us create a safer and more compassionate environment for pets and their
                             owners!
-                        </p> -->
+                        </p>
                     </div>
                     <div class="col-xl-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="#">Click Here</a>
+                        <a class="cta-btn align-middle" href="registration">Click Here</a>
                     </div>
                 </div>
             </div>
