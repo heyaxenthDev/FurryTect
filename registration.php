@@ -285,8 +285,8 @@ $file_path = "admin/";
                                                 <div class="col-md-4">
                                                     <div class="form-floating">
                                                         <input type="text" class="form-control" id="floatingMiddleName"
-                                                            placeholder="Middle Name" name="middleName" required>
-                                                        <label for="floatingMiddleName">Middle Name</label>
+                                                            placeholder="Middle Name (Optional)" name="middleName">
+                                                        <label for="floatingMiddleName">Middle Name (Optional)</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">

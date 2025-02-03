@@ -3,6 +3,7 @@ session_start();
 include 'includes/conn.php';
 $file_path = "admin/";
 
+
 // Generate unique owner code based on the database auto increment value
 function generateOwnerCode($conn)
 {
@@ -13,7 +14,6 @@ function generateOwnerCode($conn)
     return $randomNumber . "-" . $nextAutoIncrement;
 }
 
-// Handle file uploads and save them in the specified path
 function handleFileUpload($file, $uploadDir)
 {
     // Ensure the directory exists
@@ -25,7 +25,7 @@ function handleFileUpload($file, $uploadDir)
     $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
     if (!in_array($file['type'], $allowedTypes)) {
-        return "uploads/default-image.jpg"; // Return default image if invalid file type
+        return str_replace('admin/', '', $uploadDir . "default-image.jpg"); // Return default image if invalid file type
     }
 
     // Proceed with upload if there's no error
@@ -33,13 +33,16 @@ function handleFileUpload($file, $uploadDir)
         $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
         $uniqueFileName = uniqid("pet_", true) . "." . $fileExtension;
         $fullPath = $uploadDir . $uniqueFileName; // Full path for file storage
+        $trimmedPath = str_replace('admin/', '', $fullPath);
 
         if (move_uploaded_file($file['tmp_name'], $fullPath)) {
-            return "uploads/" . basename($fullPath); // Return only relative path for DB
+            return $trimmedPath; // Return trimmed path for DB
         }
     }
-    return "uploads/default-image.jpg"; // Default path in case of failure
+    return str_replace('admin/', '', $uploadDir . "default-image.jpg"); // Default path in case of failure
 }
+
+
 
 // Handle form submission for Dogs registration
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {

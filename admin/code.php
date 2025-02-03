@@ -252,6 +252,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AddCats'])) {
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateDogs'])) {
     // Retrieve form data
+    $dogPicture = handleFileUpload($_FILES['dogImage'], 'uploads/dogs/');
+
     $tagNumber = $_POST['tagNumber'];
     $dateTagged = $_POST['dateTagged'];
     $name = $_POST['name'];
@@ -262,9 +264,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateDogs'])) {
     $dateVacc = $_POST['dateVacc'];
 
     // Update the dog information in the database
-    $query = "UPDATE dogs SET tag_number=?, date_tagged=?, name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=? WHERE id=?";
+    $query = "UPDATE dogs SET tag_number=?, date_tagged=?, name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=?, picture=? WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssiisssi", $tagNumber, $dateTagged, $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $dogId);
+    $stmt->bind_param("sssiissssi", $tagNumber, $dateTagged, $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $dogPicture, $dogId);
 
     // Assuming you have a variable $dogId that holds the ID of the dog being edited
     $dogId = $_POST['dogId'];
@@ -295,6 +297,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateDogs'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateCats'])) {
     // Retrieve form data
 
+    $catPicture = handleFileUpload($_FILES['catImage'], 'uploads/cats/');
+
     $name = $_POST['name'];
     $sex = $_POST['sex'];
     $age = $_POST['age'];
@@ -303,9 +307,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateCats'])) {
     $dateVacc = $_POST['dateVacc'];
 
     // Update the dog information in the database
-    $query = "UPDATE cats SET name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=? WHERE id=?";
+    $query = "UPDATE cats SET name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=?, picture=? WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("siisssi", $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $catId);
+    $stmt->bind_param("siissssi", $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $catPicture, $catId);
 
     // Assuming you have a variable $catId that holds the ID of the dog being edited
     $catId = $_POST['catId'];
