@@ -340,6 +340,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateCats'])) {
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
     // Retrieve form data
+    // $ownerPicture = handleFileUpload($_FILES['ownerImage'], 'uploads/owners/');
+
     $ownerId = $_POST['ownerId'];
     $firstName = $_POST['firstName'];
     $middleName = $_POST['middleName'];
@@ -384,7 +386,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateOwners'])) {
                 // Update the database with the new file path
                 $query = "UPDATE owners SET first_name=?, middle_name=?, last_name=?, date_of_birth=?, sex=?, age=?, contact_number=?, barangay=?, owner_picture=? WHERE id=?";
                 $stmt = $conn->prepare($query);
-                $stmt->bind_param("sssssissis", $firstName, $middleName, $lastName, $dobOwner, $sexOwner, $ageOwner, $contactNumber, $barangay, $fileName, $ownerId);
+                $stmt->bind_param("sssssisssi", $firstName, $middleName, $lastName, $dobOwner, $sexOwner, $ageOwner, $contactNumber, $barangay, $targetFilePath, $ownerId);
 
                 if ($stmt->execute()) {
                     $_SESSION['status'] = "Success";
