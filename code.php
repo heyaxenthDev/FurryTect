@@ -5,7 +5,7 @@ require_once 'includes/conn.php'; // Include database connection
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['insertIncidentReport'])) {
     $name = $_POST['yourName'];
     $email = $_POST['yourEmail'];
-    $contact_number = $_POST['yourContactNumber'];
+    $contact_number = $_POST['yourMobile'];
     $incidentType = $_POST['incidentType'];
     $dateTime = $_POST['dateTime'];
     $location = $_POST['location'];
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['insertIncidentReport']
     $randomNumber = rand(1000, 9999); // Generate random 4-digit number
     
     // Insert incident report into database (without incident_id)
-    $stmt = $conn->prepare("INSERT INTO incidentreports (name, email, contact_number, incident_type, date_time, location, description, agree_terms) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO incidentreports (name, email, contact_number, incident_type, date_time, location, description, agree_terms) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssssi", $name, $email, $contact_number, $incidentType, $dateTime, $location, $description, $agreeTerms);
     
     if ($stmt->execute()) {
