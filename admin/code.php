@@ -65,14 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {
     $dateTagged = $_POST['dateTagged'] ?? null;
     $dogName = $_POST['name'];
     $dogSex = $_POST['sex'];
-    $dogAge = $_POST['age'];
+    $dogAgeYears = $_POST['age_years'];
+    $dogAgeMonths = $_POST['age_months'];
     $color = $_POST['color'];
     $vaccinationStatus = $_POST['vaccinationStatus'];
     $dateVacc = $_POST['dateVacc'] ?? null;
 
     // Insert dog information
-    $stmt = $conn->prepare("INSERT INTO dogs (tag_number, date_tagged, name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssiisssss", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
+    $stmt = $conn->prepare("INSERT INTO dogs (tag_number, date_tagged, name, sex, age_years, age_months, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssiisssss", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAgeYears, $dogAgeMonths, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -138,14 +139,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['CatsReg'])) {
     // Cat information
     $catName = $_POST['name'];
     $catSex = $_POST['sex'];
-    $catAge = $_POST['age'];
+    $catAgeYears = $_POST['age_years'];
+    $catAgeMonths = $_POST['age_months'];
     $color = $_POST['color'];
     $vaccinationStatus = $_POST['vaccinationStatus'];
     $dateVacc = $_POST['dateVacc'] ?? null;
 
     // Insert cat information
-    $stmt = $conn->prepare("INSERT INTO cats (name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssisssss", $catName, $catSex, $catAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
+    $stmt = $conn->prepare("INSERT INTO cats (name, sex, age_years, age_months, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssiisssss", $catName, $catSex, $catAgeYears, $catAgeMonths, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -179,14 +181,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AddDogs'])) {
     $dateTagged = $_POST['dateTagged'] ?? null;
     $dogName = $_POST['name'];
     $dogSex = $_POST['sex'];
-    $dogAge = $_POST['age'];
+    $dogAgeYears = $_POST['age_years'];
+    $dogAgeMonths = $_POST['age_months'];
     $color = $_POST['color'];
     $vaccinationStatus = $_POST['vaccinationStatus'];
     $dateVacc = $_POST['dateVacc'] ?? null;
 
     // Insert dog information
-    $stmt = $conn->prepare("INSERT INTO dogs (tag_number, date_tagged, name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssiisssss", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
+    $stmt = $conn->prepare("INSERT INTO dogs (tag_number, date_tagged, name, sex, age_years, age_months, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssiisssss", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAgeYears, $dogAgeMonths, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -219,14 +222,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AddCats'])) {
     $ownerCode = $_POST['ownerCode'] ?? null;
     $catName = $_POST['name'];
     $catSex = $_POST['sex'];
-    $catAge = $_POST['age'];
+    $catAgeYears = $_POST['age_years'];
+    $catAgeMonths = $_POST['age_months'];
     $color = $_POST['color'];
     $vaccinationStatus = $_POST['vaccinationStatus'];
     $dateVacc = $_POST['dateVacc'] ?? null;
 
     // Insert cat information
-    $stmt = $conn->prepare("INSERT INTO cats (name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssisssss", $catName, $catSex, $catAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
+    $stmt = $conn->prepare("INSERT INTO cats (name, sex, age_years, age_months, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssiisssss", $catName, $catSex, $catAgeYears, $catAgeMonths, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -258,15 +262,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateDogs'])) {
     $dateTagged = $_POST['dateTagged'];
     $name = $_POST['name'];
     $sex = $_POST['sex'];
-    $age = $_POST['age'];
+    $ageYears = $_POST['age_years'];
+    $ageMonths = $_POST['age_months'];
     $color = $_POST['color'];
     $vaccinationStatus = $_POST['vaccinationStatus'];
     $dateVacc = $_POST['dateVacc'];
 
     // Update the dog information in the database
-    $query = "UPDATE dogs SET tag_number=?, date_tagged=?, name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=?, picture=? WHERE id=?";
+    $query = "UPDATE dogs SET tag_number=?, date_tagged=?, name=?, sex=?, age_years=?, age_months=?, color=?, vacc_status=?, date_vacc=?, picture=? WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssiissssi", $tagNumber, $dateTagged, $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $dogPicture, $dogId);
+    $stmt->bind_param("ssssiissssi", $tagNumber, $dateTagged, $name, $sex, $ageYears, $ageMonths, $color, $vaccinationStatus, $dateVacc, $dogPicture, $dogId);
 
     // Assuming you have a variable $dogId that holds the ID of the dog being edited
     $dogId = $_POST['dogId'];
@@ -301,15 +306,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['UpdateCats'])) {
 
     $name = $_POST['name'];
     $sex = $_POST['sex'];
-    $age = $_POST['age'];
+    $ageYears = $_POST['age_years'];
+    $ageMonths = $_POST['age_months'];
     $color = $_POST['color'];
     $vaccinationStatus = $_POST['vaccinationStatus'];
     $dateVacc = $_POST['dateVacc'];
 
     // Update the dog information in the database
-    $query = "UPDATE cats SET name=?, sex=?, age=?, color=?, vacc_status=?, date_vacc=?, picture=? WHERE id=?";
+    $query = "UPDATE cats SET name=?, sex=?, age_years=?, age_months=?, color=?, vacc_status=?, date_vacc=?, picture=? WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("siissssi", $name, $sex, $age, $color, $vaccinationStatus, $dateVacc, $catPicture, $catId);
+    $stmt->bind_param("ssiissssi", $name, $sex, $ageYears, $ageMonths, $color, $vaccinationStatus, $dateVacc, $catPicture, $catId);
 
     // Assuming you have a variable $catId that holds the ID of the dog being edited
     $catId = $_POST['catId'];

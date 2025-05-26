@@ -160,12 +160,24 @@
                                      </div>
 
                                      <div class="col-md-6">
-                                         <div class="form-floating">
-                                             <input type="number" class="form-control" id="floatingAge"
-                                                 placeholder="Age" name="age">
-                                             <label for="floatingAge">Age</label>
+                                         <div class="row">
+                                             <div class="col-6">
+                                                 <div class="form-floating">
+                                                     <input type="number" class="form-control" id="ageYears"
+                                                         name="age_years" placeholder="Years" min="0">
+                                                     <label for="ageYears">Age (Years)</label>
+                                                 </div>
+                                             </div>
+                                             <div class="col-6">
+                                                 <div class="form-floating">
+                                                     <input type="number" class="form-control" id="ageMonths"
+                                                         name="age_months" placeholder="Months" min="0" max="11">
+                                                     <label for="ageMonths">Age (Months)</label>
+                                                 </div>
+                                             </div>
                                          </div>
                                      </div>
+
                                  </div>
 
                                  <div class="row mb-3 g-2">

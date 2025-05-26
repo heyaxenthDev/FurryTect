@@ -16,7 +16,6 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn add-btn" data-bs-toggle="modal" data-bs-target="#OwnersModalFirst"><i
                     class="bi bi-plus-circle"></i> Add Dogs</button>
-            <button class="btn add-btn"><i class="bi bi-clipboard-data"></i> Generate List</button>
         </div>
     </div><!-- End Page Title -->
 
@@ -51,7 +50,7 @@
 
                                     // Fetch data from the dogs table
                                     $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, 
-                                    d.`id`, d.`species`, d.`tag_number`, d.`date_tagged`, d.`name`, d.`sex`, d.`age`, d.`color`, d.`owner_code`, d.`vacc_status`, d.`date_vacc`, d.`picture`
+                                    d.`id`, d.`species`, d.`tag_number`, d.`date_tagged`, d.`name`, d.`sex`, d.`age_years`, d.`age_months`, d.`color`, d.`owner_code`, d.`vacc_status`, d.`date_vacc`, d.`picture`
                                     FROM `dogs` d LEFT JOIN `owners` o ON d.`owner_code` = o.`owner_code` ORDER BY d.`date_created` ASC";
 
                                     $result = $conn->query($sql);
@@ -152,11 +151,27 @@
                                                             </div>
                                                         </div>
 
+
                                                         <div class="col-md-6">
-                                                            <div class="form-floating">
-                                                                <input type="number" class="form-control"
-                                                                    id="viewFloatingAge" placeholder="Age" readonly>
-                                                                <label for="viewFloatingAge">Age</label>
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="form-floating">
+                                                                        <input type="number" class="form-control"
+                                                                            id="viewFloatingAgeYears" name="age_years"
+                                                                            placeholder="Years" min="0">
+                                                                        <label for="viewFloatingAgeYears">Age
+                                                                            (Years)</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-floating">
+                                                                        <input type="number" class="form-control"
+                                                                            id="viewFloatingAgeMonths" name="age_months"
+                                                                            placeholder="Months" min="0" max="11">
+                                                                        <label for="viewFloatingAgeMonths">Age
+                                                                            (Months)</label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -224,7 +239,8 @@
                                         var sexText = dog.sex == 1 ? 'Male' : 'Female';
                                         $('#viewFloatingSex').val(sexText);
 
-                                        $('#viewFloatingAge').val(dog.age);
+                                        $('#viewFloatingAgeYears').val(dog.age_years);
+                                        $('#viewFloatingAgeMonths').val(dog.age_months);
                                         $('#viewFloatingColor').val(dog.color);
                                         $('#viewFloatingVaccinationStatus').val(dog
                                             .vacc_status);
@@ -328,11 +344,27 @@
                                                             </div>
                                                         </div>
 
+
                                                         <div class="col-md-6">
-                                                            <div class="form-floating">
-                                                                <input type="number" class="form-control"
-                                                                    id="editFloatingAge" placeholder="Age" name="age">
-                                                                <label for="editFloatingAge">Age</label>
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="form-floating">
+                                                                        <input type="number" class="form-control"
+                                                                            id="editFloatingAgeYears" name="age_years"
+                                                                            placeholder="Years" min="0">
+                                                                        <label for="editFloatingAgeYears">Age
+                                                                            (Years)</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-floating">
+                                                                        <input type="number" class="form-control"
+                                                                            id="editFloatingAgeMonths" name="age_months"
+                                                                            placeholder="Months" min="0" max="11">
+                                                                        <label for="editFloatingAgeMonths">Age
+                                                                            (Months)</label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -409,7 +441,8 @@
                                         $('#editFloatingDateTagged').val(dog.date_tagged);
                                         $('#editFloatingName').val(dog.name);
                                         $('#editFloatingSex').val(dog.sex);
-                                        $('#editFloatingAge').val(dog.age);
+                                        $('#editFloatingAgeYears').val(dog.age_years);
+                                        $('#editFloatingAgeMonths').val(dog.age_months);
                                         $('#editFloatingColor').val(dog.color);
                                         $('#editFloatingVaccinationStatus').val(dog
                                             .vacc_status);

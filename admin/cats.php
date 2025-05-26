@@ -16,7 +16,6 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn add-btn" data-bs-target="#OwnersModalFirst" data-bs-toggle="modal"><i
                     class="bi bi-plus-circle"></i> Add Cats</button>
-            <button class="btn add-btn"><i class="bi bi-clipboard-data"></i> Generate List</button>
         </div>
     </div><!-- End Page Title -->
 
@@ -45,7 +44,7 @@
                                     // Assuming you have already connected to your database
                                     // Fetch data from the cats table
                                     $sql = "SELECT o.`owner_code`, o.`first_name`, o.`middle_name`, o.`last_name`, o.`contact_number`, o.`barangay`, 
-                                            c.`id`, c.`name`, c.`sex`, c.`age`, c.`color`, c.`vacc_status`, c.`date_vacc`, c.`picture`
+                                            c.`id`, c.`name`, c.`sex`, c.`age_years`, c.`age_months`, c.`color`, c.`vacc_status`, c.`date_vacc`, c.`picture`
                                             FROM `cats` c LEFT JOIN `owners` o ON c.`owner_code` = o.`owner_code` ORDER BY c.`date_created` ASC";
                                     $result = $conn->query($sql);
 
@@ -127,10 +126,25 @@
                                                         </div>
 
                                                         <div class="col-md-6">
-                                                            <div class="form-floating">
-                                                                <input type="number" class="form-control"
-                                                                    id="viewFloatingAge" placeholder="Age" readonly>
-                                                                <label for="viewFloatingAge">Age</label>
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="form-floating">
+                                                                        <input type="number" class="form-control"
+                                                                            id="viewFloatingAgeYears" name="age_years"
+                                                                            placeholder="Years" min="0">
+                                                                        <label for="viewFloatingAgeYears">Age
+                                                                            (Years)</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-floating">
+                                                                        <input type="number" class="form-control"
+                                                                            id="viewFloatingAgeMonths" name="age_months"
+                                                                            placeholder="Months" min="0" max="11">
+                                                                        <label for="viewFloatingAgeMonths">Age
+                                                                            (Months)</label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -196,7 +210,8 @@
                                         var sexText = cat.sex == 1 ? 'Male' : 'Female';
                                         $('#viewFloatingSex').val(sexText);
 
-                                        $('#viewFloatingAge').val(cat.age);
+                                        $('#viewFloatingAgeYears').val(cat.age_years);
+                                        $('#viewFloatingAgeMonths').val(cat.age_months);
                                         $('#viewFloatingColor').val(cat.color);
                                         $('#viewFloatingVaccinationStatus').val(cat
                                             .vacc_status);
@@ -282,10 +297,25 @@
                                                         </div>
 
                                                         <div class="col-md-6">
-                                                            <div class="form-floating">
-                                                                <input type="number" class="form-control"
-                                                                    id="editFloatingAge" placeholder="Age" name="age">
-                                                                <label for="editFloatingAge">Age</label>
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="form-floating">
+                                                                        <input type="number" class="form-control"
+                                                                            id="editFloatingAgeYears" name="age_years"
+                                                                            placeholder="Years" min="0">
+                                                                        <label for="editFloatingAgeYears">Age
+                                                                            (Years)</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-floating">
+                                                                        <input type="number" class="form-control"
+                                                                            id="editFloatingAgeMonths" name="age_months"
+                                                                            placeholder="Months" min="0" max="11">
+                                                                        <label for="editFloatingAgeMonths">Age
+                                                                            (Months)</label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -360,7 +390,8 @@
 
                                         $('#editFloatingName').val(cat.name);
                                         $('#editFloatingSex').val(cat.sex);
-                                        $('#editFloatingAge').val(cat.age);
+                                        $('#editFloatingAgeYears').val(cat.age_years);
+                                        $('#editFloatingAgeMonths').val(cat.age_months);
                                         $('#editFloatingColor').val(cat.color);
                                         $('#editFloatingVaccinationStatus').val(cat
                                             .vacc_status);

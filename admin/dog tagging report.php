@@ -106,14 +106,30 @@ include 'alert.php';
 
                         <!-- Report Footer -->
                         <div class="row mt-4">
-                            <div class="col about-4">
-                                <img src="assets/img/sub-by.png" class="img-fluid" alt="">
+                            <div class="col-4 text-center">
+                                <label>Submitted by:</label>
+                                <input type="text" id="submittedName" class="form-control d-print-none mb-1"
+                                    placeholder="Name" required>
+                                <input type="text" id="submittedTitle" class="form-control d-print-none"
+                                    placeholder="Title/Position" required>
+                                <div class="d-none d-print-block">
+                                    <div class="signature-line"></div>
+                                    <strong id="submittedNamePrint"></strong><br>
+                                    <span id="submittedTitlePrint"></span>
+                                </div>
                             </div>
-                            <div class="col-4">
-
-                            </div>
-                            <div class="col-4">
-                                <img src="assets/img/noted-by.png" class="img-fluid" alt="">
+                            <div class="col-4"></div>
+                            <div class="col-4 text-center">
+                                <label>Noted by:</label>
+                                <input type="text" id="notedName" class="form-control d-print-none mb-1"
+                                    placeholder="Name" required>
+                                <input type="text" id="notedTitle" class="form-control d-print-none"
+                                    placeholder="Title/Position" required>
+                                <div class="d-none d-print-block">
+                                    <div class="signature-line"></div>
+                                    <strong id="notedNamePrint"></strong><br>
+                                    <span id="notedTitlePrint"></span>
+                                </div>
                             </div>
                         </div>
 
@@ -125,6 +141,20 @@ include 'alert.php';
 
     <script>
     function printCard() {
+        // Validate signatory fields
+        var submittedName = document.getElementById('submittedName').value.trim();
+        var submittedTitle = document.getElementById('submittedTitle').value.trim();
+        var notedName = document.getElementById('notedName').value.trim();
+        var notedTitle = document.getElementById('notedTitle').value.trim();
+        if (!submittedName || !submittedTitle || !notedName || !notedTitle) {
+            alert('Please fill in all signatory fields before printing.');
+            return;
+        }
+        // Set print values
+        document.getElementById('submittedNamePrint').textContent = submittedName;
+        document.getElementById('submittedTitlePrint').textContent = submittedTitle;
+        document.getElementById('notedNamePrint').textContent = notedName;
+        document.getElementById('notedTitlePrint').textContent = notedTitle;
         // Add a class to the body to indicate we're in the print mode
         document.body.classList.add('print-mode');
         window.print();
@@ -133,6 +163,19 @@ include 'alert.php';
     </script>
 
 </main><!-- End #main -->
+
+<style>
+@media print {
+    .signature-line {
+        border-bottom: 1.5px solid #000;
+        width: 80%;
+        margin: 0 auto 10px auto;
+        height: 30px;
+        /* space for signature */
+    }
+}
+</style>
+
 <?php
 include "includes/footer.php";
 ?>

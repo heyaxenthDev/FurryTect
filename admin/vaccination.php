@@ -12,7 +12,6 @@
     <div class="pagetitle d-flex justify-content-between">
         <h1>Vaccination</h1>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn add-btn"><i class="bi bi-clipboard-data"></i> Generate List</button>
         </div>
     </div><!-- End Page Title -->
 

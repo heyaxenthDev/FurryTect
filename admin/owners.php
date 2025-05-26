@@ -15,7 +15,6 @@
          <h1>Owners</h1>
          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
              <!-- <button class="btn add-btn"><i class="bi bi-plus-circle"></i> Add Owners</button> -->
-             <button class="btn add-btn"><i class="bi bi-clipboard-data"></i> Generate List</button>
          </div>
      </div><!-- End Page Title -->
 

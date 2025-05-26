@@ -112,11 +112,18 @@ session_start();
                         <form action="code.php" method="POST" enctype="multipart/form-data">
 
                             <div class="row mb-3">
-                                <div class="col-md-12">
+                                <div class="col-md-9">
                                     <div class="form-floating">
                                         <input type="text" id="yourName" name="yourName" class="form-control"
                                             placeholder="Your Name" required>
                                         <label for="yourName">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="text" id="dogTagNumber" name="dogTagNumber" class="form-control"
+                                            placeholder="Dog Tag Number" required>
+                                        <label for="dogTagNumber">Dog Tag Number</label>
                                     </div>
                                 </div>
                             </div>
