@@ -88,14 +88,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DogsReg'])) {
     $dateTagged = $_POST['dateTagged'] ?? null;
     $dogName = $_POST['name'];
     $dogSex = $_POST['sex'];
-    $dogAge = $_POST['age'];
+    $dogAgeYears = $_POST['age_years'];
+    $dogAgeMonths = $_POST['age_months'];
     $color = $_POST['color'];
     $vaccinationStatus = $_POST['vaccinationStatus'];
     $dateVacc = $_POST['dateVacc'] ?? null;
 
     // Insert dog information into database
-    $stmt = $conn->prepare("INSERT INTO dogs (tag_number, date_tagged, name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssiisssss", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
+    $stmt = $conn->prepare("INSERT INTO dogs (tag_number, date_tagged, name, sex, age_years, age_months, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssiisssss", $tagNumber, $dateTagged, $dogName, $dogSex, $dogAgeYears, $dogAgeMonths, $color, $ownerCode, $vaccinationStatus, $dateVacc, $dogPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
@@ -160,14 +161,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['CatsReg'])) {
     // Cat information
     $catName = $_POST['name'];
     $catSex = $_POST['sex'];
-    $catAge = $_POST['age'];
+    $catAgeYears = $_POST['age_years'];
+    $catAgeMonths = $_POST['age_months'];
     $color = $_POST['color'];
     $vaccinationStatus = $_POST['vaccinationStatus'];
     $dateVacc = $_POST['dateVacc'] ?? null;
 
     // Insert cat information into database
-    $stmt = $conn->prepare("INSERT INTO cats (name, sex, age, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssisssss", $catName, $catSex, $catAge, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
+    $stmt = $conn->prepare("INSERT INTO cats (name, sex, age_years, age_months, color, owner_code, vacc_status, date_vacc, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssiisssss", $catName, $catSex, $catAgeYears, $catAgeMonths, $color, $ownerCode, $vaccinationStatus, $dateVacc, $catPicture);
 
     if ($stmt->execute()) {
         $_SESSION['status'] = "Success";
